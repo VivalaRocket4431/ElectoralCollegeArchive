@@ -58,14 +58,17 @@ window.topojson = (function(){
 </script>
 <style>
   :root{
-    --bg:#FFFFFF; --bg-alt:#F5F6F7; --bg-alt-2:#EEF0F2;
-    --border:#D9DDE1; --border-strong:#B7BFC6;
-    --text:#1A1D21; --text-dim:#5B6470;
-    --red:#C0152F; --blue:#14559E;
-    --verified:#1E7A34; --verified-bg:#E8F5EA;
-    --pending-bg:#F0F1F2;
-    --focus:#14559E;
+    --bg:#FBFAF7; --bg-alt:#F2F0EA; --bg-alt-2:#E7E4DA;
+    --border:#D6D2C6; --border-strong:#B3ADA0;
+    --navy:#12263F; --navy-2:#1B3557;
+    --text:#16181C; --text-dim:#5A5F68;
+    --red:#B01B2E; --blue:#12447F;
+    --verified:#1B6B31; --verified-bg:#E6F2E7;
+    --pending-bg:#EDEBE4;
+    --focus:#12447F;
+    --gold:#9A7B2E;
     --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --serif:Georgia,'Iowan Old Style','Times New Roman',serif;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -292,6 +295,125 @@ window.topojson = (function(){
     padding:8px 10px; border-radius:0 4px 4px 0; font-size:14px;
   }
 
+
+  /* ================= MASTHEAD ================= */
+  header.site-header{
+    background:var(--navy);
+    border-bottom:4px solid var(--gold);
+    padding:22px 16px 20px;
+    color:#EFEDE6;
+  }
+  .brand h1{
+    font-family:var(--serif); font-weight:700; letter-spacing:-0.3px;
+    font-size:clamp(25px,6vw,36px); color:#fff; margin:0 0 3px;
+  }
+  .brand .tagline{ color:#B9C2D0; font-size:14px; margin:0 0 16px; }
+  .year-title{
+    font-family:var(--serif); font-size:19px; color:#fff; font-weight:700;
+    margin:0 0 14px; padding-bottom:9px;
+    border-bottom:1px solid rgba(255,255,255,.22);
+    display:flex; align-items:baseline; gap:9px;
+  }
+  .year-title::before{
+    content:""; width:22px; height:3px; background:var(--gold);
+    display:inline-block; flex:0 0 auto; transform:translateY(-4px);
+  }
+  .source-note{ color:#A9B3C2; font-size:12px; margin:12px 0 0; }
+  .source-note a{ color:#D8C48C; }
+
+  /* ================= COUNT CARDS ================= */
+  .count-card{
+    background:#fff; border:1px solid var(--border); border-radius:6px;
+    padding:15px; position:relative; overflow:hidden; color:var(--text);
+    box-shadow:0 1px 3px rgba(18,38,63,.09);
+  }
+  .count-card .count-sub,
+  .count-card .cast-note,
+  .count-card .tally-figures,
+  .count-card .ev-table thead th{ color:var(--text-dim); }
+  .count-card .cv-label,
+  .count-card .cv-num,
+  .count-card .ev-table td,
+  .count-card .ev-table tbody th,
+  .count-card .tally-figures b,
+  .count-card .count-verdict{ color:var(--text); }
+  .count-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--navy);
+  }
+  .count-card h3{
+    font-family:var(--serif); font-size:16px; font-weight:700; margin:4px 0 2px; color:var(--navy);
+  }
+  .count-verdict{
+    background:var(--bg-alt); border-left:3px solid var(--navy);
+    border-radius:0 4px 4px 0; font-size:13px;
+  }
+  .diverge-flag.on{ background:#FBE9EB; border:1px solid #DFA9B1; color:#68141F; }
+  .diverge-flag.off{ background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.22); color:#C6CEDA; }
+  .diverge-flag.off strong{ color:#fff; }
+
+  /* ================= ELECTOR BRIEF ================= */
+  .elector-brief{
+    background:#fff; border:1px solid var(--border); border-radius:6px;
+    padding:15px; margin:0 0 12px; color:var(--text);
+    box-shadow:0 1px 3px rgba(18,38,63,.09);
+  }
+  .eb-title{
+    font-family:var(--serif); font-size:17px; font-weight:700; color:var(--navy);
+    margin:0 0 8px; padding-bottom:7px; border-bottom:2px solid var(--navy);
+  }
+  .eb-lead{ margin:0 0 10px; font-size:14px; line-height:1.5; }
+  .eb-lead.eb-clean{ color:var(--text-dim); }
+  .eb-lead.eb-clean strong{ color:var(--verified); }
+  .eb-sub{ margin:12px 0 8px; font-size:13px; color:var(--text-dim); }
+
+  ul.broke-list{ list-style:none; margin:0; padding:0; display:grid; gap:9px; }
+  ul.broke-list li{
+    border-left:4px solid var(--red); background:var(--bg-alt);
+    border-radius:0 5px 5px 0; padding:9px 11px;
+    display:flex; flex-direction:column; gap:2px;
+  }
+  ul.broke-list.blocked li{ border-left-color:var(--border-strong); }
+  .broke-name{ font-family:var(--serif); font-size:17px; font-weight:700; color:var(--navy); }
+  .broke-name.unnamed{ font-style:italic; font-weight:400; color:var(--text-dim); font-size:15px; }
+  .broke-state{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--text-dim); font-weight:700; }
+  .broke-move{ font-size:13px; color:var(--text); }
+  .broke-move em{ font-style:normal; font-weight:700; }
+  .broke-note{ font-size:12px; color:var(--text-dim); line-height:1.45; margin-top:3px; }
+  ul.broke-list.inpanel li{ background:#FBF4E8; border-left-color:var(--gold); }
+
+  .roster-status{
+    margin-top:14px; padding-top:12px; border-top:1px solid var(--border);
+  }
+  .roster-status h4{
+    font-size:11px; text-transform:uppercase; letter-spacing:.7px;
+    color:var(--text-dim); margin:0 0 6px; font-weight:700;
+  }
+  .roster-status p{ margin:0 0 6px; font-size:13px; }
+  .roster-link{
+    font-family:var(--sans); font-size:13px; font-weight:600;
+    background:var(--navy); color:#fff; border:0; border-radius:4px;
+    padding:6px 11px; margin:2px 3px 2px 0; cursor:pointer; min-height:34px;
+  }
+  .roster-link:hover{ background:var(--navy-2); }
+  .roster-link:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+  .roster-caveat{ font-size:11.5px; color:var(--text-dim); line-height:1.45; margin:6px 0 0; }
+
+  /* ================= SHARED POLISH ================= */
+  .cert-head h2{ font-family:var(--serif); font-size:23px; color:var(--navy); }
+  .cert{ box-shadow:0 1px 3px rgba(18,38,63,.09); }
+  .cert-row h3{ color:var(--navy); }
+  footer.site-footer h2{ font-family:var(--serif); font-size:17px; color:var(--navy); }
+  .timeline{ box-shadow:0 1px 3px rgba(18,38,63,.09); }
+  .year-readout{ font-family:var(--serif); color:var(--navy); font-size:24px; }
+  .map-frame{ box-shadow:0 1px 3px rgba(18,38,63,.09); }
+  path.state{ stroke:#FBFAF7; }
+  table#data-table thead th{ background:var(--navy); }
+  table#data-table th button{ color:#fff; }
+  .btn[aria-pressed="true"]{ background:var(--navy); border-color:var(--navy); }
+  .tick[aria-pressed="true"]{ color:var(--navy); }
+  #yearSlider::-webkit-slider-thumb{ background:var(--navy); }
+  #yearSlider::-moz-range-thumb{ background:var(--navy); }
+
 </style>
 </head>
 <body>
@@ -336,6 +458,7 @@ window.topojson = (function(){
     </div>
 
     <p class="diverge-flag" id="divergeFlag"></p>
+    <section class="elector-brief" id="electorBrief" aria-label="Electors"></section>
     <p class="source-note">Source: <a id="sourceYearLink" href="https://www.archives.gov/electoral-college/2024" target="_blank" rel="noopener">National Archives, 2024 Electoral College</a> and state canvassing boards.</p>
   </div>
 </header>
@@ -586,6 +709,58 @@ const ELECTIONS = {
   }
 };
 
+/* ======================= NAMED ELECTORS WHO BROKE THEIR PLEDGE =======================
+   These are individually documented and widely reported. Where an elector was never
+   publicly identified, that is stated rather than guessed at. */
+const FAITHLESS = {
+  2000:{
+    cast:[
+      {state:"DC",name:"Barbara Lett-Simmons",pledgedTo:"Gore / Lieberman",votedFor:"Abstained \u2014 cast no vote",
+       note:"Left her presidential ballot blank in protest of the District of Columbia\u2019s lack of voting representation in Congress."}
+    ],
+    blocked:[]
+  },
+  2004:{
+    cast:[
+      {state:"MN",name:"Never publicly identified",unnamed:true,pledgedTo:"Kerry / Edwards",votedFor:"John Edwards",
+       note:"Minnesota\u2019s electors voted by secret ballot and no elector ever claimed the vote; it is widely believed to have been a mistake. Minnesota changed its law afterward to require electors to be publicly recorded."}
+    ],
+    blocked:[]
+  },
+  2016:{
+    cast:[
+      {state:"TX",name:"Christopher Suprun",pledgedTo:"Trump / Pence",votedFor:"John Kasich",
+       note:"Announced his intention publicly in a newspaper opinion piece before the electors met."},
+      {state:"TX",name:"Bill Greene",pledgedTo:"Trump / Pence",votedFor:"Ron Paul"},
+      {state:"WA",name:"Bret Chiafalo",pledgedTo:"Clinton / Kaine",votedFor:"Colin Powell",
+       note:"Fined $1,000 by the state. His challenge became the Supreme Court case Chiafalo v. Washington (2020), which upheld a state\u2019s power to penalize electors who break their pledge."},
+      {state:"WA",name:"Levi Guerra",pledgedTo:"Clinton / Kaine",votedFor:"Colin Powell",note:"Fined $1,000 by the state."},
+      {state:"WA",name:"Esther John",pledgedTo:"Clinton / Kaine",votedFor:"Colin Powell",note:"Fined $1,000 by the state."},
+      {state:"WA",name:"Robert Satiacum Jr.",pledgedTo:"Clinton / Kaine",votedFor:"Faith Spotted Eagle"},
+      {state:"HI",name:"David Mulinix",pledgedTo:"Clinton / Kaine",votedFor:"Bernie Sanders"}
+    ],
+    blocked:[
+      {state:"CO",name:"Micheal Baca",pledgedTo:"Clinton / Kaine",attempted:"John Kasich",
+       note:"Removed and replaced before his vote could be counted. His case was decided by the Supreme Court alongside Chiafalo."},
+      {state:"MN",name:"Muhammad Abdurrahman",pledgedTo:"Clinton / Kaine",attempted:"Bernie Sanders",
+       note:"Removed and replaced before his vote could be counted."}
+    ]
+  }
+};
+function faithlessFor(year){ return FAITHLESS[year] || {cast:[],blocked:[]}; }
+function faithlessInState(year, abbr){
+  const f = faithlessFor(year);
+  return {
+    cast: f.cast.filter(p => p.state === abbr),
+    blocked: f.blocked.filter(p => p.state === abbr)
+  };
+}
+function rosterStatesFor(year){
+  const src = ELECTORS[year] || {};
+  return Object.keys(src).map(f => ({fips:f, name:STATES[f].n, abbr:STATES[f].a}))
+    .sort((a,b)=> a.name < b.name ? -1 : 1);
+}
+
 const YEARS = Object.keys(ELECTIONS).map(Number).sort((a,b)=>a-b);
 let currentYear = 2024;
 let selectedFips = null;
@@ -785,6 +960,63 @@ function renderHeadline(){
 
   document.getElementById("sourceYearLink").href = NARA_YEAR_URL[currentYear];
   document.getElementById("sourceYearLink").textContent = "National Archives, " + currentYear + " Electoral College";
+  renderElectorBrief();
+}
+
+function renderElectorBrief(){
+  const f = faithlessFor(currentYear);
+  const box = document.getElementById("electorBrief");
+  let html = '<h3 class="eb-title">The electors</h3>';
+
+  if (f.cast.length){
+    html += '<p class="eb-lead"><strong>' + f.cast.length + ' elector' + (f.cast.length>1?'s':'') +
+            ' did not vote as pledged in ' + currentYear + '.</strong> Named below.</p>' +
+            '<ul class="broke-list">' +
+            f.cast.map(p =>
+              '<li>' +
+                '<span class="broke-name' + (p.unnamed ? ' unnamed' : '') + '">' + p.name + '</span>' +
+                '<span class="broke-state">' + STATES[A2F[p.state]].n + '</span>' +
+                '<span class="broke-move">Pledged to <em>' + p.pledgedTo + '</em> \u00B7 voted <em>' + p.votedFor + '</em></span>' +
+                (p.note ? '<span class="broke-note">' + p.note + '</span>' : '') +
+              '</li>').join('') +
+            '</ul>';
+    if (f.blocked.length){
+      html += '<p class="eb-sub">Two more tried and were stopped \u2014 their states removed and replaced them, so their votes never counted:</p>' +
+              '<ul class="broke-list blocked">' +
+              f.blocked.map(p =>
+                '<li>' +
+                  '<span class="broke-name">' + p.name + '</span>' +
+                  '<span class="broke-state">' + STATES[A2F[p.state]].n + '</span>' +
+                  '<span class="broke-move">Pledged to <em>' + p.pledgedTo + '</em> \u00B7 tried to vote <em>' + p.attempted + '</em></span>' +
+                  (p.note ? '<span class="broke-note">' + p.note + '</span>' : '') +
+                '</li>').join('') +
+              '</ul>';
+    }
+  } else {
+    html += '<p class="eb-lead eb-clean"><strong>All 538 electors voted as pledged in ' + currentYear + '.</strong> No elector broke ranks with the result of their state.</p>';
+  }
+
+  /* Roster availability, stated plainly, with direct links */
+  const avail = rosterStatesFor(currentYear);
+  html += '<div class="roster-status">' +
+    '<h4>Full name-by-name rosters</h4>' +
+    '<p><strong>' + avail.length + ' of 51</strong> transcribed for ' + currentYear + '. ' +
+    (avail.length
+      ? 'Open one: ' + avail.map(s => '<button class="roster-link" data-fips="' + s.fips + '">' + s.name + '</button>').join(' ')
+      : 'None yet for this year.') +
+    '</p>' +
+    '<p class="roster-caveat">Every state files a signed Certificate of Vote listing all of its electors by name. Those certificates are public and linked from each state\u2019s panel. Names are added here only after being read off the certificate \u2014 never estimated.</p>' +
+    '</div>';
+
+  box.innerHTML = html;
+
+  box.querySelectorAll(".roster-link").forEach(b => {
+    b.addEventListener("click", () => {
+      showMapView();
+      selectState(b.getAttribute("data-fips"));
+      document.getElementById("detailPanel").scrollIntoView({behavior:"smooth", block:"center"});
+    });
+  });
 }
 
 /* ======================= DETAIL PANEL ======================= */
@@ -841,10 +1073,20 @@ function renderPanel(){
       ' have not been transcribed into this archive yet. They exist in the state\u2019s signed Certificate of Vote, filed with the National Archives \u2014 linked below.</p>';
   }
 
-  const stateNote = e.stateNotes[st.a];
-  const noteHtml = stateNote
-    ? '<div class="cert-row state-flag"><h3>How this state\u2019s electors actually voted</h3><p>' + stateNote + '</p></div>'
-    : '';
+  const fs = faithlessInState(currentYear, st.a);
+  let noteHtml = "";
+  if (fs.cast.length || fs.blocked.length){
+    noteHtml = '<div class="cert-row state-flag"><h3>Electors here who did not vote as pledged</h3><ul class="broke-list inpanel">';
+    noteHtml += fs.cast.map(p =>
+      '<li><span class="broke-name' + (p.unnamed ? ' unnamed' : '') + '">' + p.name + '</span>' +
+      '<span class="broke-move">Pledged to <em>' + p.pledgedTo + '</em> \u00B7 voted <em>' + p.votedFor + '</em></span>' +
+      (p.note ? '<span class="broke-note">' + p.note + '</span>' : '') + '</li>').join('');
+    noteHtml += fs.blocked.map(p =>
+      '<li><span class="broke-name">' + p.name + '</span>' +
+      '<span class="broke-move">Pledged to <em>' + p.pledgedTo + '</em> \u00B7 tried to vote <em>' + p.attempted + '</em>, then was replaced</span>' +
+      (p.note ? '<span class="broke-note">' + p.note + '</span>' : '') + '</li>').join('');
+    noteHtml += '</ul></div>';
+  }
 
   const splitHtml = (d.w === "split")
     ? '<div class="cert-row"><h3>How the split worked</h3><p>' + d.note + '</p></div>' : '';
