@@ -533,7 +533,7 @@ window.topojson = (function(){
 <footer class="site-footer">
   <h2>What this archive contains &mdash; and what it doesn't</h2>
   <p><strong>Fully sourced right now:</strong> for all seven elections from 2000 through 2024, the winning ticket and electoral vote count in every state and D.C.; the national popular vote; and the difference between electors <em>pledged</em> and electors' votes <em>actually cast</em>, including every faithless elector and abstention.</p>
-  <p><strong>Elector names:</strong> complete, name-by-name rosters are loaded for Montana and Minnesota in 2024 only, transcribed from their signed Certificates of Vote. Every other state's roster still needs to be transcribed from its certificate. Those certificates are public and linked from each state's panel &mdash; the work is transcription, not discovery.</p>
+  <p><strong>Elector names:</strong> complete, name-by-name rosters are loaded for nine states in 2024 &mdash; Arizona, Georgia, Michigan, Minnesota, Montana, Nevada, North Carolina, Pennsylvania and Wisconsin &mdash; each read directly off that state's Certificate of Ascertainment and checked against its electoral vote count. The remaining states are not missing from history: their certificates are public, permanent, and linked from every state panel here. They simply haven't been read into this site yet.</p>
   <p><strong>Not here yet:</strong> elections before 2000; state-by-state popular vote counts; voter registration by party. Nothing on this site is estimated or filled in by guesswork &mdash; if a number isn't sourced, it isn't shown.</p>
   <ul>
     <li>Electoral votes and state outcomes: certified state results, cross-checked against the National Archives' Electoral College records for each year.</li>
@@ -784,20 +784,72 @@ let yearMap = buildYear(currentYear);
    Keyed by year, then FIPS. Only entries present here are shown as verified. */
 const ELECTORS = {
   2024:{
+    "42":{
+      ticket:"Trump / Vance (R)",
+      names:["William Bachenberg","Vallerie Biancaniello","Curt Coccodrilli","Bernadette S. Comfort","Robert A. Gleason, Jr.","Joyce C. Haas","Fred Keller","Ash Khare","Jondavid Longo","Robin Lee Hoyt Medeiros","Rochelle Marie Pasquariello","Patricia K. Poprik","Andrew J. Reilly","Carol Lynne Ryan","Carla Sands","James \u201CJim\u201D Vasilko","T. Lynette Villano","Christine A. Wilkins","Samuel James Worthington, Jr."],
+      source:"Amended Certificate of Ascertainment, Commonwealth of Pennsylvania, signed by Gov. Josh Shapiro, Dec. 12, 2024",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-pennsylvania.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2024/vote-pennsylvania.pdf"
+    },
+    "13":{
+      ticket:"Trump / Vance (R)",
+      names:["Carl Blackburn","Denise Burns","Hai Cao","Jenny Eckman","Jamie Ensley","Salleigh Grubbs","Caroline Jeffords","Betsy Kramer","Laurie McClain","Josh McKoon","Wendell McNeal","Rufus Montgomery","Steve Schultz","Jason Thompson","Paul Voorhees","Susan \u201CSuzi\u201D Voyles"],
+      source:"Certificate of Ascertainment, State of Georgia, Nov. 22, 2024",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-georgia.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2024/vote-georgia.pdf"
+    },
+    "37":{
+      ticket:"Trump / Vance (R)",
+      names:["Kimberly Cotten-West","Susan Phillips","Stephanie Broughton","Thomas Hooker Glendinning","Deanna Marie De\u2019Liberto","David Gleeson","Helen Pannullo","Daniel Barry","Thomas \u201CRick\u201D Smith","Leisa Rowe","Roxan Wetzel","Ernest J. Wittenborn, Jr.","Michael Magnanti","Bryson Smith","Jason Simmons","Susan Mills"],
+      source:"Certificate of Ascertainment, State of North Carolina, signed by Gov. Roy Cooper, Dec. 9, 2024. Listed by congressional district, then the two at-large electors.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-north-carolina.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2024/vote-north-carolina.pdf"
+    },
+    "26":{
+      ticket:"Trump / Vance (R)",
+      names:["John Haggard","Andrew Sebolt","Lance Elliott Griffin","David Yardley","Hank Choate","Timothy King","Meshawn Maddock","Amy Facchinello","Linda Glisman","Jim Tokarski","Marian Sheridan","Darlene Hennessy","Phillip A. Wagner","Peter Hoekstra","Jason Michael Woolford"],
+      source:"Certificate of Ascertainment, State of Michigan, signed by Gov. Gretchen Whitmer, Dec. 3, 2024",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-michigan.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2024/vote-michigan.pdf"
+    },
+    "04":{
+      ticket:"Trump / Vance (R)",
+      names:["Abegal Gonzalez","Lisa Green","Nathan C. Jackson","Thomas W. Lewis","Dottie Lizer","Myron Lizer","Steven R. McEwen","Belinda Rodriguez","Trevor Smith","Gina Swoboda","Robert L. Swoboda"],
+      source:"Certificate of Ascertainment, State of Arizona, signed by Gov. Katie Hobbs, Nov. 25, 2024",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-arizona.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2024/vote-arizona.pdf"
+    },
+    "55":{
+      ticket:"Trump / Vance (R)",
+      names:["Katie Verzal","Julie Helmer","Hannah Testin","Doug Haag","Jim Schildbach","Eric Toney","Angie Sapik","Charlotte Rasmussen","Brian Schimming","Tommy Thompson"],
+      source:"Certificate of Ascertainment, State of Wisconsin, signed by Gov. Tony Evers, Nov. 29, 2024",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-wisconsin.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2024/vote-wisconsin.pdf"
+    },
+    "32":{
+      ticket:"Trump / Vance (R)",
+      names:["Michael J. McDonald","Jesse R. Law","Bruce W. Parks","Kathryn M. Njus","Robert J. Tyree","Brian R. Hardy"],
+      source:"Certificate of Ascertainment, State of Nevada, signed by Gov. Joe Lombardo, Dec. 11, 2024",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-nevada.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2024/vote-nevada.pdf"
+    },
     "30":{
       ticket:"Trump / Vance (R)",
       names:["Winston \u201CKeith\u201D Baer","Debra Lamm","Theron Nelson","Becky Stockton"],
-      source:"NARA Certificate of Ascertainment, State of Montana, Nov. 26, 2024",
-      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-montana.pdf"
+      source:"Certificate of Ascertainment, State of Montana, Nov. 26, 2024",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-montana.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2024/vote-montana.pdf"
     },
     "27":{
       ticket:"Harris / Walz (D)",
       names:["Deb Hogenson","Ken Wilson","Ardis Wexler","Andrena Guines","Elizer Darris","Corwin \u201CBuzz\u201D Snyder","Alan Perish","Joseph Boyle","Kathleen Oganovic","Elvis Rivera"],
-      source:"NARA Certificate of Ascertainment (amended), State of Minnesota, Dec. 17, 2024",
-      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-minnesota.pdf"
+      source:"Certificate of Ascertainment (amended), State of Minnesota, Dec. 17, 2024",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-minnesota.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2024/vote-minnesota.pdf"
     }
   }
 };
+
 function electorsFor(year, fips){
   return (ELECTORS[year] && ELECTORS[year][fips]) || null;
 }
@@ -1003,9 +1055,9 @@ function renderElectorBrief(){
     '<p><strong>' + avail.length + ' of 51</strong> transcribed for ' + currentYear + '. ' +
     (avail.length
       ? 'Open one: ' + avail.map(s => '<button class="roster-link" data-fips="' + s.fips + '">' + s.name + '</button>').join(' ')
-      : 'None yet for this year.') +
+      : 'None added yet for this year \u2014 the certificates are public and linked from every state panel.') +
     '</p>' +
-    '<p class="roster-caveat">Every state files a signed Certificate of Vote listing all of its electors by name. Those certificates are public and linked from each state\u2019s panel. Names are added here only after being read off the certificate \u2014 never estimated.</p>' +
+    '<p class="roster-caveat">Every state files a Certificate of Ascertainment naming all of its electors, signed by the governor. Those certificates are public, permanent, and linked from every state panel \u2014 including the ones not yet listed here. Names appear on this site only after being read directly off the certificate, never estimated.</p>' +
     '</div>';
 
   box.innerHTML = html;
@@ -1059,8 +1111,8 @@ function renderPanel(){
   const roster = electorsFor(currentYear, fips);
   const verified = !!roster;
   const badge = verified
-    ? '<span class="badge verified">Elector roster verified</span>'
-    : '<span class="badge pending">Elector roster not yet transcribed</span>';
+    ? '<span class="badge verified">Names verified against certificate</span>'
+    : '<span class="badge pending">Names not yet added here</span>';
 
   let electorsHtml;
   if (verified){
@@ -1068,9 +1120,12 @@ function renderPanel(){
       '<p class="roster-lead">' + roster.names.length + ' electors, pledged to ' + roster.ticket + ', who cast this state\u2019s votes:</p>' +
       '<ol class="elector-list">' + roster.names.map(n => '<li>' + n + '</li>').join('') + '</ol>';
   } else {
+    const certUrl = "https://www.archives.gov/files/electoral-college/" + currentYear + "/";
     electorsHtml =
-      '<p class="pending-note">The names of ' + st.n + '\u2019s ' + d.ev + ' electors for ' + currentYear +
-      ' have not been transcribed into this archive yet. They exist in the state\u2019s signed Certificate of Vote, filed with the National Archives \u2014 linked below.</p>';
+      '<p class="pending-note"><strong>These names are on the public record \u2014 they just haven\u2019t been added to this site yet.</strong> ' +
+      st.n + '\u2019s ' + d.ev + ' electors for ' + currentYear + ' are listed by name on the state\u2019s Certificate of Ascertainment, ' +
+      'signed by the governor and filed with the National Archives. You can read it yourself using the link below. ' +
+      'Names are added here only after being read directly off that certificate.</p>';
   }
 
   const fs = faithlessInState(currentYear, st.a);
@@ -1102,7 +1157,8 @@ function renderPanel(){
     '<div class="cert-row"><h3>Electors who cast this state\u2019s votes</h3>' + electorsHtml + '</div>' +
     '<div class="cert-source">' +
       (verified
-        ? 'Source: ' + roster.source + '. <a href="' + roster.sourceUrl + '" target="_blank" rel="noopener">View the signed certificate</a>.'
+        ? 'Source: ' + roster.source + '. <a href="' + roster.sourceUrl + '" target="_blank" rel="noopener">Read the certificate listing these names</a>' +
+          (roster.voteUrl ? ' \u00B7 <a href="' + roster.voteUrl + '" target="_blank" rel="noopener">See their signed Certificate of Vote</a>' : '') + '.'
         : 'Source for this state\u2019s certificates: <a href="' + NARA_YEAR_URL[currentYear] + '" target="_blank" rel="noopener">National Archives, ' + currentYear + ' Electoral College</a>.') +
     '</div>';
 }
@@ -1133,7 +1189,7 @@ function renderTable(){
     const has = !!electorsFor(currentYear, r.fips);
     const pill = has
       ? '<span class="status-pill verified">Verified</span>'
-      : '<span class="status-pill pending">Not yet</span>';
+      : '<span class="status-pill pending">Not added yet</span>';
     return '<tr tabindex="0" data-fips="' + r.fips + '"><td>' + r.name + ' (' + r.abbr + ')</td><td>' +
            r.ev + '</td><td>' + winnerText + '</td><td>' + pill + '</td></tr>';
   }).join('');
