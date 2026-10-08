@@ -586,6 +586,112 @@ window.topojson = (function(){
   .dl-row{ display:flex; gap:7px; flex-wrap:wrap; align-items:center; margin-bottom:9px; }
   .method .share-status{ color:var(--verified); font-size:13px; }
   .contact-slot{ background:#FBF4E4; border-left:3px solid #B9821A; border-radius:0 4px 4px 0; padding:9px 11px; font-size:13.5px !important; }
+
+  /* ================= VOTE WEIGHT, REDESIGNED ================= */
+  .wt-top{ display:flex; align-items:center; gap:11px; margin-bottom:10px; }
+  .wt-big{ font-family:var(--serif); font-size:40px; font-weight:700; line-height:1; letter-spacing:-1px; }
+  .wt-box.over .wt-big{ color:#8A6A1F; }
+  .wt-box.under .wt-big{ color:#2F5F86; }
+  .wt-big-label{ font-size:12px; line-height:1.25; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; font-weight:700; }
+  .wt-bar{ position:relative; height:14px; background:rgba(0,0,0,.09); border-radius:7px; overflow:visible; margin-bottom:3px; }
+  .wt-fill{ height:100%; border-radius:7px; }
+  .wt-box.over .wt-fill{ background:linear-gradient(90deg,#C9A45C,#8A6A1F); }
+  .wt-box.under .wt-fill{ background:linear-gradient(90deg,#8FB8DC,#2F5F86); }
+  .wt-avg{ position:absolute; top:-4px; bottom:-4px; width:2px; background:var(--text); }
+  .wt-avg::after{
+    content:""; position:absolute; top:-3px; left:-3px; width:8px; height:8px;
+    background:var(--text); border-radius:50%;
+  }
+  .wt-scale{ display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-dim);
+             text-transform:uppercase; letter-spacing:.5px; font-weight:700; margin:0 0 9px; }
+  .wt-plain{ margin:0 0 7px; font-size:14.5px; line-height:1.5; }
+  .wt-vs{ margin:0 0 8px; font-size:13px; line-height:1.5; color:var(--text-dim);
+          padding-top:8px; border-top:1px solid rgba(0,0,0,.09); }
+  .wt-vs strong{ color:var(--text); }
+
+  /* ================= ACTION BLOCK ================= */
+  .act-row{ border-top:2px solid var(--navy); padding-top:13px; margin-top:4px; }
+  .act-compact{ font-size:14px; padding:8px 11px; border-radius:4px; margin:0 0 9px; }
+  .act-compact.yes{ background:var(--verified-bg); border-left:3px solid var(--verified); }
+  .act-compact.no{ background:#FBF4E4; border-left:3px solid #B9821A; }
+  .act-lead{ font-size:14px; margin:0 0 7px; }
+  .act-q{ margin:0 0 11px; padding-left:20px; }
+  .act-q li{ font-size:14px; line-height:1.5; margin-bottom:6px; }
+  .act-btns{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:7px; }
+  .act-btn{
+    font-family:var(--sans); font-size:14px; font-weight:700;
+    background:#fff; color:var(--navy); border:1.5px solid var(--navy);
+    border-radius:5px; padding:0 15px; min-height:44px; cursor:pointer;
+    display:inline-flex; align-items:center; text-decoration:none;
+  }
+  .act-btn.primary{ background:var(--navy); color:#fff; }
+  .act-btn.primary:hover{ background:var(--navy-2); }
+  .act-btn:not(.primary):hover{ background:var(--bg-alt); }
+  .act-btn:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+  .act-note{ font-size:13px; color:var(--verified); margin:0 0 6px; min-height:1em; font-weight:600; }
+
+  .the-question{
+    margin:9px 0; padding:11px 13px; border-left:4px solid var(--gold);
+    background:rgba(201,164,92,.13); border-radius:0 5px 5px 0;
+    font-family:var(--serif); font-size:16px; line-height:1.5; color:#fff; font-style:italic;
+  }
+  .q-btns{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:5px; }
+  .argument .act-btn{ background:var(--gold); color:var(--navy); border:0; font-size:13.5px; min-height:42px; }
+  .argument .act-btn:hover{ background:#B08F3C; }
+  .argument .act-note{ color:#9BD4A6; }
+
+  /* ================= WEIGHT: ACTUAL vs PROPORTIONAL ================= */
+  .wt-compare{ margin-bottom:11px; }
+  .wt-line{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:3px; }
+  .wt-line-label{ font-size:12px; text-transform:uppercase; letter-spacing:.4px; color:var(--text-dim); font-weight:700; }
+  .wt-line-val{ font-family:var(--serif); font-size:23px; font-weight:700; line-height:1; }
+  .wt-track{ height:11px; background:rgba(0,0,0,.08); border-radius:6px; overflow:hidden; margin-bottom:11px; }
+  .wt-track-fill{ height:100%; border-radius:6px; }
+  .wt-track-fill.actual{ background:var(--navy); }
+  .wt-track-fill.prop{ background:var(--border-strong); }
+  .wt-diff{ display:flex; align-items:center; gap:11px; margin:0 0 10px; padding:9px 11px; border-radius:5px; }
+  .wt-box.over .wt-diff{ background:#FBF4E4; }
+  .wt-box.under .wt-diff{ background:#EDF3F8; }
+  .wt-diff-num{ font-family:var(--serif); font-size:30px; font-weight:700; line-height:1; flex:0 0 auto; }
+  .wt-box.over .wt-diff-num{ color:#8A6A1F; }
+  .wt-box.under .wt-diff-num{ color:#2F5F86; }
+  .wt-diff-txt{ font-size:14px; line-height:1.45; }
+  .wt-why{ font-size:13px; color:var(--text-dim); line-height:1.5; margin:0 0 9px;
+           padding-left:11px; border-left:2px solid var(--border-strong); }
+
+  /* ================= ACTION BLOCK v2 ================= */
+  .cert-row .the-question{
+    font-family:var(--serif); font-size:15.5px; font-style:italic; line-height:1.5;
+    color:var(--navy); background:var(--bg-alt); border-left:4px solid var(--navy);
+    border-radius:0 5px 5px 0; padding:11px 13px; margin:9px 0 11px;
+  }
+  .act-compact-wrap{ margin-top:15px; padding-top:13px; border-top:1px solid var(--border); }
+  .act-sub{ font-size:11px; text-transform:uppercase; letter-spacing:.8px; color:var(--text-dim);
+            font-weight:700; margin:0 0 7px; }
+  .member-list{ margin-top:9px; }
+  .member-list summary{
+    cursor:pointer; font-size:13.5px; font-weight:600; color:var(--blue);
+    padding:7px 0; min-height:36px; display:flex; align-items:center;
+  }
+  .member-list summary:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+  .member-names{ font-size:13.5px; line-height:1.7; margin:5px 0 7px; color:var(--text); }
+  .member-you{ font-weight:700; color:var(--verified); background:var(--verified-bg);
+               padding:1px 6px; border-radius:3px; }
+
+  /* ================= AT A GLANCE: TODAY vs COMPACT ================= */
+  .glance{ background:#fff; border:1px solid var(--border); border-radius:6px; padding:12px; margin-bottom:13px; }
+  .glance-title{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--text-dim);
+                 font-weight:700; margin:0 0 9px; padding-bottom:7px; border-bottom:1px solid var(--border); }
+  .glance-row{ display:grid; grid-template-columns:76px 1fr; gap:3px 11px; align-items:baseline; padding:7px 0; }
+  .glance-row.alt{ border-top:1px dashed var(--border); }
+  .glance-when{ grid-row:span 2; font-size:11.5px; font-weight:700; text-transform:uppercase;
+                letter-spacing:.4px; color:var(--text-dim); line-height:1.3; align-self:center; }
+  .glance-num{ font-family:var(--serif); font-size:28px; font-weight:700; line-height:1; color:var(--navy); }
+  .glance-who{ font-size:12.5px; color:var(--text-dim); line-height:1.35; }
+  .glance-shift{ font-size:13.5px; line-height:1.5; margin:8px 0 0; padding:9px 11px; border-radius:0 4px 4px 0; }
+  .glance-shift.up{ background:#FBF4E4; border-left:3px solid #8A6A1F; }
+  .glance-shift.down{ background:#EDF3F8; border-left:3px solid #2F5F86; }
+  .glance-fine{ font-size:11.5px; color:var(--text-dim); line-height:1.5; margin:9px 0 0; }
 </style>
 </head>
 <body>
@@ -790,7 +896,14 @@ window.topojson = (function(){
     <ol class="arg-actions">
       <li><strong>Find out where your state stands.</strong> Select your state on the map above. The panel names your electors and shows what a vote there is worth. The meter above shows whether your state has joined the compact.</li>
       <li><strong>Write to your state legislator, not Congress.</strong> This is decided in state legislatures. Your state representative and state senator vote on it; your member of Congress does not.</li>
-      <li><strong>Ask one specific question.</strong> &ldquo;Does our state bind its presidential electors, and what happens if one breaks the pledge?&rdquo; Most offices have to look it up. That is the point.</li>
+      <li><strong>Ask one specific question.</strong> Most offices will have to look it up — that is the point.
+        <blockquote class="the-question" id="theQuestion">Does our state legally bind its presidential electors to the statewide vote result, and what happens if an elector breaks that pledge?</blockquote>
+        <div class="q-btns">
+          <button class="act-btn" id="copyOneQ">Copy this question</button>
+          <span class="act-note" id="oneQStatus" role="status"></span>
+        </div>
+        <p class="arg-small" id="qPersonalized"></p>
+      </li>
       <li><strong>Send the record, not the opinion.</strong> Share the link. Let people read the certificates and reach their own conclusion &mdash; it travels further than an argument does.</li>
     </ol>
 
@@ -903,7 +1016,7 @@ window.topojson = (function(){
       <div class="method-block">
         <h3>Corrections</h3>
         <p>If a name here does not match the certificate it is drawn from, that is an error and it will be fixed. Point to the state, the name, and the certificate.</p>
-        <p class="contact-slot"><strong>Contact:</strong> <span id="contactSlot">[mike.potiska@gmail.com]</span></p>
+        <p class="contact-slot"><strong>Contact:</strong> <span id="contactSlot">[ add your preferred contact here before publishing ]</span></p>
         <p class="method-small">Last reviewed: <span id="lastReviewed"></span>. Record covers the 2000 through 2024 presidential elections; elector names complete for 2024.</p>
       </div>
 
@@ -1168,7 +1281,8 @@ function weightFor(fips){
   const ev = EV_ERA.e2020[STATES[fips].a];
   if (!pop || !ev) return null;
   const perEv = pop / ev;
-  return { pop, ev, perEv, index: NATL_PER_EV / perEv };
+  const proportional = pop / US_POP_2020 * 538;   /* share if seats followed population alone */
+  return { pop, ev, perEv, index: NATL_PER_EV / perEv, proportional, diff: ev - proportional };
 }
 function weightRanked(){
   return Object.keys(STATES).map(f => {
@@ -1187,6 +1301,11 @@ function npvicTotal(){
   return NPVIC_MEMBERS.reduce((s,f) => s + EV_ERA.e2020[STATES[f].a], 0);
 }
 function inNpvic(fips){ return NPVIC_MEMBERS.indexOf(fips) !== -1; }
+
+function npvicMemberNames(){
+  return NPVIC_MEMBERS.map(f => STATES[f].n).sort();
+}
+
 
 const YEARS = Object.keys(ELECTIONS).map(Number).sort((a,b)=>a-b);
 let currentYear = 2024;
@@ -1810,6 +1929,7 @@ function selectState(fips){
   selectedFips = fips;
   if (STATES[fips]) track("state/" + STATES[fips].a + "/" + currentYear, STATES[fips].n + " " + currentYear);
   if (typeof renderNpvicState === "function") renderNpvicState();
+  if (typeof refreshQuestion === "function") refreshQuestion();
   g.selectAll("path.state").classed("selected", d => d.id === fips);
   const feature = features.find(f => f.id === fips);
   if (feature) zoomTo(feature);
@@ -1897,27 +2017,139 @@ function renderPanel(){
   if (currentYear === 2024){
     const w = weightFor(fips);
     if (w){
-      const over = w.index >= 1;
-      const pct = Math.round(Math.abs(w.index - 1) * 100);
-      let verdict;
-      if (pct < 3){
-        verdict = "almost exactly the national average";
-      } else if (w.index >= 1.5){
-        verdict = w.index.toFixed(1) + " times the national average in electoral weight per resident";
-      } else if (over){
-        verdict = pct + "% more electoral weight per resident than the national average";
+      const extra = w.diff >= 0;
+      const diffAbs = Math.abs(w.diff);
+      const diffStr = (extra ? "+" : "\u2212") + diffAbs.toFixed(1);
+
+      let plainDiff;
+      if (diffAbs < 0.25){
+        plainDiff = st.n + " holds almost exactly the share its population alone would give it.";
+      } else if (extra){
+        plainDiff = st.n + " holds <strong>" + diffAbs.toFixed(1) + " more electoral vote" +
+          (diffAbs.toFixed(1) === "1.0" ? "" : "s") + "</strong> than its population alone would give it.";
       } else {
-        verdict = pct + "% less electoral weight per resident than the national average";
+        plainDiff = st.n + " holds <strong>" + diffAbs.toFixed(1) + " fewer electoral vote" +
+          (diffAbs.toFixed(1) === "1.0" ? "" : "s") + "</strong> than its population alone would give it.";
       }
+
+      const maxBar = Math.max(w.ev, w.proportional);
+      const actualPct = w.ev / maxBar * 100;
+      const propPct   = w.proportional / maxBar * 100;
+
+      const multi = w.index >= 1.05
+        ? "about <strong>" + w.index.toFixed(1) + " votes</strong> cast in an average state"
+        : (w.index <= 0.95
+            ? "about <strong>" + (w.index).toFixed(2) + "</strong> of one vote in an average state"
+            : "<strong>about one vote</strong> in an average state");
+
+      /* At a glance: how many people one elector really speaks for, now and under the compact. */
+      const nowPer = Math.round(w.perEv);
+      const pactPer = Math.round(NATL_PER_EV);
+      const rises = pactPer > nowPer;
+      const shift = Math.abs(pactPer - nowPer);
+      const shiftLine = shift < 8000
+        ? st.n + " sits close to the national figure, so the compact would barely change it."
+        : (rises
+            ? "Each " + st.n + " elector would speak for <strong>" + fmt(shift) + " more</strong> people than today \u2014 " +
+              "meaning each resident here would carry <strong>less</strong> of the decision than they do now."
+            : "Each " + st.n + " elector would speak for <strong>" + fmt(shift) + " fewer</strong> people than today \u2014 " +
+              "meaning each resident here would carry <strong>more</strong> of the decision than they do now.");
+
       weightHtml =
         '<div class="cert-row"><h3>What a vote here is worth</h3>' +
-        '<div class="wt-box' + (over ? ' over' : ' under') + '">' +
-          '<p class="wt-head"><strong>' + fmt(Math.round(w.perEv)) + '</strong> residents per electoral vote</p>' +
-          '<p class="wt-sub">National average: ' + fmt(Math.round(NATL_PER_EV)) + '. ' +
-            st.n + ' has ' + verdict + '.</p>' +
-          '<p class="wt-sub">' + fmt(w.pop) + ' residents (2020 Census) \u00F7 ' + w.ev + ' electoral votes.</p>' +
+        '<div class="wt-box' + (extra ? ' over' : ' under') + '">' +
+
+          '<div class="glance">' +
+            '<p class="glance-title">How many people one elector really speaks for</p>' +
+            '<div class="glance-row">' +
+              '<span class="glance-when">Today</span>' +
+              '<span class="glance-num">' + fmt(nowPer) + '</span>' +
+              '<span class="glance-who">residents of ' + st.n + '</span>' +
+            '</div>' +
+            '<div class="glance-row alt">' +
+              '<span class="glance-when">If the compact<br>takes effect</span>' +
+              '<span class="glance-num">' + fmt(pactPer) + '</span>' +
+              '<span class="glance-who">residents of the United States \u2014<br>the same figure in every state</span>' +
+            '</div>' +
+            '<p class="glance-shift ' + (rises ? 'up' : 'down') + '">' + shiftLine + '</p>' +
+            '<p class="glance-fine">Today, ' + st.n + '\u2019s electors reflect ' + st.n + '\u2019s own result. ' +
+              'Under the compact every elector in every member state reflects the same national count, so the figure ' +
+              'is identical everywhere. The electoral votes are still apportioned exactly as they are now \u2014 what ' +
+              'changes is that the apportionment stops deciding the outcome.</p>' +
+          '</div>' +
+
+          '<div class="wt-compare">' +
+            '<div class="wt-line"><span class="wt-line-label">Electoral votes it has</span>' +
+              '<span class="wt-line-val">' + w.ev + '</span></div>' +
+            '<div class="wt-track"><div class="wt-track-fill actual" style="width:' + actualPct.toFixed(1) + '%"></div></div>' +
+            '<div class="wt-line"><span class="wt-line-label">Its share by population alone</span>' +
+              '<span class="wt-line-val">' + w.proportional.toFixed(1) + '</span></div>' +
+            '<div class="wt-track"><div class="wt-track-fill prop" style="width:' + propPct.toFixed(1) + '%"></div></div>' +
+          '</div>' +
+
+          '<p class="wt-diff"><span class="wt-diff-num">' + diffStr + '</span>' +
+            '<span class="wt-diff-txt">' + plainDiff + '</span></p>' +
+
+          '<p class="wt-why">Every state receives two electoral votes before population is counted at all \u2014 ' +
+            'the same two for Wyoming as for California. That floor lifts small states above their population share ' +
+            'and pushes large ones below it.</p>' +
+
+          '<p class="wt-plain">Put another way: one vote here carries the electoral weight of ' + multi + '.</p>' +
+
+          '<p class="wt-sub">The arithmetic: ' + fmt(w.pop) + ' residents (2020 Census) share ' +
+            w.ev + ' electoral vote' + (w.ev>1?'s':'') + '. If all 538 were handed out by population alone, ' +
+            st.n + ' would hold ' + w.proportional.toFixed(1) + '.</p>' +
         '</div></div>';
     }
+  }
+
+  /* Action block. The first item is useful to anyone, whatever they think of the compact. */
+  let actionHtml = "";
+  if (currentYear === 2024){
+    const joined = inNpvic(fips);
+    const members = npvicMemberNames();
+    const total = npvicTotal();
+
+    const compactBlock = joined
+      ? '<p class="act-compact yes"><strong>' + st.n + ' has already joined.</strong> ' +
+          'Its ' + EV_ERA.e2020[st.a] + ' electoral votes are committed \u2014 but conditionally. ' +
+          'The agreement does nothing at all until member states together hold 270. ' +
+          'They currently hold ' + total + '. Until then ' + st.n + '\u2019s votes are awarded exactly as before.</p>'
+      : '<p class="act-compact no"><strong>' + st.n + ' has not joined.</strong> ' +
+          'Its ' + EV_ERA.e2020[st.a] + ' electoral votes are awarded the current way. ' +
+          members.length + ' jurisdictions have joined so far, holding ' + total + ' of the 270 the agreement needs.</p>';
+
+    actionHtml =
+      '<div class="cert-row act-row"><h3>What you can do about it</h3>' +
+
+      '<p class="act-lead"><strong>One question is worth asking whatever you think of any of this:</strong> ' +
+      'does your state actually bind its electors? The Supreme Court ruled in 2020 that states <em>may</em> ' +
+      'enforce an elector\u2019s pledge, not that they must. Some states cancel a broken pledge and seat a ' +
+      'replacement, some fine the elector and let the vote stand, some do nothing. Most voters have never ' +
+      'had reason to find out which kind they live in.</p>' +
+
+      '<blockquote class="the-question">Does ' + st.n + ' legally bind its presidential electors to the statewide ' +
+      'vote result, and what happens if an elector breaks that pledge?</blockquote>' +
+
+      '<div class="act-btns">' +
+        '<button class="act-btn primary" data-copyq="' + fips + '">Copy this question</button>' +
+        '<a class="act-btn" href="https://www.congress.gov/state-legislature-websites" target="_blank" rel="noopener">Find your ' + st.n + ' legislator</a>' +
+      '</div>' +
+      '<p class="act-note" id="actStatus-' + fips + '" role="status"></p>' +
+      '<p class="wt-sub">The link opens the official directory of state legislature websites maintained by congress.gov. ' +
+      'Select ' + st.n + ', then use that legislature\u2019s own tool to find who represents you.</p>' +
+
+      '<div class="act-compact-wrap">' +
+        '<h4 class="act-sub">The compact</h4>' +
+        compactBlock +
+        '<details class="member-list"><summary>' + members.length + ' jurisdictions have joined' +
+          (joined ? ', including ' + st.n : '') + '</summary>' +
+          '<p class="member-names">' + members.map(n =>
+            '<span class="' + (n === st.n ? 'member-you' : '') + '">' + n + '</span>').join(", ") + '</p>' +
+          '<p class="wt-sub">Together they hold ' + total + ' electoral votes. The agreement takes effect only if that reaches 270.</p>' +
+        '</details>' +
+      '</div>' +
+      '</div>';
   }
 
   panel.innerHTML =
@@ -1935,7 +2167,21 @@ function renderPanel(){
         ? 'Source: ' + roster.source.replace(/\.$/, '') + '. <a href="' + roster.sourceUrl + '" target="_blank" rel="noopener">Read the certificate listing these names</a>' +
           (roster.voteUrl ? ' \u00B7 <a href="' + roster.voteUrl + '" target="_blank" rel="noopener">See their signed Certificate of Vote</a>' : '') + '.'
         : 'Source for this state\u2019s certificates: <a href="' + NARA_YEAR_URL[currentYear] + '" target="_blank" rel="noopener">National Archives, ' + currentYear + ' Electoral College</a>.') +
-    '</div>';
+    '</div>' + actionHtml;
+
+  /* wire the copy-questions button for this state */
+  const cq = panel.querySelector('[data-copyq]');
+  if (cq){
+    cq.addEventListener("click", async () => {
+      const msg = "Does " + st.n + " legally bind its presidential electors to the statewide vote result, " +
+                  "and what happens if an elector breaks that pledge?";
+      const s = document.getElementById("actStatus-" + fips);
+      try { await navigator.clipboard.writeText(msg); s.textContent = "Copied \u2014 paste it into an email or contact form."; }
+      catch(e){ s.textContent = "Copy blocked here; it works on the live site."; }
+      track("action/copy-questions/" + st.a, "Questions copied " + st.n);
+      setTimeout(()=>{ s.textContent = ""; }, 6000);
+    });
+  }
 }
 
 /* ======================= TABLE ======================= */
@@ -2187,7 +2433,7 @@ renderNpvicState();
    Edit these three lines to change how the site identifies itself. */
 const SITE_AUTHOR   = "Potiska, Michael";          /* surname first, for citations */
 const SITE_URL      = "https://the-electoral-record.onrender.com";
-const SITE_CONTACT  = "mike.potiska@gmail.com";   /* e.g. "mike.potiska@gmail.com" — leave empty to show the placeholder */
+const SITE_CONTACT  = "";   /* e.g. "electoralrecord@example.com" — leave empty to show the placeholder */
 
 const SITE_TITLE = "The Electoral Record";
 const SITE_YEAR  = 2026;
@@ -2295,6 +2541,34 @@ document.getElementById("dlCsv").addEventListener("click", () => {
 });
 
 renderCitations();
+
+
+/* ---------- The one question, copyable ---------- */
+function questionText(){
+  const st = selectedFips ? STATES[selectedFips] : null;
+  return st
+    ? "Does " + st.n + " legally bind its presidential electors to the statewide vote result, and what happens if an elector breaks that pledge?"
+    : "Does our state legally bind its presidential electors to the statewide vote result, and what happens if an elector breaks that pledge?";
+}
+function refreshQuestion(){
+  const q = document.getElementById("theQuestion");
+  const note = document.getElementById("qPersonalized");
+  if (!q) return;
+  q.textContent = questionText();
+  if (note){
+    note.textContent = selectedFips
+      ? "Written for " + STATES[selectedFips].n + ", because that is the state you have open. Select another to change it."
+      : "Select a state on the map and this question will name it.";
+  }
+}
+document.getElementById("copyOneQ").addEventListener("click", async () => {
+  const s = document.getElementById("oneQStatus");
+  try { await navigator.clipboard.writeText(questionText()); s.textContent = "Copied."; }
+  catch(e){ s.textContent = "Copy blocked here; works on the live site."; }
+  track("argument/copy-question", "One question copied");
+  setTimeout(()=>{ s.textContent = ""; }, 5000);
+});
+refreshQuestion();
 
 /* ======================= INIT ======================= */
 setYear(currentYear);
