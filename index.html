@@ -1302,6 +1302,28 @@ function npvicTotal(){
 }
 function inNpvic(fips){ return NPVIC_MEMBERS.indexOf(fips) !== -1; }
 
+
+/* ======================= STATE LEGISLATOR LOOKUP =======================
+   Direct links to each state legislature's own "find your legislator" tool.
+   Only verified URLs are listed here. Any state not listed falls back to a
+   search, which lands on the same tool in one click rather than two.
+   To add one: confirm the URL opens the lookup, then add it below. */
+const LEG_LOOKUP = {
+  "OR":"https://www.oregonlegislature.gov/FindYourLegislator/legislator-lookup.html",
+  "MA":"https://malegislature.gov/Search/FindMyLegislator",
+  "CT":"https://www.cga.ct.gov/asp/menu/cgafindleg.asp",
+  "IA":"https://www.legis.iowa.gov/legislators/find",
+  "IN":"https://iga.in.gov/information/find-legislators",
+  "FL":"https://www.flsenate.gov/senators/find",
+  "NM":"https://www.nmlegis.gov/members/Find_By_Address",
+  "CA":"https://findyourrep.legislature.ca.gov/"
+};
+function legLookup(abbr, name){
+  if (LEG_LOOKUP[abbr]) return { url: LEG_LOOKUP[abbr], direct: true };
+  return { url: "https://duckduckgo.com/?q=" +
+           encodeURIComponent(name + " legislature find your legislator"), direct: false };
+}
+
 function npvicMemberNames(){
   return NPVIC_MEMBERS.map(f => STATES[f].n).sort();
 }
@@ -2110,6 +2132,7 @@ function renderPanel(){
     const members = npvicMemberNames();
     const total = npvicTotal();
 
+    const look = legLookup(st.a, st.n);
     const compactBlock = joined
       ? '<p class="act-compact yes"><strong>' + st.n + ' has already joined.</strong> ' +
           'Its ' + EV_ERA.e2020[st.a] + ' electoral votes are committed \u2014 but conditionally. ' +
@@ -2133,11 +2156,12 @@ function renderPanel(){
 
       '<div class="act-btns">' +
         '<button class="act-btn primary" data-copyq="' + fips + '">Copy this question</button>' +
-        '<a class="act-btn" href="https://www.congress.gov/state-legislature-websites" target="_blank" rel="noopener">Find your ' + st.n + ' legislator</a>' +
+        '<a class="act-btn" href="' + look.url + '" target="_blank" rel="noopener">Find your ' + st.n + ' legislator</a>' +
       '</div>' +
       '<p class="act-note" id="actStatus-' + fips + '" role="status"></p>' +
-      '<p class="wt-sub">The link opens the official directory of state legislature websites maintained by congress.gov. ' +
-      'Select ' + st.n + ', then use that legislature\u2019s own tool to find who represents you.</p>' +
+      '<p class="wt-sub">' + (look.direct
+        ? 'Opens ' + st.n + '\u2019s own legislator lookup. Enter your address and it returns your state representative and state senator with their contact details.'
+        : 'Opens a search for ' + st.n + '\u2019s legislator lookup \u2014 the state\u2019s own tool is the top result. A direct link for ' + st.n + ' has not been confirmed yet, and this site does not publish links it has not checked.') + '</p>' +
 
       '<div class="act-compact-wrap">' +
         '<h4 class="act-sub">The compact</h4>' +
