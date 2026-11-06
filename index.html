@@ -797,6 +797,87 @@ window.topojson = (function(){
   .npvic-lookup{ margin-top:10px !important; }
   .npvic-lookup a{ color:#E8C77A; font-weight:700; }
   .cert-row .wt-line-plain{ margin:0; font-size:14.5px; }
+  /* ---------- State rules today (current law; not tied to the year on screen) ---------- */
+  .law-pill{ display:inline-block; font-size:12px; font-weight:700; line-height:1.3; padding:2px 8px;
+             border-radius:4px; white-space:nowrap; border:1px solid transparent; }
+  .law-pill.law-void{ background:#1F2933; color:#fff; }
+  .law-pill.law-penalty{ background:#4E5763; color:#fff; }
+  .law-pill.law-pledge{ background:#E3DED2; color:#1F2933; border-color:#B3ADA0; }
+  .law-pill.law-none{ background:#fff; color:#3F444C; border:1px dashed #6E747D; }
+
+  .cert-row.law-box{ background:var(--bg-alt); border-left:4px solid #1F2933; border-radius:0 6px 6px 0;
+                     padding:11px 13px; margin:16px 0 0; scroll-margin-top:64px; }
+  .cert-row.law-box.law-penalty{ border-left-color:#4E5763; }
+  .cert-row.law-box.law-pledge{ border-left-color:#B3ADA0; }
+  .cert-row.law-box.law-none{ border-left:4px dashed #6E747D; }
+  .cert-row.law-box:focus{ outline:3px solid var(--focus); outline-offset:2px; }
+  .law-when{ text-transform:none; letter-spacing:0; font-weight:400; color:var(--text-dim); }
+  .cert-row .law-text{ font-size:15px; margin:7px 0 0; }
+  .cert-row .law-note{ font-size:14px; margin:5px 0 0; }
+  .cert-row .law-cite{ font-size:12.5px; color:var(--text-dim); margin:6px 0 0; }
+  .law-cite a, .law-compact a{ color:var(--blue); }
+  .law-cmp{ margin-top:10px; padding-top:9px; border-top:1px solid var(--border); }
+  .cert-row .law-cmp-h{ font-size:13px; font-weight:700; margin:9px 0 3px; color:var(--navy); }
+  .cert-row .law-cmp-h:first-child{ margin-top:0; }
+  .law-n{ font-weight:400; color:var(--text-dim); }
+  .law-names{ list-style:none; margin:0; padding:0; font-size:13.5px; line-height:1.6; }
+  .law-names li{ display:inline; }
+  .law-names li:not(:last-child)::after{ content:", "; font-weight:400; }
+  .law-names li.in-compact{ font-weight:700; }
+  .cert-row .law-key{ font-size:12px; color:var(--text-dim); margin:7px 0 0; }
+  .cert-row .law-compact{ font-size:14px; margin:10px 0 0; padding-top:9px; border-top:1px solid var(--border); }
+
+  .map-law{ margin:8px 0 0; background:var(--bg-alt); border-left:4px solid #1F2933; border-radius:0 5px 5px 0;
+            padding:7px 11px; font-size:14px; line-height:1.4; color:var(--text); }
+  .map-law[hidden]{ display:none; }
+  .map-law.law-penalty{ border-left-color:#4E5763; }
+  .map-law.law-pledge{ border-left-color:#B3ADA0; }
+  .map-law.law-none{ border-left-style:dashed; border-left-color:#6E747D; }
+  @media (max-width:520px){ .map-law{ font-size:13px; padding:6px 9px; } }
+
+  .rules{ margin-top:22px; background:#fff; border:1px solid var(--border); border-top:3px solid var(--navy);
+          border-radius:8px; padding:16px; box-shadow:0 1px 3px rgba(18,38,63,.09); scroll-margin-top:56px; }
+  .rules h2{ font-family:var(--serif); font-size:clamp(20px,5vw,25px); color:var(--navy); margin:0 0 6px; }
+  .rules-lede{ font-size:14.5px; line-height:1.55; margin:0 0 10px; max-width:68ch; }
+  .rules-total{ font-size:15px; font-weight:700; margin:0 0 10px; }
+  .rules-counts{ list-style:none; margin:0 0 12px; padding:0; display:grid; gap:8px; }
+  @media (min-width:760px){ .rules-counts{ grid-template-columns:1fr 1fr; } }
+  .rules-counts li{ display:grid; grid-template-columns:40px 1fr; gap:3px 10px; align-items:start;
+                    background:var(--bg-alt); border-radius:6px; padding:9px 11px; }
+  .rc-num{ grid-row:span 2; font-family:var(--serif); font-size:28px; font-weight:700; line-height:1;
+           color:var(--navy); text-align:right; }
+  .rc-text{ font-size:13.5px; line-height:1.45; }
+  .rules-court{ font-size:13.5px; line-height:1.55; margin:0 0 6px; max-width:75ch; }
+  .rules-court a, .rules-src a{ color:var(--blue); }
+  .rules-more summary{ cursor:pointer; font-weight:700; color:var(--blue); font-size:14.5px;
+                       min-height:44px; display:flex; align-items:center; }
+  .rules-more summary:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+  .rules-table-wrap{ overflow-x:auto; margin:4px 0 8px; }
+  .rules-table-wrap:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+  .rules-table{ width:100%; border-collapse:collapse; font-size:14px; background:#fff; border:1px solid var(--border); }
+  .rules-table caption{ text-align:left; font-size:12.5px; color:var(--text-dim); padding:0 0 6px; }
+  .rules-table th, .rules-table td{ padding:6px 9px; text-align:left; vertical-align:middle; border-bottom:1px solid var(--border); }
+  .rules-table thead th{ background:var(--navy); color:#fff; font-size:13px; font-weight:700; }
+  .rules-table thead th button{ background:none; border:0; color:#fff; font-weight:700; font-size:13px; cursor:pointer;
+                                padding:4px; font-family:var(--sans); min-height:44px; text-align:left; }
+  .rules-table thead th button:focus-visible{ outline:3px solid #E8C77A; outline-offset:1px; }
+  .rules-table tbody th{ font-weight:400; }
+  .rules-state{ background:none; border:0; padding:4px 0; font:inherit; font-weight:700; color:var(--blue);
+                text-decoration:underline; text-underline-offset:3px; cursor:pointer; text-align:left; min-height:44px; }
+  .rules-state:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+  .rules-law{ display:block; font-size:12.5px; color:var(--text-dim); margin-top:3px; line-height:1.35; }
+  .rules-table td.num{ font-variant-numeric:tabular-nums; text-align:right; padding-right:14px; }
+  .ev-inline{ display:none; }
+  .rules-src{ font-size:12.5px; color:var(--text-dim); line-height:1.5; margin:4px 0 0; }
+  @media (max-width:520px){
+    .rules{ padding:13px 11px; }
+    .rules-table th, .rules-table td{ padding:5px 4px; font-size:13px; }
+    .rules-table thead th, .rules-table thead th button{ font-size:12px; }
+    .rules-table .col-ev{ display:none; }
+    .ev-inline{ display:block; font-size:11.5px; color:var(--text-dim); margin:-6px 0 4px; }
+    .rules-law{ font-size:11.5px; }
+    .rules-table .law-pill{ font-size:11.5px; padding:2px 6px; }
+  }
 </style>
 </head>
 <body>
@@ -867,6 +948,7 @@ window.topojson = (function(){
 <nav class="page-nav record-only" aria-label="Sections of this site">
   <span class="pn-label">On this page</span>
   <a href="#mapSection">The record</a>
+  <a href="#state-rules">State rules today</a>
   <a href="#methodology">Methodology &amp; sources</a>
   <a href="#methodology">How to cite</a>
   <span class="pn-label pn-sep">Also in the record</span>
@@ -891,6 +973,7 @@ window.topojson = (function(){
           </pattern>
         </defs>
       </svg>
+      <p class="map-law" id="mapLaw" aria-hidden="true" hidden></p>
     </div>
 
     <div class="timeline">
@@ -930,6 +1013,35 @@ window.topojson = (function(){
       </thead>
       <tbody id="tableBody"></tbody>
     </table>
+  </section>
+
+  <!-- ======================= STATE RULES TODAY =======================
+       Current law, not tied to the year on screen. Counts and table are built from STATE_RULES. -->
+  <section class="rules" id="state-rules" aria-labelledby="rulesTitle">
+    <h2 id="rulesTitle">State rules today</h2>
+    <p class="rules-lede">Every elector is pledged to a presidential ticket. Can an elector break that pledge? This is each state&rsquo;s law today, checked November 2026. It is not tied to the election year on the map.</p>
+    <p class="rules-total" id="rulesTotal"></p>
+    <ul class="rules-counts" id="rulesCounts"></ul>
+    <p class="rules-court" id="rulesCompact"></p>
+    <p class="rules-court">The Supreme Court ruled in 2020 that states may enforce the pledge: by fining electors who break it (<a href="https://www.supremecourt.gov/opinions/19pdf/19-465_i425.pdf" target="_blank" rel="noopener"><em>Chiafalo v. Washington</em></a>) or by removing them (<a href="https://www.supremecourt.gov/opinions/19pdf/19-518_6k47.pdf" target="_blank" rel="noopener"><em>Colorado Department of State v. Baca</em></a>).</p>
+    <details class="rules-more" id="rulesMore">
+      <summary>Show all 51</summary>
+      <div class="rules-table-wrap" tabindex="0" role="region" aria-label="State rules table; scrolls sideways on small screens">
+        <table class="rules-table">
+          <caption>Elector rules in all 50 states and D.C., checked November 2026. Electoral votes are for the 2024 and 2028 elections. Select a column to sort. Select a state to see its full record and the states it compares with.</caption>
+          <thead>
+            <tr>
+              <th scope="col" id="rhName" aria-sort="ascending"><button id="rulesSortName">State</button></th>
+              <th scope="col" id="rhEv" class="col-ev"><button id="rulesSortEv">Electoral votes</button></th>
+              <th scope="col" id="rhRule"><button id="rulesSortRule">Rule and law</button></th>
+              <th scope="col" id="rhCompact"><button id="rulesSortCompact">In the compact?</button></th>
+            </tr>
+          </thead>
+          <tbody id="rulesBody"></tbody>
+        </table>
+      </div>
+      <p class="rules-src">Sources: <a href="https://www.ncsl.org/elections-and-campaigns/the-electoral-college" target="_blank" rel="noopener">National Conference of State Legislatures, Electoral College statute table</a>, checked against each state&rsquo;s statute text. 2026 changes: <a href="https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00076-R00SB-00477-PA.pdf" target="_blank" rel="noopener">Connecticut Public Act 26-76</a>, <a href="https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_469_sb0237e.pdf" target="_blank" rel="noopener">Maryland Chapter 469</a>, <a href="https://olis.oregonlegislature.gov/liz/2026R1/Downloads/MeasureDocument/SB1509/Enrolled" target="_blank" rel="noopener">Oregon SB 1509</a>, <a href="https://mylrc.sdlegislature.gov/api/Documents/305261.pdf" target="_blank" rel="noopener">South Dakota SB 101</a>. Compact: <a href="https://www.ncsl.org/elections-and-campaigns/national-popular-vote" target="_blank" rel="noopener">NCSL, National Popular Vote</a>.</p>
+    </details>
   </section>
 
 </main>
@@ -1171,11 +1283,13 @@ window.topojson = (function(){
           <dt>Population (used on the argument page)</dt>
           <dd>2020 Census resident population &mdash; the same count that produced the current apportionment. <a href="https://www.census.gov/data/tables/2020/dec/2020-apportionment-data.html" target="_blank" rel="noopener">U.S. Census Bureau, 2020 Apportionment, Table 2</a></dd>
           <dt>Faithless electors</dt>
-          <dd>Contemporaneous reporting and court records, including <em>Chiafalo v. Washington</em> (2020) and <em>Baca v. Colorado Department of State</em> (2020).</dd>
+          <dd>Contemporaneous reporting and court records, including <em>Chiafalo v. Washington</em> (2020) and <em>Colorado Department of State v. Baca</em> (2020).</dd>
           <dt>January 6, 2021 page</dt>
           <dd>Congressional roll calls, court rulings, the National Archives, the House select committee&rsquo;s final report and the January 20, 2025 clemency proclamation, plus news reports of official findings. Every line links to its source. A person is named there only if a jury convicted them or a court found them liable.</dd>
           <dt>Compact status</dt>
           <dd>State enactments of the National Popular Vote Interstate Compact, current as of November 5, 2026. The most recent was Virginia, signed April 13, 2026. <a href="https://www.ncsl.org/elections-and-campaigns/national-popular-vote" target="_blank" rel="noopener">National Conference of State Legislatures, National Popular Vote</a></dd>
+          <dt>State rules today</dt>
+          <dd>Whether each state&rsquo;s law requires its electors to vote as pledged, and what happens if one does not. Current law as of November 6, 2026; it is not tied to the election year on screen. Starting list: the <a href="https://www.ncsl.org/elections-and-campaigns/the-electoral-college" target="_blank" rel="noopener">National Conference of State Legislatures&rsquo; statute table</a>. Each state was then checked against its statute text, and 2026 changes against the enacted bills (Connecticut Public Act 26-76, Maryland Chapter 469, Oregon SB 1509, South Dakota SB 101). The NCSL table omits Utah; Utah is included from its statute (Utah Code &sect; 20A-13-304, amended 2020). &ldquo;Vote thrown out&rdquo; means the law says the vote is not counted, or the elector&rsquo;s office is vacated and filled. Colorado&rsquo;s law requires the pledged vote and fills the seat of an elector who refuses to act; the state used it in 2016 to remove an elector and void his vote, and the Supreme Court sided with the state in 2020.</dd>
         </dl>
       </div>
 
@@ -1253,7 +1367,7 @@ window.topojson = (function(){
         <h3>Corrections</h3>
         <p>If a name here does not match the certificate it is drawn from, that is an error and it will be fixed. Point to the state, the name, and the certificate.</p>
         <p class="contact-slot"><strong>Contact:</strong> <span id="contactSlot">hello@theelectoralrecord.org</span></p>
-        <p class="method-small">Last reviewed: November 5, 2026. Record covers the 2000 through 2024 presidential elections; elector names complete for 2020 and 2024.</p>
+        <p class="method-small">Last reviewed: November 6, 2026. Record covers the 2000 through 2024 presidential elections; elector names complete for 2020 and 2024.</p>
       </div>
 
     </div>
@@ -1262,7 +1376,7 @@ window.topojson = (function(){
 
 <footer class="site-footer record-only">
   <h2>What this archive contains &mdash; and what it doesn't</h2>
-  <p><strong>Fully sourced right now:</strong> for all seven elections from 2000 through 2024, the winning ticket and electoral vote count in every state and D.C.; the popular vote in every state and nationally; and the difference between electors <em>pledged</em> and electors' votes <em>actually cast</em>, including every faithless elector and abstention.</p>
+  <p><strong>Fully sourced right now:</strong> for all seven elections from 2000 through 2024, the winning ticket and electoral vote count in every state and D.C.; the popular vote in every state and nationally; and the difference between electors <em>pledged</em> and electors' votes <em>actually cast</em>, including every faithless elector and abstention. Separately, each state&rsquo;s law today on whether its electors must vote as pledged.</p>
   <p><strong>Elector names:</strong> 2020 and 2024 are complete: all 51 jurisdictions in each, every roster read off its Certificate of Ascertainment and checked against its electoral vote count. In 2020, Massachusetts and New Hampshire were read by eye from the scanned script certificates, and Indiana uses its amended certificate, matched to the electors who signed the Certificate of Vote. All 51 jurisdictions are loaded, naming every one of the 538 people who cast an electoral vote. Each roster was read off that jurisdiction's Certificate of Ascertainment and checked against its electoral vote count. Where a state filed an amended certificate, or replaced an elector before appointment, the final appointed list is used. Maine and Nebraska award electors by congressional district, so their electors came from two different party slates; each is shown with their own party and district. Certificates list the losing parties' slates too; those people were never appointed and are not shown. Several certificates print electors' home addresses, cities or towns; those are deliberately not reproduced here. Massachusetts and New Hampshire are engraved in decorative script that machine reading cannot decipher, so their names were transcribed by eye from the scanned certificates. Nothing here is estimated — a name appears only after being read off the certificate, and every certificate is linked from its panel.</p>
   <p><strong>Not here yet:</strong> elections before 2000; voter registration by party. Nothing on this site is estimated or filled in by guesswork &mdash; if a number isn't sourced, it isn't shown.</p>
   <ul>
@@ -1589,6 +1703,116 @@ function legLookup(abbr, name){
 function npvicMemberNames(){
   return NPVIC_MEMBERS.map(f => STATES[f].n).sort();
 }
+
+/* Year each member enacted the compact. Must list exactly the NPVIC_MEMBERS. */
+const NPVIC_YEAR = { MD:2007, NJ:2008, IL:2008, HI:2008, WA:2009, MA:2010, DC:2010, VT:2011, CA:2011, RI:2013,
+                     NY:2014, CT:2018, CO:2019, DE:2019, NM:2019, OR:2019, MN:2023, ME:2024, VA:2026 };
+
+
+/* ======================= STATE RULES TODAY =======================
+   Must a state's electors vote as pledged, and what happens if one doesn't?
+   TODAY's law (checked November 6, 2026). Not tied to the election year on screen.
+   Groups:
+     void    - must vote as pledged; a vote for anyone else is not counted and the elector is replaced
+     penalty - must vote as pledged; breaking the pledge is a crime; the law does not void the vote
+     pledge  - must vote as pledged; no penalty, and the law does not void the vote
+     none    - no state law requires electors to vote as pledged
+   law  = the pledge section and, where separate, the section that enforces it.
+   note = only what the group label does not already say.
+   url  = the enacted 2026 bill, where the law changed in 2026.
+   Sources: NCSL Electoral College statute table; each statute's text; 2026 session laws. */
+const RULES_CHECKED = "November 2026";
+const RULES_NCSL = "https://www.ncsl.org/elections-and-campaigns/the-electoral-college";
+const RULES_ORDER = ["void","penalty","pledge","none"];
+const RULE_GROUPS = {
+  void:    { label:"Vote thrown out",  chip:"electors must vote as pledged, or the vote is thrown out",
+             rest:"A vote for anyone else is thrown out, and the elector is replaced." },
+  penalty: { label:"Criminal penalty", chip:"electors must vote as pledged; breaking the pledge is a crime",
+             rest:"Breaking the pledge is a crime, but the law does not throw out the vote." },
+  pledge:  { label:"No penalty",       chip:"electors must vote as pledged; the law sets no penalty",
+             rest:"The law sets no penalty and does not throw out the vote." },
+  none:    { label:"Not bound",        chip:"electors are not bound",
+             rest:"" }
+};
+const STATE_RULES = {
+  AL:{ c:"pledge",  law:"Ala. Code § 17-14-31" },
+  AK:{ c:"pledge",  law:"Alaska Stat. § 15.30.090" },
+  AZ:{ c:"void",    law:"Ariz. Rev. Stat. § 16-212" },
+  AR:{ c:"none" },
+  CA:{ c:"void",    law:"Cal. Elec. Code §§ 6914–6919" },
+  CO:{ c:"void",    law:"Colo. Rev. Stat. § 1-4-304",
+       note:"In 2016 Colorado threw out an elector’s vote for another candidate and replaced him. The Supreme Court sided with the state in 2020." },
+  CT:{ c:"void",    law:"Conn. Public Act 26-76, §§ 73–75",
+       note:"New in 2026, in effect October 1, 2026. An elector who breaks the pledge is also barred from serving again.",
+       url:"https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00076-R00SB-00477-PA.pdf", urlLabel:"Connecticut Public Act 26-76" },
+  DE:{ c:"void",    law:"Del. Code tit. 15, §§ 4303(b), 4327" },
+  DC:{ c:"void",    law:"D.C. Code §§ 1-1001.08(g)(3), 1-1001.10; 3 DCMR § 1500.6" },
+  FL:{ c:"void",    law:"Fla. Stat. § 103.021" },
+  GA:{ c:"none" },
+  HI:{ c:"void",    law:"Haw. Rev. Stat. §§ 14-27, 14-28" },
+  ID:{ c:"none" },
+  IL:{ c:"void",    law:"10 ILCS 5/21-4; 10 ILCS 22/5-15, 22/5-30" },
+  IN:{ c:"void",    law:"Ind. Code §§ 3-10-4-1.7, 3-10-4-9" },
+  IA:{ c:"void",    law:"Iowa Code §§ 54.5, 54.8" },
+  KS:{ c:"none" },
+  KY:{ c:"none" },
+  LA:{ c:"none" },
+  ME:{ c:"pledge",  law:"Me. Rev. Stat. tit. 21-A, § 805(2)" },
+  MD:{ c:"void",    law:"Md. Code, Elec. Law §§ 8-504, 8-508",
+       note:"New in 2026, in effect October 1, 2026.",
+       url:"https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_469_sb0237e.pdf", urlLabel:"Maryland Chapter 469 (2026)" },
+  MA:{ c:"pledge",  law:"Mass. Gen. Laws ch. 53, § 8" },
+  MI:{ c:"void",    law:"Mich. Comp. Laws § 168.47" },
+  MN:{ c:"void",    law:"Minn. Stat. §§ 208.43, 208.46" },
+  MS:{ c:"pledge",  law:"Miss. Code § 23-15-785(3)" },
+  MO:{ c:"none" },
+  MT:{ c:"void",    law:"Mont. Code §§ 13-25-304, 13-25-307" },
+  NE:{ c:"void",    law:"Neb. Rev. Stat. §§ 32-713, 32-714" },
+  NV:{ c:"void",    law:"Nev. Rev. Stat. § 298.075" },
+  NH:{ c:"none" },
+  NJ:{ c:"none" },
+  NM:{ c:"penalty", law:"N.M. Stat. § 1-15-9", note:"It is a fourth-degree felony." },
+  NY:{ c:"void",    law:"N.Y. Elec. Law § 12-106" },
+  NC:{ c:"void",    law:"N.C. Gen. Stat. § 163-212", note:"The elector also forfeits $500." },
+  ND:{ c:"void",    law:"N.D. Cent. Code §§ 16.1-14.1-03, 16.1-14.1-06" },
+  OH:{ c:"pledge",  law:"Ohio Rev. Code § 3505.40" },
+  OK:{ c:"void",    law:"Okla. Stat. tit. 26, § 10-102" },
+  OR:{ c:"void",    law:"Or. Rev. Stat. §§ 248.355, 248.370",
+       note:"New in 2026, in effect July 1, 2026.",
+       url:"https://olis.oregonlegislature.gov/liz/2026R1/Downloads/MeasureDocument/SB1509/Enrolled", urlLabel:"Oregon SB 1509 (2026)" },
+  PA:{ c:"none" },
+  RI:{ c:"none" },
+  SC:{ c:"penalty", law:"S.C. Code § 7-19-80", note:"It counts as a violation of state election law, punishable on conviction." },
+  SD:{ c:"void",    law:"S.D. Codified Laws §§ 12-24A-1, 12-24A-4",
+       note:"New in 2026, signed March 5, 2026.",
+       url:"https://mylrc.sdlegislature.gov/api/Documents/305261.pdf", urlLabel:"South Dakota SB 101 (2026)" },
+  TN:{ c:"void",    law:"Tenn. Code § 2-15-201 et seq." },
+  TX:{ c:"void",    law:"Tex. Elec. Code §§ 192.102, 192.104" },
+  UT:{ c:"void",    law:"Utah Code § 20A-13-304 (amended 2020)",
+       src:"the statute itself; the NCSL table does not list Utah" },
+  VT:{ c:"void",    law:"Vt. Stat. tit. 17, § 2732" },
+  VA:{ c:"pledge",  law:"Va. Code § 24.2-240" },
+  WA:{ c:"void",    law:"Wash. Rev. Code §§ 29A.56.084, 29A.56.090",
+       note:"Washington fined electors who broke the pledge in 2016. The Supreme Court upheld the fines in 2020. Since 2019 the vote is thrown out instead." },
+  WV:{ c:"none" },
+  WI:{ c:"pledge",  law:"Wis. Stat. § 7.75(2)" },
+  WY:{ c:"pledge",  law:"Wyo. Stat. § 22-19-108" }
+};
+
+/* Every jurisdiction in a group, A to Z, optionally leaving one out. */
+function ruleNames(group, exceptAbbr){
+  return Object.keys(STATES)
+    .filter(f => STATE_RULES[STATES[f].a].c === group && STATES[f].a !== exceptAbbr)
+    .map(f => ({ n:STATES[f].n, a:STATES[f].a, inC:inNpvic(f) }))
+    .sort((x,y) => x.n.localeCompare(y.n));
+}
+/* One plain sentence: what this state's law says. */
+function ruleSentence(abbr){
+  const n = STATES[A2F[abbr]].n, r = STATE_RULES[abbr];
+  if (r.c === "none") return "No " + n + " law requires electors to vote as pledged.";
+  return n + " electors must vote as pledged. " + RULE_GROUPS[r.c].rest;
+}
+
 
 
 const YEARS = Object.keys(ELECTIONS).map(Number).sort((a,b)=>a-b);
@@ -2491,6 +2715,21 @@ function zoomTo(feature){
 function resetZoom(){
   const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   g.transition().duration(reduce?0:500).attr("transform","translate(0,0) scale(1)");
+  hideMapLaw();
+}
+/* On the zoomed map: the selected state's rule today, in one line. The panel below
+   says the same thing in full, so this label is hidden from screen readers. */
+function showMapLaw(fips){
+  const el = document.getElementById("mapLaw");
+  const st = STATES[fips], r = st && STATE_RULES[st.a];
+  if (!el || !r) return;
+  el.className = "map-law law-" + r.c;
+  el.innerHTML = '<b>' + st.n + ' law today:</b> ' + RULE_GROUPS[r.c].chip + '.';
+  el.hidden = false;
+}
+function hideMapLaw(){
+  const el = document.getElementById("mapLaw");
+  if (el) el.hidden = true;
 }
 document.getElementById("resetZoomBtn").addEventListener("click", resetZoom);
 
@@ -2648,6 +2887,7 @@ function selectState(fips){
   g.selectAll("path.state").classed("selected", d => d.id === fips);
   const feature = features.find(f => f.id === fips);
   if (feature) zoomTo(feature);
+  showMapLaw(fips);
   renderPanel();
   const h = document.getElementById("panel-heading");
   if (h) h.focus();
@@ -2754,6 +2994,8 @@ function renderPanel(){
       (d.w === "split" ? ' ' + st.n + ' splits its electoral votes by district, so this is a statewide average.' : '') + '</p></div>';
   }
 
+  const lawHtml = renderLawBlock(st);
+
   panel.innerHTML =
     '<div class="cert-head">' +
       '<div><h2 id="panel-heading" tabindex="-1">' + st.n + '</h2>' +
@@ -2769,8 +3011,57 @@ function renderPanel(){
         ? 'Source: ' + roster.source.replace(/\.$/, '') + '. <a href="' + roster.sourceUrl + '" target="_blank" rel="noopener">Read the certificate listing these names</a>' +
           (roster.voteUrl ? ' \u00B7 <a href="' + roster.voteUrl + '" target="_blank" rel="noopener">See their signed Certificate of Vote</a>' : '') + '.'
         : 'Source for this state\u2019s certificates: <a href="' + NARA_YEAR_URL[currentYear] + '" target="_blank" rel="noopener">National Archives, ' + currentYear + ' Electoral College</a>.') +
-    '</div>';
+    '</div>' +
+    lawHtml;
 
+}
+
+/* ======================= STATE LAW TODAY (panel block) =======================
+   Today's rule for the selected state, the states with the same rule ("Similar to"),
+   and the states at the other end ("Compared to"). Bold names have joined the compact. */
+function ruleNameList(arr){
+  return '<ul class="law-names">' + arr.map(x =>
+    '<li' + (x.inC ? ' class="in-compact"' : '') + '>' + x.n +
+    (x.inC ? '<span class="visually-hidden"> (in the compact)</span>' : '') + '</li>').join('') + '</ul>';
+}
+function renderLawBlock(st){
+  const r = STATE_RULES[st.a];
+  if (!r) return "";
+  const grp = RULE_GROUPS[r.c];
+  const same = ruleNames(r.c, st.a);
+  const others = r.c === "void" ? ["none"] : (r.c === "none" ? ["void"] : ["void","none"]);
+  let cmp = '';
+  if (same.length){
+    cmp += '<p class="law-cmp-h">Similar to: same rule <span class="law-n">(' + same.length + ')</span></p>' + ruleNameList(same);
+  }
+  others.forEach(k => {
+    const list = ruleNames(k, null);
+    cmp += '<p class="law-cmp-h">Compared to: ' + RULE_GROUPS[k].label.toLowerCase() +
+           ' <span class="law-n">(' + list.length + ')</span></p>' + ruleNameList(list);
+  });
+  cmp += '<p class="law-key"><b>Bold</b>: has joined the National Popular Vote compact.</p>';
+
+  const cite = (r.law ? 'Law: ' + r.law + '. ' : '') +
+    (r.src ? 'Source: ' + r.src :
+    'Source: <a href="' + RULES_NCSL + '" target="_blank" rel="noopener">NCSL statute table</a>') +
+    (r.c === "none" ? ', which lists no such law for ' + st.n : '') +
+    (r.url ? '; <a href="' + r.url + '" target="_blank" rel="noopener">' + r.urlLabel + '</a>' : '') + '.';
+
+  const yr = NPVIC_YEAR[st.a];
+  const compact = (yr
+      ? '<strong>' + st.n + ' has joined the National Popular Vote compact</strong> (' + yr + ').'
+      : '<strong>' + st.n + ' has not joined the National Popular Vote compact.</strong>') +
+    ' Members hold ' + npvicTotal() + ' of the 270 electoral votes it needs to take effect.';
+
+  return '<div class="cert-row law-box law-' + r.c + '" id="stateLaw">' +
+      '<h3>State law today <span class="law-when">— checked ' + RULES_CHECKED + '; may differ from ' + currentYear + '</span></h3>' +
+      '<p><span class="law-pill law-' + r.c + '">' + grp.label + '</span></p>' +
+      '<p class="law-text">' + ruleSentence(st.a) + '</p>' +
+      (r.note ? '<p class="law-note">' + r.note + '</p>' : '') +
+      '<p class="law-cite">' + cite + '</p>' +
+      '<div class="law-cmp">' + cmp + '</div>' +
+      '<p class="law-compact">' + compact + '</p>' +
+    '</div>';
 }
 
 /* ======================= TABLE ======================= */
@@ -2826,6 +3117,91 @@ bindSort("sortEv","ev");
 bindSort("sortWinner","w");
 bindSort("sortVotes","votes");
 bindSort("sortVpe","vpe");
+
+/* ======================= STATE RULES TODAY (record section) ======================= */
+let rulesSort = { key:"name", dir:1 };
+function renderRulesSummary(){
+  const counts = {};
+  RULES_ORDER.forEach(k => { counts[k] = ruleNames(k, null).length; });
+  const bound = Object.keys(STATE_RULES).filter(a => STATE_RULES[a].c !== "none");
+  const boundStates = bound.filter(a => a !== "DC").length;
+  const dcBound = bound.indexOf("DC") !== -1;
+  document.getElementById("rulesTotal").textContent =
+    boundStates + " states" + (dcBound ? " and D.C." : "") + " require electors to vote as pledged. " +
+    counts.none + " states" + (dcBound ? "" : " and D.C.") + " do not.";
+  const members = NPVIC_MEMBERS.length, dcIn = inNpvic("11");
+  document.getElementById("rulesCompact").innerHTML =
+    "<strong>National Popular Vote compact:</strong> " + (dcIn ? (members - 1) + " states and D.C." : members + " states") +
+    " have joined, holding " + npvicTotal() + " of the 270 electoral votes it needs. It is not in effect.";
+  const def = {
+    void:    "Electors must vote as pledged. " + RULE_GROUPS.void.rest,
+    penalty: "Electors must vote as pledged. " + RULE_GROUPS.penalty.rest,
+    pledge:  "Electors must vote as pledged. " + RULE_GROUPS.pledge.rest,
+    none:    "No state law requires electors to vote as pledged."
+  };
+  document.getElementById("rulesCounts").innerHTML = RULES_ORDER.map(k =>
+    '<li><span class="rc-num">' + counts[k] + '</span>' +
+    '<span><span class="law-pill law-' + k + '">' + RULE_GROUPS[k].label + '</span></span>' +
+    '<span class="rc-text">' + def[k] + '</span></li>').join('');
+}
+function renderRulesTable(){
+  const rows = Object.keys(STATES).map(f => {
+    const st = STATES[f], r = STATE_RULES[st.a];
+    return { f, n:st.n, r, rank:RULES_ORDER.indexOf(r.c), yr:NPVIC_YEAR[st.a] || 0, ev:EV_ERA.e2020[st.a] };
+  });
+  rows.sort((x,y) => {
+    let d = 0;
+    if (rulesSort.key === "rule") d = x.rank - y.rank;
+    else if (rulesSort.key === "compact") d = (x.yr || 9999) - (y.yr || 9999);
+    else if (rulesSort.key === "ev") d = x.ev - y.ev;
+    else d = x.n.localeCompare(y.n);
+    d *= rulesSort.dir;
+    return d || x.n.localeCompare(y.n);
+  });
+  document.getElementById("rulesBody").innerHTML = rows.map(x =>
+    '<tr><th scope="row"><button class="rules-state" data-fips="' + x.f + '">' + x.n + '</button>' +
+    '<span class="ev-inline">' + x.ev + ' electoral vote' + (x.ev === 1 ? '' : 's') + '</span></th>' +
+    '<td class="num col-ev">' + x.ev + '</td>' +
+    '<td><span class="law-pill law-' + x.r.c + '">' + RULE_GROUPS[x.r.c].label + '</span>' +
+    (x.r.law ? '<span class="rules-law">' + x.r.law + '</span>' : '') + '</td>' +
+    '<td>' + (x.yr ? 'Yes (' + x.yr + ')' : 'No') + '</td></tr>').join('');
+  const ids = { name:"rhName", ev:"rhEv", rule:"rhRule", compact:"rhCompact" };
+  Object.keys(ids).forEach(k => {
+    const th = document.getElementById(ids[k]);
+    if (k === rulesSort.key) th.setAttribute("aria-sort", rulesSort.dir === 1 ? "ascending" : "descending");
+    else th.removeAttribute("aria-sort");
+  });
+  document.querySelectorAll("#rulesBody .rules-state").forEach(b => {
+    b.addEventListener("click", () => {
+      showMapView();
+      selectState(b.getAttribute("data-fips"));
+      const box = document.getElementById("stateLaw");
+      if (box){
+        box.setAttribute("tabindex", "-1");
+        box.scrollIntoView({ block:"start" });
+        box.focus({ preventScroll:true });
+      }
+      track("rules/open/" + STATES[b.getAttribute("data-fips")].a, "State rules: open state");
+    });
+  });
+}
+function bindRulesSort(id, key){
+  document.getElementById(id).addEventListener("click", () => {
+    rulesSort.dir = (rulesSort.key === key) ? rulesSort.dir * -1 : 1;
+    rulesSort.key = key;
+    renderRulesTable();
+  });
+}
+bindRulesSort("rulesSortName", "name");
+bindRulesSort("rulesSortEv", "ev");
+bindRulesSort("rulesSortRule", "rule");
+bindRulesSort("rulesSortCompact", "compact");
+renderRulesSummary();
+renderRulesTable();
+document.getElementById("rulesMore").addEventListener("toggle", e => {
+  if (e.target.open) track("rules/table", "State rules table opened");
+});
+
 
 /* ======================= YEAR CHANGE ======================= */
 function setYear(year){
@@ -3222,6 +3598,7 @@ function applyView(){
     return;
   }
   const id = location.hash.slice(1);
+  if (id === "state-rules"){ const more = document.getElementById("rulesMore"); if (more) more.open = true; }
   const el = (id && id !== "record") ? document.getElementById(id) : null;
   if (el){
     el.scrollIntoView();
