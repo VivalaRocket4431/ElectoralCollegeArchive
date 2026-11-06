@@ -427,6 +427,10 @@ window.topojson = (function(){
   path.state{ stroke:#FBFAF7; }
   table#data-table thead th{ background:var(--navy); }
   table#data-table th button{ color:#fff; }
+  table#data-table thead th{ color:#fff; }
+  .table-section{ overflow-x:auto; }
+  .table-section:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+  @media (max-width:520px){ table#data-table th, table#data-table td{ padding:8px 6px; font-size:13px; } table#data-table th button{ font-size:12px; } }
   .btn[aria-pressed="true"]{ background:var(--navy); border-color:var(--navy); }
   .tick[aria-pressed="true"]{ color:var(--navy); }
   #yearSlider::-webkit-slider-thumb{ background:var(--navy); }
@@ -758,6 +762,13 @@ window.topojson = (function(){
   @media (max-width:520px){ .j6-table th, .j6-table td{ padding:7px 6px; font-size:13.5px; } }
   .j6-rule{ margin:26px 0 0; background:var(--bg-alt); border-left:3px solid var(--navy); border-radius:0 4px 4px 0; padding:10px 12px; font-size:13.5px; }
   .confirm-more{ margin:12px 0 0; font-size:14px; }
+  .pv-table{ width:100%; border-collapse:collapse; font-size:14px; margin:2px 0 4px; }
+  .pv-table th, .pv-table td{ padding:5px 6px; border-bottom:1px solid var(--border); text-align:left; }
+  .pv-table thead th{ font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:var(--text-dim); }
+  .pv-table td{ font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .pv-table tbody th{ font-weight:400; }
+  .pv-table tr.pv-total th, .pv-table tr.pv-total td{ font-weight:700; border-bottom:0; }
+  #data-table td.num{ font-variant-numeric:tabular-nums; white-space:nowrap; }
   .confirm-more a{ color:var(--blue); font-weight:700; }
 
   /* ---------- Two views: the record (default) and the author's argument ---------- */
@@ -808,7 +819,7 @@ window.topojson = (function(){
 
       <div class="count-card">
         <h3>1. The public vote</h3>
-        <p class="count-sub">Ballots cast by voters nationwide.</p>
+        <p class="count-sub">Ballots cast by voters. In every state and D.C., these decide which electors are appointed.</p>
         <div class="cv-row"><span class="cv-label"><span class="dot R"></span><span id="rTicket">Trump / Vance</span></span><span class="cv-num" id="pvR">&mdash;</span></div>
         <div class="cv-row"><span class="cv-label"><span class="dot D"></span><span id="dTicket">Harris / Walz</span></span><span class="cv-num" id="pvD">&mdash;</span></div>
         <p class="count-verdict" id="pvWinnerLine">&mdash;</p>
@@ -904,7 +915,7 @@ window.topojson = (function(){
     </div>
   </section>
 
-  <section class="table-section" id="tableSection" hidden>
+  <section class="table-section" id="tableSection" tabindex="0" aria-label="State-by-state table; scrolls sideways on small screens" hidden>
     <table id="data-table">
       <caption id="tableCaption">All 50 states and D.C. Select a column to sort. Select a row for that state's full record.</caption>
       <thead>
@@ -912,6 +923,8 @@ window.topojson = (function(){
           <th scope="col"><button id="sortName">State</button></th>
           <th scope="col"><button id="sortEv">Electoral votes</button></th>
           <th scope="col"><button id="sortWinner">Won by</button></th>
+          <th scope="col"><button id="sortVotes">Votes cast</button></th>
+          <th scope="col"><button id="sortVpe">Voters per elector</button></th>
           <th scope="col">Elector names</th>
         </tr>
       </thead>
@@ -1151,7 +1164,11 @@ window.topojson = (function(){
           <dd>Certified state results, cross-checked against the National Archives&rsquo; published totals for each election year.</dd>
           <dt>National popular vote</dt>
           <dd>The Federal Election Commission&rsquo;s official compilation of each state&rsquo;s certified results, for every year from 2000 to 2024. The FEC document for the year on screen is linked under the two counts at the top of the page.</dd>
-          <dt>Population and vote weight</dt>
+          <dt>Popular vote in each state</dt>
+          <dd>Each state&rsquo;s votes for the Republican and Democratic tickets and its total for all presidential candidates, from the Federal Election Commission&rsquo;s official compilation for each year. Every year&rsquo;s state figures add up exactly to the FEC&rsquo;s national totals, and in every state the ticket with the most votes matches the winner shown on the map.</dd>
+          <dt>Voters per elector</dt>
+          <dd>The state&rsquo;s total votes for president divided by the number of electors it appointed (one elector per electoral vote). The U.S. figure is every vote cast divided by 538. Voters cast ballots; electors cast the electoral votes that decide the presidency. Turnout moves this number as much as population does. Maine and Nebraska split their electors by district, so their figure is a statewide average.</dd>
+          <dt>Population (used on the argument page)</dt>
           <dd>2020 Census resident population &mdash; the same count that produced the current apportionment. <a href="https://www.census.gov/data/tables/2020/dec/2020-apportionment-data.html" target="_blank" rel="noopener">U.S. Census Bureau, 2020 Apportionment, Table 2</a></dd>
           <dt>Faithless electors</dt>
           <dd>Contemporaneous reporting and court records, including <em>Chiafalo v. Washington</em> (2020) and <em>Baca v. Colorado Department of State</em> (2020).</dd>
@@ -1188,7 +1205,6 @@ window.topojson = (function(){
           <li><strong>Unusual surnames carry some extraction risk.</strong> Names were pulled from each PDF&rsquo;s text layer. Characters such as rn/m and I/l can be misread. Every panel links to the certificate so any name can be checked at the source.</li>
           <li><strong>Elector names are complete for 2020 and 2024.</strong> All 51 jurisdictions are loaded for both years, 538 electors each, every roster checked against its electoral vote count. The 2000&ndash;2016 elections show state outcomes, electoral vote counts, popular vote and faithless electors, but not full rosters. Those certificates are public and linked; they have not been read in yet.</li>
           <li><strong>Some 2020 certificates have damaged text layers.</strong> Where the machine-readable text garbles a name, the panel says so and names the document used to confirm it, usually the signed Certificate of Vote.</li>
-          <li><strong>State-by-state popular vote counts are not included.</strong></li>
           <li><strong>Elections before 2000 are not included.</strong> Before 1824 most states had no popular vote at all, so the popular-versus-electoral comparison this site is built around does not exist for the early republic.</li>
         </ul>
       </div>
@@ -1246,9 +1262,9 @@ window.topojson = (function(){
 
 <footer class="site-footer record-only">
   <h2>What this archive contains &mdash; and what it doesn't</h2>
-  <p><strong>Fully sourced right now:</strong> for all seven elections from 2000 through 2024, the winning ticket and electoral vote count in every state and D.C.; the national popular vote; and the difference between electors <em>pledged</em> and electors' votes <em>actually cast</em>, including every faithless elector and abstention.</p>
+  <p><strong>Fully sourced right now:</strong> for all seven elections from 2000 through 2024, the winning ticket and electoral vote count in every state and D.C.; the popular vote in every state and nationally; and the difference between electors <em>pledged</em> and electors' votes <em>actually cast</em>, including every faithless elector and abstention.</p>
   <p><strong>Elector names:</strong> 2020 and 2024 are complete: all 51 jurisdictions in each, every roster read off its Certificate of Ascertainment and checked against its electoral vote count. In 2020, Massachusetts and New Hampshire were read by eye from the scanned script certificates, and Indiana uses its amended certificate, matched to the electors who signed the Certificate of Vote. All 51 jurisdictions are loaded, naming every one of the 538 people who cast an electoral vote. Each roster was read off that jurisdiction's Certificate of Ascertainment and checked against its electoral vote count. Where a state filed an amended certificate, or replaced an elector before appointment, the final appointed list is used. Maine and Nebraska award electors by congressional district, so their electors came from two different party slates; each is shown with their own party and district. Certificates list the losing parties' slates too; those people were never appointed and are not shown. Several certificates print electors' home addresses, cities or towns; those are deliberately not reproduced here. Massachusetts and New Hampshire are engraved in decorative script that machine reading cannot decipher, so their names were transcribed by eye from the scanned certificates. Nothing here is estimated — a name appears only after being read off the certificate, and every certificate is linked from its panel.</p>
-  <p><strong>Not here yet:</strong> elections before 2000; state-by-state popular vote counts; voter registration by party. Nothing on this site is estimated or filled in by guesswork &mdash; if a number isn't sourced, it isn't shown.</p>
+  <p><strong>Not here yet:</strong> elections before 2000; voter registration by party. Nothing on this site is estimated or filled in by guesswork &mdash; if a number isn't sourced, it isn't shown.</p>
   <ul>
     <li>Electoral votes and state outcomes: certified state results, cross-checked against the National Archives' Electoral College records for each year.</li>
     <li>Elector rosters: NARA Certificates of Vote and Certificates of Ascertainment.</li>
@@ -2376,6 +2392,24 @@ const FEC_YEAR = {
         url:"https://www.fec.gov/resources/cms-content/documents/2024presgeresults.pdf"}
 };
 
+/* ======================= STATE POPULAR VOTE =======================
+   [Republican ticket, Democratic ticket, total votes for all presidential candidates],
+   copied from the Federal Election Commission's official compilation for each year
+   (see FEC_YEAR). Each year's states add up exactly to the FEC national totals. */
+const STATE_VOTES = {
+  2000:{AL:[941173,692611,1666272],AK:[167398,79004,285560],AZ:[781652,685341,1532016],AR:[472940,422768,921781],CA:[4567429,5861203,10965856],CO:[883748,738227,1741368],CT:[561094,816015,1459525],DE:[137288,180068,327622],DC:[18073,171923,201894],FL:[2912790,2912253,5963110],GA:[1419720,1116230,2596804],HI:[137845,205286,367951],ID:[336937,138637,501621],IL:[2019421,2589026,4742123],IN:[1245836,901980,2199302],IA:[634373,638517,1315563],KS:[622332,399276,1072218],KY:[872492,638898,1544187],LA:[927871,792344,1765656],ME:[286616,319951,651817],MD:[813797,1145782,2025480],MA:[878502,1616487,2702984],MI:[1953139,2170418,4232501],MN:[1109659,1168266,2438685],MS:[572844,404614,994184],MO:[1189924,1111138,2359892],MT:[240178,137126,410997],NE:[433862,231780,697019],NV:[301575,279978,608970],NH:[273559,266348,569081],NJ:[1284173,1788850,3187226],NM:[286417,286783,598605],NY:[2403374,4107697,6821999],NC:[1631163,1257692,2911262],ND:[174852,95284,288256],OH:[2351209,2186190,4705457],OK:[744337,474276,1234229],OR:[713577,720342,1533968],PA:[2281127,2485967,4913119],RI:[130555,249508,409112],SC:[785937,565561,1382717],SD:[190700,118804,316269],TN:[1061949,981720,2076181],TX:[3799639,2433746,6407637],UT:[515096,203053,770754],VT:[119775,149022,294308],VA:[1437490,1217290,2739447],WA:[1108864,1247652,2487433],WV:[336475,295497,648124],WI:[1237279,1242987,2598607],WY:[147947,60481,218351]},
+  2004:{AL:[1176394,693933,1883449],AK:[190889,111025,312598],AZ:[1104294,893524,2012585],AR:[572898,469953,1054945],CA:[5509826,6745485,12421852],CO:[1101255,1001732,2130330],CT:[693826,857488,1578769],DE:[171660,200152,375190],DC:[21256,202970,227586],FL:[3964522,3583544,7609810],GA:[1914254,1366149,3301875],HI:[194191,231708,429013],ID:[409235,181098,598447],IL:[2345946,2891550,5274322],IN:[1479438,969011,2468002],IA:[751957,741898,1506908],KS:[736456,434993,1187756],KY:[1069439,712733,1795882],LA:[1102169,820299,1943106],ME:[330201,396842,740752],MD:[1024703,1334493,2386678],MA:[1071109,1803800,2912388],MI:[2313746,2479183,4839252],MN:[1346695,1445014,2828387],MS:[684981,458094,1152145],MO:[1455713,1259171,2731364],MT:[266063,173710,450445],NE:[512814,254328,778186],NV:[418690,397190,829587],NH:[331237,340511,677738],NJ:[1670003,1911430,3611691],NM:[376930,370942,756304],NY:[2962567,4314280,7391036],NC:[1961166,1525849,3501007],ND:[196651,111052,312833],OH:[2859768,2741167,5627908],OK:[959792,503966,1463758],OR:[866831,943163,1836782],PA:[2793847,2938095,5769590],RI:[169046,259765,437134],SC:[937974,661699,1617730],SD:[232584,149244,388215],TN:[1384375,1036477,2437319],TX:[4526917,2832704,7410765],UT:[663742,241199,927844],VT:[121180,184067,312309],VA:[1716959,1454742,3198367],WA:[1304894,1510201,2859084],WV:[423778,326541,755887],WI:[1478120,1489504,2997007],WY:[167629,70776,243428]},
+  2008:{AL:[1266546,813479,2099819],AK:[193841,123594,326197],AZ:[1230111,1034707,2293475],AR:[638017,422310,1086617],CA:[5011781,8274473,13561900],CO:[1073629,1288633,2401462],CT:[629428,997772,1646797],DE:[152374,255459,412412],DC:[17367,245800,265853],FL:[4045624,4282074,8390744],GA:[2048759,1844123,3924486],HI:[120566,325871,453568],ID:[403012,236440,655122],IL:[2031179,3419348,5522371],IN:[1345648,1374039,2751054],IA:[682379,828940,1537123],KS:[699655,514765,1235872],KY:[1048462,751985,1826620],LA:[1148275,782989,1960761],ME:[295273,421923,731163],MD:[959862,1629467,2631596],MA:[1108854,1904097,3080985],MI:[2048639,2872579,5001766],MN:[1275409,1573354,2910369],MS:[724597,554662,1289865],MO:[1445814,1441911,2925205],MT:[242763,231667,490302],NE:[452979,333319,801281],NV:[412827,533736,967848],NH:[316534,384826,710970],NJ:[1613207,2215422,3868237],NM:[346832,472422,830158],NY:[2752771,4804945,7640931],NC:[2128474,2142651,4310789],ND:[168601,141278,316621],OH:[2677820,2940044,5708350],OK:[960165,502496,1462661],OR:[738475,1037291,1827864],PA:[2655885,3276363,6013272],RI:[165391,296571,471766],SC:[1034896,862449,1920969],SD:[203054,170924,381975],TN:[1479178,1087437,2599749],TX:[4479328,3528633,8077795],UT:[596030,327670,952370],VT:[98974,219262,325046],VA:[1725005,1959532,3723260],WA:[1229216,1750848,3036878],WV:[397466,303857,713451],WI:[1262393,1677211,2983417],WY:[164958,82868,254658]},
+  2012:{AL:[1255925,795696,2074338],AK:[164676,122640,300495],AZ:[1233654,1025232,2299254],AR:[647744,394409,1069468],CA:[4839958,7854285,13038547],CO:[1185243,1323102,2569522],CT:[634892,905083,1558960],DE:[165484,242584,413921],DC:[21381,267070,293764],FL:[4163447,4237756,8474179],GA:[2078688,1773827,3900050],HI:[121015,306658,434697],ID:[420911,212787,652274],IL:[2135216,3019512,5242014],IN:[1420543,1152887,2624534],IA:[730617,822544,1582180],KS:[692634,440726,1159971],KY:[1087190,679370,1797212],LA:[1152262,809141,1994065],ME:[292276,401306,713180],MD:[971869,1677844,2707327],MA:[1188314,1921290,3167767],MI:[2115256,2564569,4730961],MN:[1320225,1546167,2936561],MS:[710746,562949,1285584],MO:[1482440,1223796,2757323],MT:[267928,201839,484048],NE:[475064,302081,794379],NV:[463567,531373,1014918],NH:[329918,369561,710972],NJ:[1477568,2125101,3640292],NM:[335788,415335,783758],NY:[2490431,4485741,7081159],NC:[2270395,2178391,4505372],ND:[188163,124827,322627],OH:[2661437,2827709,5580847],OK:[891325,443547,1334872],OR:[754175,970488,1789270],PA:[2680434,2990274,5753670],RI:[157204,279677,446049],SC:[1071645,865941,1964118],SD:[210610,145039,363815],TN:[1462330,960709,2458577],TX:[4569843,3308124,7993851],UT:[740600,251813,1017440],VT:[92698,199239,299290],VA:[1822522,1971820,3854489],WA:[1290670,1755396,3125516],WV:[417655,238269,670438],WI:[1407966,1620985,3068434],WY:[170962,69286,249061]},
+  2016:{AL:[1318255,729547,2123372],AK:[163387,116454,318608],AZ:[1252401,1161167,2573165],AR:[684872,380494,1130676],CA:[4483814,8753792,14181604],CO:[1202484,1338870,2780247],CT:[673215,897572,1644920],DE:[185127,235603,443814],DC:[12723,282830,311268],FL:[4617886,4504975,9420039],GA:[2089104,1877963,4114732],HI:[128847,266891,428937],ID:[409055,189765,690255],IL:[2146015,3090729,5536424],IN:[1557286,1033126,2734958],IA:[800983,653669,1566031],KS:[671018,427005,1184402],KY:[1202971,628854,1924149],LA:[1178638,780154,2029032],ME:[335593,357735,747927],MD:[943169,1677928,2781446],MA:[1090893,1995196,3325046],MI:[2279543,2268839,4799284],MN:[1322951,1367716,2944813],MS:[700714,485131,1209357],MO:[1594511,1071068,2808605],MT:[279240,177709,497147],NE:[495961,284494,844227],NV:[512058,539260,1125385],NH:[345790,348526,744296],NJ:[1601933,2148278,3874046],NM:[319667,385234,798319],NY:[2819533,4556118,7721442],NC:[2362631,2189316,4741564],ND:[216794,93758,344360],OH:[2841005,2394164,5496487],OK:[949136,420375,1452992],OR:[782403,1002106,2001336],PA:[2970733,2926441,6165478],RI:[180543,252525,464144],SC:[1155389,855373,2103027],SD:[227721,117458,370093],TN:[1522925,870695,2508027],TX:[4685047,3877868,8969226],UT:[515231,310676,1131430],VT:[95369,178573,315067],VA:[1769443,1981473,3984631],WA:[1221747,1742718,3317019],WV:[489371,188794,714423],WI:[1405284,1382536,2976150],WY:[174419,55973,255849]},
+  2020:{AL:[1441170,849624,2323282],AK:[189951,153778,359530],AZ:[1661686,1672143,3387326],AR:[760647,423932,1219069],CA:[6006429,11110250,17500881],CO:[1364607,1804352,3256980],CT:[714717,1080831,1823857],DE:[200603,296268,504346],DC:[18586,317323,344356],FL:[5668731,5297045,11067456],GA:[2461854,2473633,4999960],HI:[196864,366130,574469],ID:[554119,287021,868014],IL:[2446891,3471915,6033744],IN:[1729519,1242416,3033121],IA:[897672,759061,1690871],KS:[771406,570323,1372303],KY:[1326646,772474,2136768],LA:[1255776,856034,2148062],ME:[360737,435072,819461],MD:[976414,1985023,3037030],MA:[1167202,2382202,3631402],MI:[2649852,2804040,5539302],MN:[1484065,1717077,3277171],MS:[756764,539398,1313759],MO:[1718736,1253014,3025962],MT:[343602,244786,603674],NE:[556846,374583,956383],NV:[669890,703486,1405376],NH:[365660,424937,806205],NJ:[1883274,2608335,4549353],NM:[401894,501614,923965],NY:[3244798,5230985,8594826],NC:[2758775,2684292,5524804],ND:[235595,114902,361819],OH:[3154834,2679165,5922202],OK:[1020280,503890,1560699],OR:[958448,1340383,2374321],PA:[3377674,3458229,6915283],RI:[199922,307486,517757],SC:[1385103,1091541,2513329],SD:[261043,150471,422609],TN:[1852475,1143711,3053851],TX:[5890347,5259126,11315056],UT:[865140,560282,1488289],VT:[112704,242820,367428],VA:[1962430,2413568,4460524],WA:[1584651,2369612,4087631],WV:[545382,235984,794731],WI:[1610184,1630866,3298041],WY:[193559,73491,276765]},
+  2024:{AL:[1462616,772412,2265090],AK:[184458,140026,338177],AZ:[1770242,1582860,3390161],AR:[759241,396905,1182676],CA:[6081697,9276179,15865475],CO:[1377441,1728159,3192745],CT:[736918,992053,1759010],DE:[214351,289758,512912],DC:[21076,294185,325869],FL:[6110125,4683038,10893752],GA:[2663117,2548017,5250905],HI:[193661,313044,516701],ID:[605246,274972,905057],IL:[2449079,3062863,5633310],IN:[1720347,1163603,2936677],IA:[927019,707278,1663506],KS:[758802,544853,1327591],KY:[1337494,704043,2074530],LA:[1208505,766870,2006975],ME:[377977,435652,831375],MD:[1035550,1902577,3038334],MA:[1251303,2126518,3473668],MI:[2816636,2736533,5664186],MN:[1519032,1656979,3253920],MS:[747744,466668,1228008],MO:[1751986,1200599,2995327],MT:[352079,231906,602990],NE:[564816,369995,952182],NV:[751205,705197,1484840],NH:[395523,418488,826189],NJ:[1968215,2220713,4272725],NM:[423391,478802,923403],NY:[3578899,4619195,8262495],NC:[2898423,2715375,5699141],ND:[246505,112327,368155],OH:[3180116,2533699,5767788],OK:[1036213,499599,1566173],OR:[919480,1240600,2244493],PA:[3543308,3423042,7058732],RI:[214406,285156,513386],SC:[1483747,1028452,2548140],SD:[272081,146859,428922],TN:[1966865,1056265,3063942],TX:[6393597,4835250,11388674],UT:[883818,562566,1488494],VT:[119395,235791,369422],VA:[2074097,2333778,4503288],WA:[1530923,2245849,3924243],WV:[533556,214309,762582],WI:[1697626,1668229,3422918],WY:[192633,69527,269048]}
+};
+const STATE_VOTE_NOTES = { 2000:{ NY:"New York also reported 138,216 miscellaneous write-in, blank and void votes as one figure. The FEC does not include them in the state\u2019s total." } };
+
+/* National total votes per year = sum of the states (matches the FEC national totals). */
+function natTotal(year){ const v = STATE_VOTES[year]; let t = 0; for (const k in v) t += v[k][2]; return t; }
+
 function fmt(n){ return n.toLocaleString("en-US"); }
 
 /* ======================= ANALYTICS =======================
@@ -2693,18 +2727,31 @@ function renderPanel(){
   const splitHtml = (d.w === "split")
     ? '<div class="cert-row"><h3>How the split worked</h3><p>' + d.note + '</p></div>' : '';
 
-  /* Residents per electoral vote: a fact about apportionment, shown for 2024, whose
-     electoral votes rest on the 2020 Census. No comparison or what-if here; those
-     belong to the author's argument page. */
+  /* Popular vote in this state (FEC), and votes cast per electoral vote that year. */
   let weightHtml = "";
-  if (currentYear === 2024){
-    const w = weightFor(fips);
-    if (w){
-      weightHtml =
-        '<div class="cert-row"><h3>Residents per electoral vote</h3>' +
-        '<p class="wt-line-plain"><strong>' + fmt(Math.round(w.perEv)) + '</strong> residents of ' + st.n +
-        ' per electoral vote (2020 Census). U.S. average: ' + fmt(Math.round(NATL_PER_EV)) + '.</p></div>';
-    }
+  const sv = (STATE_VOTES[currentYear] || {})[st.a];
+  if (sv){
+    const rV = sv[0], dV = sv[1], tV = sv[2], oV = tV - rV - dV;
+    const pct = x => (x / tV * 100).toFixed(1) + "%";
+    const row = (label, v, cls) => '<tr' + (cls ? ' class="' + cls + '"' : '') + '><th scope="row">' + label + '</th><td>' + fmt(v) + '</td><td>' + (cls === "pv-total" ? "" : pct(v)) + '</td></tr>';
+    const perEv = Math.round(tV / d.ev);
+    const usPerEv = Math.round(natTotal(currentYear) / 538);
+    const note = (STATE_VOTE_NOTES[currentYear] || {})[st.a];
+    weightHtml =
+      '<div class="cert-row"><h3>Popular vote in ' + st.n + '</h3>' +
+      '<table class="pv-table"><caption class="visually-hidden">Popular vote in ' + st.n + ', ' + currentYear + '</caption>' +
+      '<thead><tr><th scope="col">Ticket</th><th scope="col">Votes</th><th scope="col">Share</th></tr></thead><tbody>' +
+      row('<span class="winner-pill R">R</span> ' + e.R.ticket, rV) +
+      row('<span class="winner-pill D">D</span> ' + e.D.ticket, dV) +
+      row('All other candidates', oV) +
+      row('Total votes cast', tV, "pv-total") +
+      '</tbody></table>' +
+      (note ? '<p class="wt-sub">' + note + '</p>' : '') +
+      '</div>' +
+      '<div class="cert-row"><h3>Voters per elector</h3>' +
+      '<p class="wt-line-plain"><strong>' + fmt(perEv) + '</strong> voters per elector in ' + st.n + '. U.S.: ' + fmt(usPerEv) + '.</p>' +
+      '<p class="wt-sub">Source: <a href="' + FEC_YEAR[currentYear].url + '" target="_blank" rel="noopener">' + FEC_YEAR[currentYear].title + '</a>.' +
+      (d.w === "split" ? ' ' + st.n + ' splits its electoral votes by district, so this is a statewide average.' : '') + '</p></div>';
   }
 
   panel.innerHTML =
@@ -2732,11 +2779,13 @@ function renderTable(){
   const e = ELECTIONS[currentYear];
   const rows = Object.keys(STATES).map(fips => {
     const d = yearMap[fips];
-    return { fips, name:STATES[fips].n, abbr:STATES[fips].a, ev:d.ev, w:d.w, d:d };
+    const sv = (STATE_VOTES[currentYear] || {})[STATES[fips].a];
+    const votes = sv ? sv[2] : 0;
+    return { fips, name:STATES[fips].n, abbr:STATES[fips].a, ev:d.ev, w:d.w, d:d, votes, vpe: votes ? Math.round(votes / d.ev) : 0 };
   });
   rows.sort((a,b) => {
     let av = a[tableSort.key], bv = b[tableSort.key];
-    if (tableSort.key === "ev"){ av = Number(av); bv = Number(bv); }
+    if (tableSort.key === "ev" || tableSort.key === "votes" || tableSort.key === "vpe"){ av = Number(av); bv = Number(bv); }
     if (av < bv) return -1*tableSort.dir;
     if (av > bv) return 1*tableSort.dir;
     return 0;
@@ -2754,7 +2803,7 @@ function renderTable(){
       ? '<span class="status-pill verified">Verified</span>'
       : '<span class="status-pill pending">Not added yet</span>';
     return '<tr tabindex="0" data-fips="' + r.fips + '"><td>' + r.name + ' (' + r.abbr + ')</td><td>' +
-           r.ev + '</td><td>' + winnerText + '</td><td>' + pill + '</td></tr>';
+           r.ev + '</td><td>' + winnerText + '</td><td class="num">' + fmt(r.votes) + '</td><td class="num">' + fmt(r.vpe) + '</td><td>' + pill + '</td></tr>';
   }).join('');
 
   document.querySelectorAll("#tableBody tr").forEach(tr => {
@@ -2775,6 +2824,8 @@ function bindSort(id, key){
 bindSort("sortName","name");
 bindSort("sortEv","ev");
 bindSort("sortWinner","w");
+bindSort("sortVotes","votes");
+bindSort("sortVpe","vpe");
 
 /* ======================= YEAR CHANGE ======================= */
 function setYear(year){
