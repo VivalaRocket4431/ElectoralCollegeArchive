@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Electoral Record — every 2024 elector, named</title>
-<meta name="description" content="All 538 people who cast an electoral vote in 2024, named — read off the signed certificates filed with the National Archives. See who cast your state's votes and what a vote there is actually worth.">
+<meta name="description" content="All 538 people who cast an electoral vote in 2024, named — read off the signed certificates filed with the National Archives. See who cast your state's votes and how the electoral count compared with the public vote.">
 <link rel="canonical" href="https://theelectoralrecord.org/">
 <meta name="theme-color" content="#12263F">
 
@@ -485,7 +485,6 @@ window.topojson = (function(){
     font-size:11px; text-transform:uppercase; letter-spacing:1px; font-weight:700;
     color:var(--gold); margin:0 0 10px; padding-bottom:9px; border-bottom:1px solid rgba(255,255,255,.2);
   }
-  .argument h2{ font-family:var(--serif); font-size:clamp(21px,5vw,29px); color:#fff; margin:0 0 9px; line-height:1.2; }
   .arg-lede{ font-size:14.5px; color:#AEB8C7; margin:0 0 22px; line-height:1.55; }
   .arg-h{
     font-family:var(--serif); font-size:19px; color:#fff; margin:28px 0 12px;
@@ -497,7 +496,7 @@ window.topojson = (function(){
     font-family:var(--serif); font-weight:700; font-size:16px;
     display:flex; align-items:center; justify-content:center; margin-top:2px;
   }
-  .arg-point h4{ font-size:16px; color:#fff; margin:3px 0 7px; line-height:1.3; }
+  .arg-point h3{ font-size:16px; color:#fff; margin:3px 0 7px; line-height:1.3; }
   .argument p{ font-size:14.5px; line-height:1.6; margin:0 0 9px; color:#D4DAE3; }
   .argument p strong, .argument li strong{ color:#fff; }
   .argument em{ font-style:italic; }
@@ -710,19 +709,96 @@ window.topojson = (function(){
   .glance-shift.up{ background:#FBF4E4; border-left:3px solid #8A6A1F; }
   .glance-shift.down{ background:#EDF3F8; border-left:3px solid #2F5F86; }
   .glance-fine{ font-size:11.5px; color:var(--text-dim); line-height:1.5; margin:9px 0 0; }
+
+  /* ---------- How the result was confirmed (record; per year, when documented) ---------- */
+  .confirm-box{
+    background:#fff; border:1px solid var(--border); border-top:3px solid var(--verified); border-radius:6px;
+    padding:15px; margin:0 0 12px; color:var(--text); box-shadow:0 1px 3px rgba(18,38,63,.09);
+  }
+  .confirm-box[hidden]{ display:none; }
+  .confirm-title{
+    font-family:var(--serif); font-size:17px; font-weight:700; color:var(--navy);
+    margin:0 0 4px; padding-bottom:7px; border-bottom:2px solid var(--navy);
+  }
+  .confirm-lead{ margin:8px 0 10px; font-size:13px; color:var(--text-dim); }
+  .confirm-list{ margin:0; padding-left:20px; display:grid; gap:10px; }
+  .confirm-list li{ font-size:14px; line-height:1.5; }
+  .confirm-src{ display:block; font-size:12px; color:var(--text-dim); margin-top:2px; }
+  .confirm-src a{ color:var(--blue); }
+
+  /* ---------- January 6, 2021 (a record view, opened at #january-6) ---------- */
+  body:not(.view-j6) #january-6{ display:none; }
+  body.view-j6 .record-only{ display:none !important; }
+  .j6{ background:var(--bg); padding:22px 0 36px; min-height:100vh; }
+  .j6-inner{ max-width:980px; margin:0 auto; padding:0 16px; }
+  .j6-back{ margin:0 0 8px; }
+  .j6-back-link{ display:inline-block; padding:10px 0; min-height:44px; color:var(--blue); font-weight:700; font-size:14.5px;
+                 text-decoration:underline; text-underline-offset:3px; }
+  .j6-back-link:focus-visible, .j6-inline:focus-visible, .j6 a:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+  .j6-label{ font-size:12px; text-transform:uppercase; letter-spacing:.8px; font-weight:700; color:var(--text-dim);
+             margin:0 0 10px; padding-bottom:9px; border-bottom:1px solid var(--border); }
+  .j6 h1{ font-family:var(--serif); font-size:clamp(23px,5.5vw,32px); color:var(--navy); margin:0 0 9px; line-height:1.2; }
+  .j6-lede{ font-size:15.5px; line-height:1.6; margin:0 0 6px; max-width:70ch; }
+  .j6-h{ font-family:var(--serif); font-size:19px; color:var(--navy); margin:28px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--navy); }
+  .j6-p{ font-size:14.5px; margin:0 0 10px; }
+  .j6-list{ margin:0 0 6px; padding-left:20px; display:grid; gap:12px; }
+  .j6-list li{ font-size:14.5px; line-height:1.55; }
+  .j6-src{ display:block; font-size:12px; color:var(--text-dim); margin-top:3px; line-height:1.5; }
+  .j6-src a, .j6-inline{ color:var(--blue); }
+  .j6-src-block{ margin:6px 0 14px; }
+  .j6-table-wrap{ overflow-x:auto; margin:0 0 6px; }
+  .j6-table-wrap:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+  .j6-table{ width:100%; border-collapse:collapse; font-size:14px; background:#fff; border:1px solid var(--border); }
+  .j6-table caption{ text-align:left; font-size:12.5px; color:var(--text-dim); padding:0 0 6px; }
+  .j6-table th, .j6-table td{ padding:8px 10px; text-align:left; vertical-align:top; border-bottom:1px solid var(--border); }
+  .j6-table thead th{ font-size:11.5px; text-transform:uppercase; letter-spacing:.4px; color:var(--text-dim); background:var(--bg-alt); }
+  .j6-table tbody th{ font-weight:700; color:var(--navy); }
+  .j6-claims tbody th{ width:32%; font-weight:600; }
+  .j6-sub{ display:block; font-weight:400; font-size:12.5px; color:var(--text-dim); }
+  @media (max-width:520px){ .j6-table th, .j6-table td{ padding:7px 6px; font-size:13.5px; } }
+  .j6-rule{ margin:26px 0 0; background:var(--bg-alt); border-left:3px solid var(--navy); border-radius:0 4px 4px 0; padding:10px 12px; font-size:13.5px; }
+  .confirm-more{ margin:12px 0 0; font-size:14px; }
+  .confirm-more a{ color:var(--blue); font-weight:700; }
+
+  /* ---------- Two views: the record (default) and the author's argument ---------- */
+  body.view-argument .record-only{ display:none !important; }
+  body:not(.view-argument) #argument{ display:none; }
+  body.view-argument .argument{ margin-top:0; min-height:100vh; }
+  .arg-back{ margin:0 0 14px; }
+  .arg-back-link, .arg-inline-link{ color:#E8C77A; text-decoration:underline; text-underline-offset:3px; }
+  /* Contrast fixes on the navy argument page (all now 6:1 or better). */
+  .argument .arg-label{ color:#E8C77A; font-size:12px; }
+  .argument h1{ font-family:var(--serif); font-size:clamp(21px,5vw,29px); color:#fff; margin:0 0 9px; line-height:1.2; }
+  .arg-link{ color:#E8C77A; border-bottom-color:#E8C77A; }
+  .wt-gap td{ color:#A9B3C2; }
+  .npvic-prompt{ color:#AEB8C7 !important; }
+  .share-btn, .argument .act-btn{ background:#E8C77A; }
+  .share-btn:hover, .argument .act-btn:hover{ background:#D8B65E; }
+  .sb-top{ background:#E8C77A; color:var(--navy); }
+  .sb-top:hover{ background:#D8B65E; }
+  .arg-back-link{ display:inline-block; font-weight:700; font-size:14.5px; padding:10px 0; min-height:44px; }
+  .arg-back-link:focus-visible, .arg-inline-link:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+  .pn-sep{ margin-left:8px; }
+  .page-nav a.pn-argument{ border:1px dashed var(--border-strong); }
+  .hypo-tag{ display:inline-block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.7px;
+             border:1px dashed currentColor; border-radius:3px; padding:1px 6px; margin-right:6px; }
+  .npvic-hypo{ margin-top:10px !important; font-size:13px !important; color:#D4DAE3 !important; }
+  .npvic-lookup{ margin-top:10px !important; }
+  .npvic-lookup a{ color:#E8C77A; font-weight:700; }
+  .cert-row .wt-line-plain{ margin:0; font-size:14.5px; }
 </style>
 </head>
 <body>
 
-<button class="skip-link" id="skipToTable">Skip to accessible data table</button>
+<button class="skip-link record-only" id="skipToTable">Skip to accessible data table</button>
 
-<div class="sticky-bar" id="stickyBar">
+<div class="sticky-bar" id="stickyBar" role="region" aria-label="Page orientation">
   <span class="sb-title">The Electoral Record</span>
   <span class="sb-year" id="sbYear">2024</span>
   <button class="sb-top" id="backToTop" aria-label="Return to top of page">&uarr; Top</button>
 </div>
 
-<header class="site-header">
+<header class="site-header record-only">
   <div class="brand">
     <h1 id="pageTop" tabindex="-1">The Electoral Record</h1>
     <p class="tagline">Who the electors were, how they voted, and how that compared to the public vote &mdash; from official records.</p>
@@ -742,7 +818,7 @@ window.topojson = (function(){
         <h3>2. The electoral vote</h3>
         <p class="count-sub">Votes cast by electors. This is what decides the presidency.</p>
         <table class="ev-table">
-          <thead><tr><th scope="col"></th><th scope="col">Pledged</th><th scope="col">Actually cast</th></tr></thead>
+          <thead><tr><th scope="col"><span class="visually-hidden">Party</span></th><th scope="col">Pledged</th><th scope="col">Actually cast</th></tr></thead>
           <tbody>
             <tr><th scope="row"><span class="dot R"></span>R</th><td id="evPledgedR">&mdash;</td><td id="evCastR">&mdash;</td></tr>
             <tr><th scope="row"><span class="dot D"></span>D</th><td id="evPledgedD">&mdash;</td><td id="evCastD">&mdash;</td></tr>
@@ -760,12 +836,13 @@ window.topojson = (function(){
     </div>
 
     <p class="diverge-flag" id="divergeFlag"></p>
+    <section class="confirm-box" id="confirmBox" aria-labelledby="confirmTitle" hidden></section>
     <section class="elector-brief" id="electorBrief" aria-label="Electors"></section>
-    <p class="source-note">Source: <a id="sourceYearLink" href="https://www.archives.gov/electoral-college/2024" target="_blank" rel="noopener">National Archives, 2024 Electoral College</a> and state canvassing boards.</p>
+    <p class="source-note">Electoral votes: <a id="sourceYearLink" href="https://www.archives.gov/electoral-college/2024" target="_blank" rel="noopener">National Archives, 2024 Electoral College</a>. Public vote: <a id="sourcePvLink" href="https://www.fec.gov/resources/cms-content/documents/2024presgeresults.pdf" target="_blank" rel="noopener">Federal Election Commission, Official 2024 Presidential General Election Results</a>, compiled from each state&rsquo;s certified count.</p>
   </div>
 </header>
 
-<div class="controls">
+<div class="controls record-only">
   <button class="btn" id="btnMapView" aria-pressed="true">Map view</button>
   <button class="btn" id="btnTableView" aria-pressed="false">Table view</button>
   <div class="legend" aria-hidden="true">
@@ -776,15 +853,18 @@ window.topojson = (function(){
 </div>
 
 
-<nav class="page-nav" aria-label="Sections of this page">
+<nav class="page-nav record-only" aria-label="Sections of this site">
   <span class="pn-label">On this page</span>
   <a href="#mapSection">The record</a>
-  <a href="#argument">The argument</a>
   <a href="#methodology">Methodology &amp; sources</a>
   <a href="#methodology">How to cite</a>
+  <span class="pn-label pn-sep">Also in the record</span>
+  <a href="#january-6">January 6, 2021</a>
+  <span class="pn-label pn-sep">Not part of the record</span>
+  <a href="#argument" class="pn-argument">The author&rsquo;s argument</a>
 </nav>
 
-<main class="wrap">
+<main class="wrap record-only">
 
   <section class="map-section" id="mapSection">
     <div class="map-frame">
@@ -842,19 +922,136 @@ window.topojson = (function(){
 </main>
 
 
-<section class="argument" id="argument" aria-labelledby="argTitle">
+<!-- ======================= JANUARY 6, 2021 (record view) =======================
+     Part of the 2020 election record. Official findings only, each line sourced.
+     Opens at #january-6. Names appear only for people convicted by a jury or held liable by a court. -->
+<section class="j6" id="january-6" role="main" aria-labelledby="j6Title">
+  <div class="j6-inner">
+
+    <p class="j6-back"><a href="#record" class="j6-back-link">&larr; Back to the record</a></p>
+    <p class="j6-label">Part of the 2020 election record &middot; Facts from official records &middot; Checked November 5, 2026</p>
+    <h1 id="j6Title" tabindex="-1">January 6, 2021: the count and the attack</h1>
+    <p class="j6-lede">Congress met that day to count the electoral votes from the 2020 election. A mob attacked the Capitol and stopped the count. Congress resumed that night and finished after 3 a.m. on January 7: Biden 306, Trump 232. Every line below links to its source.</p>
+
+    <h2 class="j6-h">The count</h2>
+    <ul class="j6-list">
+      <li>Before the count began, Vice President Mike Pence wrote that his &ldquo;oath to support and defend the Constitution constrains me from claiming unilateral authority&rdquo; to decide which electoral votes to count.
+        <span class="j6-src">Source: <a href="https://www.cbsnews.com/amp/news/read-pence-letter-saying-he-lacks-authority-to-decide-election/" target="_blank" rel="noopener">CBS News, Pence&rsquo;s letter, Jan. 6, 2021</a></span></li>
+      <li>Rioters broke into the Capitol and the count stopped. Congress resumed that evening.
+        <span class="j6-src">Source: <a href="https://www.govinfo.gov/content/pkg/GPO-J6-REPORT/pdf/GPO-J6-REPORT-2-7.pdf" target="_blank" rel="noopener">House Select Committee final report, ch. 7</a></span></li>
+      <li>Objections to Arizona&rsquo;s and Pennsylvania&rsquo;s electoral votes failed: 6&ndash;93 and 7&ndash;92 in the Senate, 121&ndash;303 and 138&ndash;282 in the House. The last of those votes came at 3:08 a.m. on January 7.
+        <span class="j6-src">Source: <a href="https://govinfo.gov/content/pkg/CREC-2021-01-06/html/CREC-2021-01-06-pt1-PgD22.htm" target="_blank" rel="noopener">Congressional Record, Senate</a> &middot; <a href="https://clerk.house.gov/evs/2021/roll010" target="_blank" rel="noopener">House roll call 10</a> &middot; <a href="https://clerk.house.gov/evs/2021/roll011" target="_blank" rel="noopener">House roll call 11</a></span></li>
+    </ul>
+
+    <h2 class="j6-h">The fake elector certificates</h2>
+    <ul class="j6-list">
+      <li>In seven states Biden won &mdash; Arizona, Georgia, Michigan, Nevada, New Mexico, Pennsylvania and Wisconsin &mdash; Republican slates signed certificates casting those states&rsquo; electoral votes for Trump and sent them to the National Archives. No state appointed them. The National Archives says they were &ldquo;not accepted as evidence of official State action.&rdquo;
+        <span class="j6-src">Source: <a href="https://www.archives.gov/foia/2020-presidential-election-unofficial-certificates" target="_blank" rel="noopener">National Archives, 2020 unofficial certificates (the documents themselves)</a></span></li>
+    </ul>
+
+    <h2 class="j6-h">What Trump said that day</h2>
+    <ul class="j6-list">
+      <li>At the rally before the attack: &ldquo;We fight like Hell and if you don&rsquo;t fight like Hell, you&rsquo;re not going to have a country anymore.&rdquo; In the same speech: &ldquo;marching over to the Capitol building to peacefully and patriotically make your voices heard.&rdquo;
+        <span class="j6-src">Source: <a href="https://www.justsecurity.org/91904/dissecting-trumps-peacefully-and-patriotically-defense-of-the-january-6th-attack/" target="_blank" rel="noopener">Just Security, quoting the speech</a></span></li>
+      <li>2:24 p.m., on Twitter, while rioters were inside: &ldquo;Mike Pence didn&rsquo;t have the courage to do what should have been done to protect our Country and our Constitution, giving States a chance to certify a corrected set of facts, not the fraudulent or inaccurate ones which they were asked to previously certify. USA demands the truth!&rdquo;
+        <span class="j6-src">Source: <a href="https://www.govinfo.gov/content/pkg/GPO-J6-REPORT/pdf/GPO-J6-REPORT-2-7.pdf" target="_blank" rel="noopener">House Select Committee final report, p. 595</a></span></li>
+      <li>4:17 p.m., in a video: &ldquo;We had an election that was stolen from us.&rdquo; Then: &ldquo;So go home. We love you. You&rsquo;re very special.&rdquo;
+        <span class="j6-src">Source: <a href="https://www.govinfo.gov/content/pkg/GPO-J6-REPORT/pdf/GPO-J6-REPORT-2-7.pdf" target="_blank" rel="noopener">House Select Committee final report, pp. 577&ndash;579</a></span></li>
+    </ul>
+
+    <h2 class="j6-h">Injuries, deaths and damage</h2>
+    <ul class="j6-list">
+      <li>More than 140 police officers were assaulted, according to the Justice Department.
+        <span class="j6-src">Source: <a href="https://www.cbsnews.com/news/trump-jan-6-pardons" target="_blank" rel="noopener">CBS News, citing the Justice Department, Jan. 2025</a></span></li>
+      <li>Capitol Police Officer Brian Sicknick collapsed at the Capitol that night and died the next evening. The D.C. medical examiner ruled the death natural, from strokes, and said &ldquo;all that transpired played a role in his condition.&rdquo;
+        <span class="j6-src">Source: <a href="https://www.cnbc.com/2021/04/19/brian-sicknick-died-of-natural-causes-after-capitol-riot-medical-examiner-rules.html" target="_blank" rel="noopener">CNBC, Apr. 19, 2021</a></span></li>
+      <li>Ashli Babbitt was shot and killed by a Capitol Police officer as she climbed through a broken door into the Speaker&rsquo;s Lobby. The Justice Department declined to charge the officer.
+        <span class="j6-src">Source: <a href="https://www.npr.org/2021/04/14/987425312/officer-cleared-in-the-shooting-of-ashli-babbitt-during-capitol-riot" target="_blank" rel="noopener">NPR, Apr. 14, 2021</a></span></li>
+      <li>Damage to the building and grounds exceeded $2.8 million, according to the Justice Department.
+        <span class="j6-src">Source: <a href="https://www.cbsnews.com/news/trump-jan-6-pardons" target="_blank" rel="noopener">CBS News, citing the Justice Department</a></span></li>
+    </ul>
+
+    <h2 class="j6-h">The prosecutions</h2>
+    <p class="j6-p">More than 1,600 people were charged. Ten were convicted by juries of seditious conspiracy, the most serious charge brought:</p>
+    <div class="j6-table-wrap" tabindex="0" role="region" aria-label="Seditious conspiracy convictions table; scrolls sideways on small screens">
+      <table class="j6-table">
+        <caption>Convicted by a jury of seditious conspiracy for January 6, 2021</caption>
+        <thead><tr><th scope="col">Name</th><th scope="col">Verdict</th><th scope="col">Sentence</th><th scope="col">Clemency, Jan. 20, 2025</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Stewart Rhodes<span class="j6-sub">Oath Keepers founder</span></th><td>Nov. 2022</td><td>18 years</td><td>Commuted</td></tr>
+          <tr><th scope="row">Kelly Meggs<span class="j6-sub">Oath Keepers</span></th><td>Nov. 2022</td><td>12 years</td><td>Commuted</td></tr>
+          <tr><th scope="row">Roberto Minuta<span class="j6-sub">Oath Keepers</span></th><td>Jan. 2023</td><td>4&frac12; years</td><td>Commuted</td></tr>
+          <tr><th scope="row">Joseph Hackett<span class="j6-sub">Oath Keepers</span></th><td>Jan. 2023</td><td>3&frac12; years</td><td>Commuted</td></tr>
+          <tr><th scope="row">David Moerschel<span class="j6-sub">Oath Keepers</span></th><td>Jan. 2023</td><td>3 years</td><td>Commuted</td></tr>
+          <tr><th scope="row">Edward Vallejo<span class="j6-sub">Oath Keepers</span></th><td>Jan. 2023</td><td>3 years</td><td>Commuted</td></tr>
+          <tr><th scope="row">Enrique Tarrio<span class="j6-sub">Proud Boys chairman</span></th><td>May 2023</td><td>22 years</td><td>Pardoned</td></tr>
+          <tr><th scope="row">Ethan Nordean<span class="j6-sub">Proud Boys</span></th><td>May 2023</td><td>18 years</td><td>Commuted</td></tr>
+          <tr><th scope="row">Joseph Biggs<span class="j6-sub">Proud Boys</span></th><td>May 2023</td><td>17 years</td><td>Commuted</td></tr>
+          <tr><th scope="row">Zachary Rehl<span class="j6-sub">Proud Boys</span></th><td>May 2023</td><td>15 years</td><td>Commuted</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="j6-src j6-src-block">Sources: <a href="https://www.cbsnews.com/news/seditious-conspiracy-verdict-today-oath-keepers-stewart-rhodes-2022-11-29/" target="_blank" rel="noopener">CBS News, Nov. 29, 2022 verdict</a> &middot; <a href="https://www.hstoday.us/subject-matter-areas/counterterrorism/oath-keepers-leaders-get-18-and-12-year-sentences-for-seditious-conspiracy-and-other-charges-related-to-u-s-capitol-breach/" target="_blank" rel="noopener">Justice Department release on Rhodes and Meggs (via HSToday)</a> &middot; <a href="https://spokesman.com/stories/2023/jun/02/four-oath-keepers-sentenced-for-jan-6-seditious-co" target="_blank" rel="noopener">AP, four Oath Keepers sentenced</a> &middot; <a href="https://www.npr.org/2023/09/05/1197202616/enrique-tarrio-proud-boys-jan-6-sentence" target="_blank" rel="noopener">NPR, Tarrio sentenced</a> &middot; <a href="https://cbsnews.com/news/proud-boys-jan-6-joseph-biggs-sentenced-seditious-conspiracy" target="_blank" rel="noopener">CBS News, Biggs and Rehl sentenced</a> &middot; <a href="https://www.cbsnews.com/news/trump-jan-6-pardons" target="_blank" rel="noopener">CBS News, charges filed</a></p>
+    <ul class="j6-list">
+      <li>On January 20, 2025, President Trump commuted the sentences of 14 people convicted in January 6 cases, including nine of the ten above, and gave &ldquo;a full, complete and unconditional pardon&rdquo; to everyone else convicted of offenses related to that day. He directed the Justice Department to dismiss all pending cases.
+        <span class="j6-src">Source: <a href="https://www.govinfo.gov/content/pkg/DCPD-202500112/html/DCPD-202500112.htm" target="_blank" rel="noopener">Presidential proclamation, Jan. 20, 2025</a></span></li>
+    </ul>
+
+    <h2 class="j6-h">What official bodies found about Trump&rsquo;s role</h2>
+    <ul class="j6-list">
+      <li>The House impeached Trump for &ldquo;incitement of insurrection&rdquo; on January 13, 2021, 232&ndash;197. Ten Republicans voted yes.
+        <span class="j6-src">Source: <a href="https://clerk.house.gov/evs/2021/roll017" target="_blank" rel="noopener">House roll call 17</a></span></li>
+      <li>The Senate voted 57&ndash;43 to convict on February 13, 2021. Conviction needed 67. Seven Republicans voted guilty: Burr, Cassidy, Collins, Murkowski, Romney, Sasse and Toomey.
+        <span class="j6-src">Source: <a href="https://www.senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00059.htm" target="_blank" rel="noopener">Senate roll call 59</a></span></li>
+      <li>The House Select Committee&rsquo;s final report, December 2022: &ldquo;The central cause of January 6th was one man, former President Donald Trump, who many others followed.&rdquo; The committee referred Trump to the Justice Department for obstruction of an official proceeding, conspiracy to defraud the United States, conspiracy to make a false statement, and inciting, assisting or aiding an insurrection.
+        <span class="j6-src">Source: <a href="https://www.pbs.org/newshour/politics/jan-6-panel-releases-final-report-alleges-trump-engaged-in-conspiracy-to-overturn-election" target="_blank" rel="noopener">PBS NewsHour, Dec. 2022</a> &middot; <a href="https://www.goodmorningamerica.com/news/live-updates/jan6-committee-meeting-live-updates-95423616/committee-approves-four-criminal-referrals-for-trump-95555295" target="_blank" rel="noopener">ABC News, referrals, Dec. 19, 2022</a></span></li>
+      <li>Special Counsel Jack Smith&rsquo;s federal election case against Trump was dismissed after Trump won the 2024 election. Smith&rsquo;s final report says &ldquo;the admissible evidence was sufficient to obtain and sustain a conviction at trial.&rdquo;
+        <span class="j6-src">Source: <a href="https://www.axios.com/2025/01/14/trump-jan-6-report-jack-smith" target="_blank" rel="noopener">Axios, Jan. 14, 2025</a></span></li>
+      <li>The Colorado Supreme Court held that Trump engaged in insurrection and removed him from the state&rsquo;s ballot. The U.S. Supreme Court reversed on March 4, 2024, ruling that only Congress can enforce that clause against federal candidates. It did not decide whether he engaged in insurrection.
+        <span class="j6-src">Source: <a href="https://www.supremecourt.gov/opinions/23pdf/23-719_19m2.pdf" target="_blank" rel="noopener">Trump v. Anderson, U.S. Supreme Court</a></span></li>
+    </ul>
+
+    <h2 class="j6-h">Claims about the 2020 election, and what the record shows</h2>
+    <div class="j6-table-wrap" tabindex="0" role="region" aria-label="Claims and findings table; scrolls sideways on small screens">
+      <table class="j6-table j6-claims">
+        <caption>Each finding links to its source</caption>
+        <thead><tr><th scope="col">Claim</th><th scope="col">What the record shows</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">The vice president could reject electoral votes.</th>
+              <td>Pence said his oath kept him from claiming that power. Congress then passed the Electoral Count Reform Act, which calls the vice president&rsquo;s role &ldquo;solely ministerial.&rdquo;
+                <span class="j6-src"><a href="https://www.cbsnews.com/amp/news/read-pence-letter-saying-he-lacks-authority-to-decide-election/" target="_blank" rel="noopener">CBS News</a> &middot; <a href="https://www.collins.senate.gov/download/one-pager-on-electoral-count-reform-act-of-2022?download=1" target="_blank" rel="noopener">Sen. Collins, Act summary</a></span></td></tr>
+          <tr><th scope="row">Voting machines changed votes.</th>
+              <td>Georgia hand-counted about 5 million paper ballots and confirmed the machine count. Fox News paid Dominion Voting Systems $787.5 million to settle its defamation suit and acknowledged &ldquo;the court&rsquo;s rulings finding certain claims about Dominion to be false.&rdquo;
+                <span class="j6-src"><a href="https://gpb.org/news/2020/12/07/georgia-recertifies-biden-victory-officials-reject-disinformation" target="_blank" rel="noopener">Georgia Public Broadcasting</a> &middot; <a href="https://www.pbs.org/newshour/show/fox-news-to-pay-787m-settlement-to-dominion-voting-systems-over-stolen-election-lies" target="_blank" rel="noopener">PBS NewsHour, Apr. 18, 2023</a></span></td></tr>
+          <tr><th scope="row">Georgia election workers committed ballot fraud.</th>
+              <td>A federal judge found Rudy Giuliani liable for defaming election workers Ruby Freeman and Shaye Moss. A jury ordered him to pay them $148 million.
+                <span class="j6-src"><a href="https://www.axios.com/2023/12/15/rudy-giuliani-georgia-damages-trial-election-workers" target="_blank" rel="noopener">Axios, Dec. 15, 2023</a></span></td></tr>
+          <tr><th scope="row">The election was stolen.</th>
+              <td>Every state certified. Recounts and reviews in Georgia, Wisconsin, Arizona and Michigan confirmed the result. Trump&rsquo;s side won one of 64 court cases, and that one involved too few votes to change anything. <a href="#confirmed-2020" class="j6-inline">See how the 2020 result was confirmed</a>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="j6-rule"><strong>Naming rule.</strong> A person is named on this page only if a jury convicted them or a court found them liable. Being charged, accused, named in a document or criticized is not enough.</p>
+
+  </div>
+</section>
+
+
+<section class="argument" id="argument" role="main" aria-labelledby="argTitle">
   <div class="arg-inner">
 
-    <p class="arg-label">The record ends here. What follows is this site&rsquo;s argument.</p>
-    <h2 id="argTitle">One person, one vote &mdash; except for president</h2>
-    <p class="arg-lede">Everything above is the documentary record: official certificates, verifiable, taking no side. This section is the author&rsquo;s position. It is kept separate so you can use the record without adopting the argument.</p>
+    <p class="arg-back"><a href="#record" class="arg-back-link">&larr; Back to the record</a></p>
+    <p class="arg-label">This page is the author&rsquo;s argument. It is not part of the record.</p>
+    <h1 id="argTitle" tabindex="-1">One person, one vote &mdash; except for president</h1>
+    <p class="arg-lede">The record &mdash; the main page of this site &mdash; is official certificates, verifiable, taking no side. This page is the author&rsquo;s position. It is kept on its own page so you can use the record without adopting the argument.</p>
 
-    <h3 class="arg-h">Three things the record shows</h3>
+    <h2 class="arg-h">Three things the record shows</h2>
 
     <div class="arg-point">
       <span class="arg-num">1</span>
       <div>
-        <h4>Your vote weighs more or less depending on where you live</h4>
+        <h3>Your vote weighs more or less depending on where you live</h3>
         <p>Electoral votes are not handed out in proportion to people. Every state gets two regardless of size &mdash; the same bonus for Wyoming as for California. Divide each state&rsquo;s population by its electoral votes and the gap is plain:</p>
         <table class="arg-table" id="weightTable">
           <caption>Residents per electoral vote, 2020 Census. Fewer residents per electoral vote means each resident carries more weight.</caption>
@@ -869,22 +1066,22 @@ window.topojson = (function(){
     <div class="arg-point">
       <span class="arg-num">2</span>
       <div>
-        <h4>Twice this century, the candidate with fewer votes won</h4>
-        <p>In 2000, Al Gore received 50,999,897 votes to George W. Bush&rsquo;s 50,456,002 &mdash; and Bush became president. In 2016, Hillary Clinton received 65,853,514 to Donald Trump&rsquo;s 62,984,828 &mdash; and Trump became president. Both results followed the rules exactly. That is the point: the rules permit it. Slide the timeline above to either year and the record shows it.</p>
+        <h3>Twice this century, the candidate with fewer votes won</h3>
+        <p>In 2000, Al Gore received 50,999,897 votes to George W. Bush&rsquo;s 50,456,002 &mdash; and Bush became president. In 2016, Hillary Clinton received 65,853,514 to Donald Trump&rsquo;s 62,984,828 &mdash; and Trump became president. Both results followed the rules exactly. That is the point: the rules permit it. Open either year on <a href="#record" class="arg-inline-link">the record&rsquo;s timeline</a> and it shows the same thing.</p>
       </div>
     </div>
 
     <div class="arg-point">
       <span class="arg-num">3</span>
       <div>
-        <h4>538 people cast the actual votes, and the rules binding them are not the same everywhere</h4>
+        <h3>538 people cast the actual votes, and the rules binding them are not the same everywhere</h3>
         <p>The president is not chosen by the national count. It is chosen by 538 individuals, named above, selected by state parties rather than elected by name. In <em>Chiafalo v. Washington</em> (2020) the Supreme Court held unanimously that a state <strong>may</strong> enforce an elector&rsquo;s pledge. It did not hold that a state <strong>must</strong>.</p>
         <p>So the protection varies. Some states cancel a faithless vote and seat a replacement &mdash; Colorado did exactly that to Micheal Baca in 2016, and his vote never counted. Some impose a fine and let the vote stand, which is what Washington did to four of its electors the same year. Some have no penalty at all. Which of those applies to you depends on your state, and most voters have never had reason to find out.</p>
         <p>No faithless elector has ever changed a presidential outcome. The seven in 2016 changed nothing. But seven is not far from the margin of a close election, and the rules governing them were written state by state, for a system nobody expected to be tested.</p>
       </div>
     </div>
 
-    <h3 class="arg-h">A fix that needs no amendment</h3>
+    <h2 class="arg-h">A fix that needs no amendment</h2>
     <p>Amending the Constitution requires two-thirds of Congress and three-quarters of the states. The <strong>National Popular Vote Interstate Compact</strong> takes a different route. Article II leaves it to each state to decide how it appoints its electors. Member states agree to award theirs to whoever wins the most votes nationwide &mdash; and the agreement only takes effect once members hold at least 270 electoral votes, enough to decide the outcome. Until then, nothing changes.</p>
 
     <div class="npvic-meter">
@@ -900,7 +1097,7 @@ window.topojson = (function(){
       <div id="npvicYourState" class="npvic-state"></div>
     </div>
 
-    <h3 class="arg-h">The case against &mdash; stated fairly</h3>
+    <h2 class="arg-h">The case against &mdash; stated fairly</h2>
     <p>If you are going to repeat the argument above, you should know what people say back. These are real objections, not strawmen:</p>
     <ul class="arg-against">
       <li><strong>It may need Congress.</strong> The Constitution&rsquo;s Compact Clause requires congressional consent for certain agreements between states. Whether this one qualifies has never been tested in court. A legal challenge on the eve of an election is a genuine risk.</li>
@@ -910,9 +1107,9 @@ window.topojson = (function(){
     </ul>
     <p class="arg-small">Supporters answer each of these. The point of listing them is that you should be able to.</p>
 
-    <h3 class="arg-h">What you can actually do</h3>
+    <h2 class="arg-h">What you can actually do</h2>
     <ol class="arg-actions">
-      <li><strong>Find out where your state stands.</strong> Select your state on the map above. The panel names your electors and shows what a vote there is worth. The meter above shows whether your state has joined the compact.</li>
+      <li><strong>Find out where your state stands.</strong> Select your state on <a href="#record" class="arg-inline-link">the record&rsquo;s map</a>. The panel there names your electors. Come back here and the box under the meter shows whether your state has joined the compact.</li>
       <li><strong>Write to your state legislator, not Congress.</strong> This is decided in state legislatures. Your state representative and state senator vote on it; your member of Congress does not.</li>
       <li><strong>Ask one specific question.</strong> Most offices will have to look it up — that is the point.
         <blockquote class="the-question" id="theQuestion">Does our state legally bind its presidential electors to the statewide vote result, and what happens if an elector breaks that pledge?</blockquote>
@@ -926,7 +1123,7 @@ window.topojson = (function(){
     </ol>
 
     <div class="arg-share">
-      <button class="share-btn" id="copyLinkBtn">Copy link to this page</button>
+      <button class="share-btn" id="copyLinkBtn">Copy link to the record</button>
       <span class="share-status" id="shareStatus" role="status"></span>
     </div>
 
@@ -934,7 +1131,7 @@ window.topojson = (function(){
 </section>
 
 
-<section class="method" id="methodology" aria-labelledby="methodTitle">
+<section class="method record-only" id="methodology" aria-labelledby="methodTitle">
   <div class="method-inner">
 
     <p class="method-kicker">Back to the record</p>
@@ -952,12 +1149,16 @@ window.topojson = (function(){
           <dd><strong>Certificates of Vote</strong>, signed by the electors after they met on December 17, 2024. Linked from each state panel alongside the ascertainment.</dd>
           <dt>State outcomes and electoral vote counts</dt>
           <dd>Certified state results, cross-checked against the National Archives&rsquo; published totals for each election year.</dd>
+          <dt>National popular vote</dt>
+          <dd>The Federal Election Commission&rsquo;s official compilation of each state&rsquo;s certified results, for every year from 2000 to 2024. The FEC document for the year on screen is linked under the two counts at the top of the page.</dd>
           <dt>Population and vote weight</dt>
           <dd>2020 Census resident population &mdash; the same count that produced the current apportionment. <a href="https://www.census.gov/data/tables/2020/dec/2020-apportionment-data.html" target="_blank" rel="noopener">U.S. Census Bureau, 2020 Apportionment, Table 2</a></dd>
           <dt>Faithless electors</dt>
           <dd>Contemporaneous reporting and court records, including <em>Chiafalo v. Washington</em> (2020) and <em>Baca v. Colorado Department of State</em> (2020).</dd>
+          <dt>January 6, 2021 page</dt>
+          <dd>Congressional roll calls, court rulings, the National Archives, the House select committee&rsquo;s final report and the January 20, 2025 clemency proclamation, plus news reports of official findings. Every line links to its source. A person is named there only if a jury convicted them or a court found them liable.</dd>
           <dt>Compact status</dt>
-          <dd>State enactments of the National Popular Vote Interstate Compact as reported through April 2026.</dd>
+          <dd>State enactments of the National Popular Vote Interstate Compact, current as of November 5, 2026. The most recent was Virginia, signed April 13, 2026. <a href="https://www.ncsl.org/elections-and-campaigns/national-popular-vote" target="_blank" rel="noopener">National Conference of State Legislatures, National Popular Vote</a></dd>
         </dl>
       </div>
 
@@ -985,8 +1186,8 @@ window.topojson = (function(){
         <ul class="method-rules">
           <li><strong>Two rosters were transcribed by eye.</strong> Massachusetts and New Hampshire file their certificates in engraved script that machine text extraction cannot read. Those 15 names were read from the scanned image by a human and checked against the vote counts. They carry a different kind of risk than the rest &mdash; transcription error rather than extraction error.</li>
           <li><strong>Unusual surnames carry some extraction risk.</strong> Names were pulled from each PDF&rsquo;s text layer. Characters such as rn/m and I/l can be misread. Every panel links to the certificate so any name can be checked at the source.</li>
-          <li><strong>Elector names exist for 2024 only.</strong> The 2000&ndash;2020 elections show state outcomes, electoral vote counts, popular vote and faithless electors, but not full rosters. Those certificates are public and linked; they have not been read in yet.</li>
-          <li><strong>National popular vote totals should be re-verified before publication.</strong> They are widely published figures, not read off a primary canvass document like the rest of this site.</li>
+          <li><strong>Elector names are complete for 2024 and partial for 2020.</strong> 2020 has 48 of 51 jurisdictions loaded (512 of 538 electors), each checked against its electoral vote count. The 2000&ndash;2016 elections show state outcomes, electoral vote counts, popular vote and faithless electors, but not full rosters. Those certificates are public and linked; they have not been read in yet.</li>
+          <li><strong>Some 2020 certificates have damaged text layers.</strong> Where the machine-readable text garbles a name, the panel says so and names the document used to confirm it, usually the signed Certificate of Vote.</li>
           <li><strong>State-by-state popular vote counts are not included.</strong></li>
           <li><strong>Elections before 2000 are not included.</strong> Before 1824 most states had no popular vote at all, so the popular-versus-electoral comparison this site is built around does not exist for the early republic.</li>
         </ul>
@@ -1036,22 +1237,22 @@ window.topojson = (function(){
         <h3>Corrections</h3>
         <p>If a name here does not match the certificate it is drawn from, that is an error and it will be fixed. Point to the state, the name, and the certificate.</p>
         <p class="contact-slot"><strong>Contact:</strong> <span id="contactSlot">hello@theelectoralrecord.org</span></p>
-        <p class="method-small">Last reviewed: (10/23/26)<span id="lastReviewed"></span>. Record covers the 2000 through 2024 presidential elections; elector names complete for 2024.</p>
+        <p class="method-small">Last reviewed: November 5, 2026. Record covers the 2000 through 2024 presidential elections; elector names complete for 2024, and for 48 of 51 jurisdictions in 2020.</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
+<footer class="site-footer record-only">
   <h2>What this archive contains &mdash; and what it doesn't</h2>
   <p><strong>Fully sourced right now:</strong> for all seven elections from 2000 through 2024, the winning ticket and electoral vote count in every state and D.C.; the national popular vote; and the difference between electors <em>pledged</em> and electors' votes <em>actually cast</em>, including every faithless elector and abstention.</p>
-  <p><strong>Elector names:</strong> 2024 is complete. All 51 jurisdictions are loaded, naming every one of the 538 people who cast an electoral vote. Each roster was read off that jurisdiction's Certificate of Ascertainment and checked against its electoral vote count. Where a state filed an amended certificate, or replaced an elector before appointment, the final appointed list is used. Maine and Nebraska award electors by congressional district, so their electors came from two different party slates; each is shown with their own party and district. Certificates list the losing parties' slates too; those people were never appointed and are not shown. Several certificates print electors' home addresses, cities or towns; those are deliberately not reproduced here. Massachusetts and New Hampshire are engraved in decorative script that machine reading cannot decipher, so their names were transcribed by eye from the scanned certificates. Nothing here is estimated — a name appears only after being read off the certificate, and every certificate is linked from its panel.</p>
+  <p><strong>Elector names:</strong> 2020 is in progress: 48 of 51 jurisdictions, 512 of 538 electors, each read off its Certificate of Ascertainment and checked against its electoral vote count. 2024 is complete. All 51 jurisdictions are loaded, naming every one of the 538 people who cast an electoral vote. Each roster was read off that jurisdiction's Certificate of Ascertainment and checked against its electoral vote count. Where a state filed an amended certificate, or replaced an elector before appointment, the final appointed list is used. Maine and Nebraska award electors by congressional district, so their electors came from two different party slates; each is shown with their own party and district. Certificates list the losing parties' slates too; those people were never appointed and are not shown. Several certificates print electors' home addresses, cities or towns; those are deliberately not reproduced here. Massachusetts and New Hampshire are engraved in decorative script that machine reading cannot decipher, so their names were transcribed by eye from the scanned certificates. Nothing here is estimated — a name appears only after being read off the certificate, and every certificate is linked from its panel.</p>
   <p><strong>Not here yet:</strong> elections before 2000; state-by-state popular vote counts; voter registration by party. Nothing on this site is estimated or filled in by guesswork &mdash; if a number isn't sourced, it isn't shown.</p>
   <ul>
     <li>Electoral votes and state outcomes: certified state results, cross-checked against the National Archives' Electoral College records for each year.</li>
     <li>Elector rosters: NARA Certificates of Vote and Certificates of Ascertainment.</li>
-    <li>National popular vote: commonly published certified totals; these should be re-verified against official state canvasses before citation in published work.</li>
+    <li>National popular vote: the Federal Election Commission&rsquo;s official compilation of each state&rsquo;s certified results.</li>
   </ul>
 </footer>
 
@@ -1192,7 +1393,7 @@ const ELECTIONS = {
     cast:{R:232,D:306},
     castOther:[],
     castNote:"Every elector voted as pledged. The electoral count matched the state-by-state results exactly.",
-    popular:{R:{v:74223975,p:46.8},D:{v:81283501,p:51.3}},
+    popular:{R:{v:74216154,p:46.9},D:{v:81268924,p:51.3}},
     popularWinner:"D", evWinner:"D",
     r:sp("AL AK AR FL ID IN IA KS KY LA MS MO MT NC ND OH OK SC SD TN TX UT WV WY"),
     d:sp("AZ CA CO CT DE DC GA HI IL MD MA MI MN NV NH NJ NM NY OR PA RI VT VA WA WI"),
@@ -1200,7 +1401,33 @@ const ELECTIONS = {
       ME:{R:1,D:3,note:"Statewide vote and the 1st district went to Biden (3 electoral votes). The 2nd district went to Trump (1 electoral vote)."},
       NE:{R:4,D:1,note:"Statewide vote and the 1st and 3rd districts went to Trump (4 electoral votes). The 2nd district went to Biden (1 electoral vote)."}
     },
-    stateNotes:{}
+    stateNotes:{},
+    /* How the result was confirmed. Every line is a documented event with a linked source. */
+    confirmed:[
+      { t:"Every state and D.C. certified its result, and each governor signed a Certificate of Ascertainment naming the state’s electors.",
+        src:[{label:"National Archives, 2020 Electoral College", url:"https://www.archives.gov/electoral-college/2020"}] },
+      { t:"Congress counted the electoral votes on January 6–7, 2021. Objections to Arizona’s and Pennsylvania’s votes failed: 6–93 and 7–92 in the Senate, 121–303 and 138–282 in the House.",
+        src:[{label:"Congressional Record, Senate, Jan. 6, 2021", url:"https://govinfo.gov/content/pkg/CREC-2021-01-06/html/CREC-2021-01-06-pt1-PgD22.htm"},
+             {label:"House roll call 10", url:"https://clerk.house.gov/evs/2021/roll010"},
+             {label:"House roll call 11", url:"https://clerk.house.gov/evs/2021/roll011"}] },
+      { t:"Georgia counted all of its roughly 5 million presidential ballots by hand, and the hand count confirmed Biden’s win. A machine recount requested by the Trump campaign confirmed it again, and the state recertified the result.",
+        src:[{label:"Georgia Secretary of State, Nov. 19, 2020", url:"https://sos.ga.gov/news/historic-first-statewide-audit-paper-ballots-upholds-result-presidential-race"},
+             {label:"Georgia Public Broadcasting, Dec. 7, 2020", url:"https://gpb.org/news/2020/12/07/georgia-recertifies-biden-victory-officials-reject-disinformation"}] },
+      { t:"Wisconsin recounted Milwaukee and Dane counties at the Trump campaign’s request and expense. Biden’s statewide margin grew by 87 votes.",
+        src:[{label:"NPR, Nov. 2020", url:"https://www.npr.org/2020/11/28/939645865/biden-gains-votes-in-recount-of-milwaukee-county-requested-by-trump"},
+             {label:"Wisconsin Elections Commission, recount costs", url:"https://elections.wi.gov/final-recount-costs-and-refund-2020-presidential-recount"}] },
+      { t:"Arizona’s Republican-led state Senate hired the firm Cyber Ninjas to review Maricopa County’s ballots. Its hand count found 99 more votes for Biden and 261 fewer for Trump than the official count.",
+        src:[{label:"NPR, Sept. 24, 2021", url:"https://www.npr.org/2021/09/24/1040327483/the-controversial-election-review-in-arizona-confirms-bidens-win"}] },
+      { t:"Michigan’s Republican-led Senate Oversight Committee reported: “This Committee found no evidence of widespread or systematic fraud in Michigan’s prosecution of the 2020 election.”",
+        src:[{label:"CBS News, June 2021", url:"https://www.cbsnews.com/news/michigan-senate-no-election-fraud-2020/"}] },
+      { t:"Trump and his supporters filed 64 court cases in the six contested states. They prevailed in one, which involved too few votes to change the result. The U.S. Supreme Court refused to hear Texas’s suit against Georgia, Michigan, Pennsylvania and Wisconsin, ruling that Texas lacked standing.",
+        src:[{label:"Lost, Not Stolen (2022), a review by Republican former senators, judges and officials", url:"https://law.stanford.edu/stanford-lawyer/articles/lost-not-stolen/"},
+             {label:"U.S. Supreme Court order, Dec. 11, 2020", url:"https://www.supremecourt.gov/orders/courtorders/121120zr_p860.pdf"}] },
+      { t:"The federal, state and industry councils that oversee election security, Nov. 12, 2020: “The November 3rd election was the most secure in American history.” “There is no evidence that any voting system deleted or lost votes, changed votes, or was in any way compromised.”",
+        src:[{label:"Joint statement, Election Infrastructure Government and Sector Coordinating Councils", url:"https://www.nased.org/news/jointstatement111220"}] },
+      { t:"Attorney General William Barr, Dec. 1, 2020: “To date, we have not seen fraud on a scale that could have affected a different outcome in the election.”",
+        src:[{label:"Associated Press, via KSL", url:"https://www.ksl.com/article/50059111/barr-no-evidence-of-fraud-thatd-change-election-outcome"}] }
+    ]
   },
   2024:{
     era:"e2020",
@@ -1210,7 +1437,7 @@ const ELECTIONS = {
     cast:{R:312,D:226},
     castOther:[],
     castNote:"Every elector voted as pledged. The electoral count matched the state-by-state results exactly.",
-    popular:{R:{v:77303569,p:49.8},D:{v:75009233,p:48.3}},
+    popular:{R:{v:77302580,p:49.8},D:{v:75017613,p:48.3}},
     popularWinner:"R", evWinner:"R",
     r:sp("AL AK AZ AR FL GA ID IN IA KS KY LA MI MS MO MT NV NC ND OH OK PA SC SD TN TX UT WV WI WY"),
     d:sp("CA CO CT DE DC HI IL MD MA MN NH NJ NM NY OR RI VT VA WA"),
@@ -1371,6 +1598,250 @@ let yearMap = buildYear(currentYear);
    Keyed by year, then FIPS. Only entries present here are shown as verified. */
 const ELECTORS = {
   2020:{
+    "23":{
+      ticket:"Split \u2014 3 pledged to Biden / Harris, 1 to Trump / Pence",
+      mixed:true,
+      names:[
+        {n:"Jay Philbrick",t:"D",seat:"1st Congressional District"},
+        {n:"David Bright",t:"D",seat:"At-large"},
+        {n:"Shenna Bellows",t:"D",seat:"At-large"},
+        {n:"Peter LaVerdiere",t:"R",seat:"2nd Congressional District"}
+      ],
+      source:"Certificate of Ascertainment, State of Maine, Nov. 23, 2020. Maine awards electors by congressional district, so its four electors came from two different party slates.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-maine.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-maine.pdf"
+    },
+    "31":{
+      ticket:"Split \u2014 4 pledged to Trump / Pence, 1 to Biden / Harris",
+      mixed:true,
+      names:[
+        {n:"Darlene Starman",t:"R",seat:"At-large"},
+        {n:"Steve Nelson",t:"R",seat:"At-large"},
+        {n:"George Olmer",t:"R",seat:"1st Congressional District"},
+        {n:"Teresa Ibach",t:"R",seat:"3rd Congressional District"},
+        {n:"Precious McKesson",t:"D",seat:"2nd Congressional District"}
+      ],
+      source:"Certificate of Ascertainment, State of Nebraska, issued by Gov. Pete Ricketts and Secretary of State Robert B. Evnen, Nov. 30, 2020. Nebraska awards electors by congressional district, so its five electors came from two different party slates. The certificate lists every party\u2019s slate by seat; the Republican nominee for the 2nd District, Mark Quandahl, was not appointed because that district went to Biden.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-nebraska.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-nebraska.pdf"
+    },
+    "09":{
+      ticket:"Biden / Harris (D)",
+      names:["Susan Barrett","William Smith","John Kalamarides","Myrna Watanabe","Dana Barcellos-Allen","Anthony Attanasio","Dominic F. Balletto, Jr."],
+      source:"Certificate of Ascertainment, State of Connecticut, signed by Gov. Ned Lamont, Nov. 25, 2020. The certificate identifies the appointed slate by its vote total rather than by candidate.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-connecticut.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-connecticut.pdf"
+    },
+    "08":{
+      ticket:"Biden / Harris (D)",
+      names:["Anita Lynch","Jerad Sutton","Judith Ingelido","Bryan Hartmann","Ann Knollman","Victoria Marquesen","Susan McFaddin","Polly Baca","Alan Kennedy"],
+      source:"Certificate of Ascertainment, State of Colorado, signed by Secretary of State Jena Griswold, Dec. 8, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-colorado.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-colorado.pdf"
+    },
+    "40":{
+      ticket:"Trump / Pence (R)",
+      names:["Ronda Vuillemont-Smith","Lonnie Lu Anderson","Chris Martin","Steve Fair","Linda Huggard","A.J Ferate","Carolyn McLarty"],
+      source:"Certificate of Ascertainment, State of Oklahoma, signed by Gov. J. Kevin Stitt, Dec. 9, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-oklahoma.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-oklahoma.pdf"
+    },
+    "01":{
+      ticket:"Trump / Pence (R)",
+      names:["Dennis H. Beavers","John Wahl","Jacquelyn Gay","Jeana S. Boggs","Joseph R. Fuller","John H. Killian","J. Elbert Peters","Joan Reynolds","Rick Pate"],
+      source:"Certificate of Ascertainment, State of Alabama, signed by Gov. Kay Ivey and attested by Secretary of State John Merrill, Nov. 24, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-alabama.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-alabama.pdf"
+    },
+    "45":{
+      ticket:"Trump / Pence (R)",
+      names:["Sandra H. Bryan","JoAnn H. Burroughs","Cindy Costa","Terry Hardesty","Suzette Jordan","Gerri McDaniel","Drew McKissick","Brandon M. Newton","James S. Ulmer, Jr."],
+      source:"Certificate of Ascertainment, State of South Carolina, signed by Gov. Henry McMaster and Secretary of State Mark Hammond, Dec. 2, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-south-carolina.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-south-carolina.pdf"
+    },
+    "21":{
+      ticket:"Trump / Pence (R)",
+      names:["Carol Rogers","Ellen C. Williams","Richard J. Grana","Earl Bush","Laura LaRue","Bob M. Hutchison","Jack L. Richardson, IV","Ken Kearns, II"],
+      source:"Certificate of Ascertainment, Commonwealth of Kentucky, signed by Gov. Andy Beshear and Secretary of State Michael G. Adams, Nov. 20, 2020. Its text layer reads \u201cLauraLaRue\u201d and \u201cKeams\u201d; the signed Certificate of Vote prints Laura LaRue and Ken Kearns, II.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-kentucky.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-kentucky.pdf"
+    },
+    "22":{
+      ticket:"Trump / Pence (R)",
+      names:["Louis \u201cWoody\u201d Jenkins","Vinson J. Serio","Eric F. Skrmetta","Robert C. Monti","Ross Little, Jr.","Rodney Michael Collier","Kay Kellogg Katz","Beth A. Billings"],
+      source:"Certificate of Ascertainment, State of Louisiana, certified by Gov. John Bel Edwards, Nov. 19, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-louisiana.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-louisiana.pdf"
+    },
+    "24":{
+      ticket:"Biden / Harris (D)",
+      names:["Corynne B. Courpas","Thelma T. Daley","Gloria Lawlah","Patrick J. Hunt","Peter E. Perini","Kathleen Matthews","Kent Roberson","Sheree Sample-Hughes","Catalina Rodriguez Lima","Sachidanand Hebbar"],
+      source:"Certificate of Ascertainment, State of Maryland, signed by Gov. Larry Hogan and Secretary of State John C. Wobensmith, Dec. 14, 2020. Its text layer splits one surname as \u201cHeb bar\u201d; the signed Certificate of Vote prints Hebbar.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-maryland.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-maryland.pdf"
+    },
+    "27":{
+      ticket:"Biden / Harris (D)",
+      names:["Mark Liebow","Roxanne Mindeman","Cheryl Poling","Diana Tastad-Damer","Travis Thompson","Melvin Aanerud","Nancy Larson","Joel Heller","Nausheena Hussain","Muhammad Abdurrahman"],
+      source:"Certificate of Ascertainment, State of Minnesota, signed by Gov. Tim Walz and attested by Secretary of State Steve Simon, Dec. 2, 2020. Its text layer reads \u201cMarkLiebow\u201d and \u201cAbdurrabman\u201d; the signed Certificate of Vote prints Muhammad Abdurrahman.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-minnesota.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-minnesota.pdf"
+    },
+    "29":{
+      ticket:"Trump / Pence (R)",
+      names:["Maureen O\u2019Gorman","Penny L Henke","Sherry Kuttenkuler","William G. (Bill) Kartsonis","Dan Wesley Hall","Daniel Jay Hegeman","Ronald F. Richard","Michael W. Homeyer","Susan E. Eckelkamp","Glen Robert Kolkmeyer"],
+      source:"Certificate of Ascertainment, State of Missouri, signed by Gov. Michael L. Parson, December 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-missouri.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-missouri.pdf"
+    },
+    "47":{
+      ticket:"Trump / Pence (R)",
+      names:["Paul Chapman","Cindy Hatcher","Tina Benkiser","John Stanbery","Beverly Knight-Hurley","Mary Ann Parks","Jim Looney","Kathy Bryson","Terry Roland","Scott Smith","Julia Atchley-Pace"],
+      source:"Certificate of Ascertainment, State of Tennessee, issued by Gov. Bill Lee, Dec. 2, 2020. The certificate lists one elector as \u201cDr. John Stanbery\u201d; the title is omitted here.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-tennessee.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-tennessee.pdf"
+    },
+    "04":{
+      ticket:"Biden / Harris (D)",
+      names:["Steve Gallardo","Luis Alberto Heredia","Constance Jackson","Sandra D. Kennedy","Stephen Roe Lewis","James McLaughlin","Jonathan Nez","Ned Norris","Regina Romero","Felecia Rotellini","Fred Yamashita"],
+      source:"Certificate of Ascertainment, State of Arizona, signed by Gov. Douglas A. Ducey and Secretary of State Katie Hobbs, Nov. 30, 2020. The certificate lists electors surname first; they appear here first name first.",
+      sourceUrl:"https://www.archives.gov/files/ascertainment-arizona.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-arizona.pdf"
+    },
+    "55":{
+      ticket:"Biden / Harris (D)",
+      names:["Meg Andrietsch","Shelia Stubbs","Ronald Martin","Mandela Barnes","Khary Penebaker","Mary Arnold","Patty Schachtner","Shannon Holsey","Tony Evers","Benjamin Wikler"],
+      source:"Certificate of Ascertainment, State of Wisconsin, signed by Gov. Tony Evers, Nov. 30, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-wisconsin.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-wisconsin.pdf"
+    },
+    "32":{
+      ticket:"Biden / Harris (D)",
+      names:["Artemisa Blanco","Yvanna Cancela","Gabrielle d\u2019Ayr","Sarah Mahler","Joseph Throneberry","Judith Whitmer"],
+      source:"Certificate of Ascertainment, State of Nevada, signed by Gov. Steve Sisolak, Dec. 2, 2020. The certificate prints these names in capitals; they appear here in ordinary case. Its text layer reads \u201cYV ANNA,\u201d \u201cD\u2019 AYR\u201d and \u201cWIDTMER\u201d; the signed Certificate of Vote confirms Whitmer.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-nevada.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-nevada.pdf"
+    },
+    "35":{
+      ticket:"Biden / Harris (D)",
+      names:["Vincent Alvarado","Brianna Gallegos","Stephanie Thomas","Aleta Suazo","Ben Salazar"],
+      source:"Certificate of Ascertainment, State of New Mexico, signed by Gov. Michelle Lujan Grisham, Nov. 24, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-new-mexico.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-new-mexico.pdf"
+    },
+    "10":{
+      ticket:"Biden / Harris (D)",
+      names:["Marla Blunt-Carter","John Daniello","Marie Mayor"],
+      source:"Certificate of Ascertainment, State of Delaware, signed by Gov. John C. Carney, Nov. 18, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-delaware.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-delaware.pdf"
+    },
+    "11":{
+      ticket:"Biden / Harris (D)",
+      names:["Meedie L. Bardonille","Barbara A. Helmick","Jacqueline Thompson-Echavarria"],
+      source:"Certificate of Ascertainment, District of Columbia, signed by Mayor Muriel Bowser and attested by Secretary Kimberly Bassett, Dec. 9, 2020. A second certificate dated Dec. 14, 2020, names the same three electors.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-washington-dc.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-washington-dc.pdf"
+    },
+    "50":{
+      ticket:"Biden / Harris (D)",
+      names:["Terje Anderson","Linda V. Gravell","Kesha Ram"],
+      source:"Certificate of Ascertainment, State of Vermont, issued by the Governor and signed by the Secretary of Civil and Military Affairs, Dec. 4, 2020. The certificate lists each elector\u2019s town; towns are omitted here.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-vermont.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-vermont.pdf"
+    },
+    "02":{
+      ticket:"Trump / Pence (R)",
+      names:["Jon Binkley","Judy Eledge","Randy Ruedrich"],
+      source:"Certificate of Ascertainment, State of Alaska, signed by Gov. Mike Dunleavy and Lt. Gov. Kevin Meyer, Dec. 8, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-alaska.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-alaska.pdf"
+    },
+    "30":{
+      ticket:"Trump / Pence (R)",
+      names:["Thelma Baker","Becky Stockton","Brad Tschida"],
+      source:"Certificate of Ascertainment, State of Montana, signed by Gov. Steve Bullock, Dec. 1, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-montana.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-montana.pdf"
+    },
+    "38":{
+      ticket:"Trump / Pence (R)",
+      names:["Sandy J Boehler","Ray Holmberg","Robert Wefald"],
+      source:"Certificate of Ascertainment, State of North Dakota, Nov. 20, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-north-dakota.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-north-dakota.pdf"
+    },
+    "46":{
+      ticket:"Trump / Pence (R)",
+      names:["Kristi Noem","Larry Rhoden","Jason Ravnsborg"],
+      source:"Certificate of Ascertainment, State of South Dakota, signed by the Governor and witnessed by Secretary of State Steve Barnett, Nov. 18, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-south-dakota.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-south-dakota.pdf"
+    },
+    "56":{
+      ticket:"Trump / Pence (R)",
+      names:["Karl T. Allred","Douglas W Chamberlain","Martha D Halverson"],
+      source:"Certificate of Ascertainment, State of Wyoming, signed by Gov. Mark Gordon and Secretary of State Edward A. Buchanan, Nov. 10, 2020. The certificate prints these names in capitals; they appear here in ordinary case.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-wyoming.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-wyoming.pdf"
+    },
+    "15":{
+      ticket:"Biden / Harris (D)",
+      names:["Hermina (Mina) Morita","John William Bickel","Kainoa Kaumeheiwa-Rego","Michael Golojuch Sr."],
+      source:"Certificate of Ascertainment, State of Hawaii, issued by Gov. David Y. Ige, Nov. 23, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-hawaii.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-hawaii.pdf"
+    },
+    "54":{
+      ticket:"Trump / Pence (R)",
+      names:["Lewis Rexroad","Elizabeth Bloch","James C. Justice","Paul Hartling","Gary Dungan"],
+      source:"Certificate of Ascertainment, State of West Virginia, signed by Gov. James C. Justice, Dec. 9, 2020. The governor was himself one of the five electors; the certificate lists him as \u201cGovernor James C. Justice.\u201d",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-west-virginia.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-west-virginia.pdf"
+    },
+    "19":{
+      ticket:"Trump / Pence (R)",
+      names:["David Chung","Thad Nearmyer","Ronald Forsell","Polly Granzow","Charlie Johnson","Kurt Brown"],
+      source:"Certificate of Ascertainment, State of Iowa, Dec. 10, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-iowa.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-iowa.pdf"
+    },
+    "20":{
+      ticket:"Trump / Pence (R)",
+      names:["Treatha Brown-Foster","Shannon Golden","Mark Kahrs","Michael Kuckelman","Helen Van Etten","Emily Wellman"],
+      source:"Certificate of Ascertainment, State of Kansas, Dec. 14, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-kansas.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-kansas.pdf"
+    },
+    "28":{
+      ticket:"Trump / Pence (R)",
+      names:["Frank Bordeaux","John Dane III","Francis C. Lee","E. Bruce Martin","Johnny McRight","Terry Reeves"],
+      source:"Certificate of Ascertainment, State of Mississippi, issued by Gov. Tate Reeves and attested by Secretary of State Michael Watson, 2020. The certificate\u2019s text layer prints one name as \u201cFrancis. C Lee\u201d; the signed Certificate of Vote reads \u201cC. Lee.\u201d",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-mississippi.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-mississippi.pdf"
+    },
+    "05":{
+      ticket:"Trump / Pence (R)",
+      names:["Doyle Webb","Iverson Jackson","Sharon Brooks","Rod Soubers","Ed Bethune","J.D. McGehee"],
+      source:"Certificate of Ascertainment, State of Arkansas, signed by Gov. Asa Hutchinson and attested by Secretary of State John Thurston, Dec. 3, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-arkansas.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-arkansas.pdf"
+    },
+    "44":{
+      ticket:"Biden / Harris (D)",
+      names:["Elizabeth Beretta Perik","James A. Diossa","Joseph Robert Paolino, Jr.","Sabina Matos"],
+      source:"Certificate of Ascertainment, State of Rhode Island, signed by Gov. Gina M. Raimondo and attested by Secretary of State Nellie M. Gorbea, Dec. 2, 2020. The certificate also lists the other parties\u2019 slates; only the four appointed electors appear here.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-rhode-island.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-rhode-island.pdf"
+    },
+    "16":{
+      ticket:"Trump / Pence (R)",
+      names:["Rod Beck","Raul Labrador","Janice McGeachin","Melinda Smyser"],
+      source:"Certificate of Ascertainment, State of Idaho, signed by Gov. Brad Little, Nov. 20, 2020.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-idaho.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-idaho.pdf"
+    },
     "42":{
       ticket:"Biden / Harris (D)",
       names:["Nina Ahmad","Val Arkoosh","Cindy Bass","Rick Bloomingdale","Ryan Boyer","Paige Gebhardt Cognetti","Daisy Cruz","Kathy Dahlkemper","Janet Diaz","Charles Hadley","Jordan Harris","Malcolm Kenyatta","Gerald Lawrence","Clifford Levine","Virginia McGregor","Nancy Mills","Marian Moskowitz","Josh Shapiro","Sharif Street","Connie Williams"],
@@ -1776,10 +2247,10 @@ const ELECTORS = {
       ticket:"Split \u2014 3 pledged to Harris / Walz, 1 to Trump / Vance",
       mixed:true,
       names:[
-        {n:"Jay Philbrick",home:"North Yarmouth",t:"D",seat:"1st Congressional District"},
-        {n:"Jill Duson",home:"Portland",t:"D",seat:"At-large"},
-        {n:"Betty Johnson",home:"Lincolnville",t:"D",seat:"At-large"},
-        {n:"Joel Stetkis",home:"Canaan",t:"R",seat:"2nd Congressional District"}
+        {n:"Jay Philbrick",t:"D",seat:"1st Congressional District"},
+        {n:"Jill Duson",t:"D",seat:"At-large"},
+        {n:"Betty Johnson",t:"D",seat:"At-large"},
+        {n:"Joel Stetkis",t:"R",seat:"2nd Congressional District"}
       ],
       source:"Certificate of Ascertainment, State of Maine, signed by Gov. Janet T. Mills, Dec. 9, 2024. Maine awards electors by congressional district, so its four electors came from two different party slates.",
       sourceUrl:"https://www.archives.gov/files/electoral-college/2024/ascertainment-maine.pdf",
@@ -1863,6 +2334,25 @@ const NARA_YEAR_URL = {
   2016:"https://www.archives.gov/electoral-college/2016",
   2020:"https://www.archives.gov/electoral-college/2020",
   2024:"https://www.archives.gov/electoral-college/2024"
+};
+
+/* Official national popular vote: the Federal Election Commission's compilation of
+   each state's certified results. Every national total on this site matches these. */
+const FEC_YEAR = {
+  2000:{title:"Federal Election Commission, Federal Elections 2000",
+        url:"https://www.fec.gov/introduction-campaign-finance/election-results-and-voting-information/federal-elections-2000/president2000/"},
+  2004:{title:"Federal Election Commission, Federal Elections 2004",
+        url:"https://www.fec.gov/resources/cms-content/documents/federalelections2004.pdf"},
+  2008:{title:"Federal Election Commission, Federal Elections 2008",
+        url:"https://www.fec.gov/resources/cms-content/documents/federalelections2008.pdf"},
+  2012:{title:"Federal Election Commission, Federal Elections 2012",
+        url:"https://www.fec.gov/documents/1689/federalelections2012.pdf"},
+  2016:{title:"Federal Election Commission, Federal Elections 2016",
+        url:"https://www.fec.gov/resources/cms-content/documents/federalelections2016.pdf"},
+  2020:{title:"Federal Election Commission, Official 2020 Presidential General Election Results",
+        url:"https://www.fec.gov/resources/cms-content/documents/2020presgeresults.pdf"},
+  2024:{title:"Federal Election Commission, Official 2024 Presidential General Election Results",
+        url:"https://www.fec.gov/resources/cms-content/documents/2024presgeresults.pdf"}
 };
 
 function fmt(n){ return n.toLocaleString("en-US"); }
@@ -2013,6 +2503,9 @@ function renderHeadline(){
 
   document.getElementById("sourceYearLink").href = NARA_YEAR_URL[currentYear];
   document.getElementById("sourceYearLink").textContent = "National Archives, " + currentYear + " Electoral College";
+  document.getElementById("sourcePvLink").href = FEC_YEAR[currentYear].url;
+  document.getElementById("sourcePvLink").textContent = FEC_YEAR[currentYear].title;
+  renderConfirm();
   renderElectorBrief();
 }
 
@@ -2070,6 +2563,25 @@ function renderElectorBrief(){
       document.getElementById("detailPanel").scrollIntoView({behavior:"smooth", block:"center"});
     });
   });
+}
+
+/* ======================= HOW THE RESULT WAS CONFIRMED =======================
+   Shown only for years where the confirmation steps have been documented and sourced. */
+function renderConfirm(){
+  const box = document.getElementById("confirmBox");
+  if (!box) return;
+  const items = ELECTIONS[currentYear].confirmed;
+  if (!items || !items.length){ box.hidden = true; box.innerHTML = ""; return; }
+  box.innerHTML =
+    '<h3 class="confirm-title" id="confirmTitle">How the ' + currentYear + ' result was confirmed</h3>' +
+    '<p class="confirm-lead">Certification, the count in Congress, recounts, reviews and court rulings. Each line links to its source.</p>' +
+    '<ul class="confirm-list">' + items.map(it =>
+      '<li>' + it.t + '<span class="confirm-src">Source: ' + it.src.map(s =>
+        '<a href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a>').join(' · ') +
+      '</span></li>').join('') + '</ul>' +
+    (currentYear === 2020
+      ? '<p class="confirm-more"><a href="#january-6">January 6, 2021: the count, the attack and the record &rarr;</a></p>' : '');
+  box.hidden = false;
 }
 
 /* ======================= DETAIL PANEL ======================= */
@@ -2160,146 +2672,18 @@ function renderPanel(){
   const splitHtml = (d.w === "split")
     ? '<div class="cert-row"><h3>How the split worked</h3><p>' + d.note + '</p></div>' : '';
 
-  /* Vote weight rests on the 2020 Census, which set the apportionment used in 2024. */
+  /* Residents per electoral vote: a fact about apportionment, shown for 2024, whose
+     electoral votes rest on the 2020 Census. No comparison or what-if here; those
+     belong to the author's argument page. */
   let weightHtml = "";
   if (currentYear === 2024){
     const w = weightFor(fips);
     if (w){
-      const extra = w.diff >= 0;
-      const diffAbs = Math.abs(w.diff);
-      const diffStr = (extra ? "+" : "\u2212") + diffAbs.toFixed(1);
-
-      let plainDiff;
-      if (diffAbs < 0.25){
-        plainDiff = st.n + " holds almost exactly the share its population alone would give it.";
-      } else if (extra){
-        plainDiff = st.n + " holds <strong>" + diffAbs.toFixed(1) + " more electoral vote" +
-          (diffAbs.toFixed(1) === "1.0" ? "" : "s") + "</strong> than its population alone would give it.";
-      } else {
-        plainDiff = st.n + " holds <strong>" + diffAbs.toFixed(1) + " fewer electoral vote" +
-          (diffAbs.toFixed(1) === "1.0" ? "" : "s") + "</strong> than its population alone would give it.";
-      }
-
-      const maxBar = Math.max(w.ev, w.proportional);
-      const actualPct = w.ev / maxBar * 100;
-      const propPct   = w.proportional / maxBar * 100;
-
-      const multi = w.index >= 1.05
-        ? "about <strong>" + w.index.toFixed(1) + " votes</strong> cast in an average state"
-        : (w.index <= 0.95
-            ? "about <strong>" + (w.index).toFixed(2) + "</strong> of one vote in an average state"
-            : "<strong>about one vote</strong> in an average state");
-
-      /* At a glance: how many people one elector really speaks for, now and under the compact. */
-      const nowPer = Math.round(w.perEv);
-      const pactPer = Math.round(NATL_PER_EV);
-      const rises = pactPer > nowPer;
-      const shift = Math.abs(pactPer - nowPer);
-      const shiftLine = shift < 8000
-        ? st.n + " sits close to the national figure, so the compact would barely change it."
-        : (rises
-            ? "Each " + st.n + " elector would speak for <strong>" + fmt(shift) + " more</strong> people than today \u2014 " +
-              "meaning each resident here would carry <strong>less</strong> of the decision than they do now."
-            : "Each " + st.n + " elector would speak for <strong>" + fmt(shift) + " fewer</strong> people than today \u2014 " +
-              "meaning each resident here would carry <strong>more</strong> of the decision than they do now.");
-
       weightHtml =
-        '<div class="cert-row"><h3>What a vote here is worth</h3>' +
-        '<div class="wt-box' + (extra ? ' over' : ' under') + '">' +
-
-          '<div class="glance">' +
-            '<p class="glance-title">How many people one elector really speaks for</p>' +
-            '<div class="glance-row">' +
-              '<span class="glance-when">Today</span>' +
-              '<span class="glance-num">' + fmt(nowPer) + '</span>' +
-              '<span class="glance-who">residents of ' + st.n + '</span>' +
-            '</div>' +
-            '<div class="glance-row alt">' +
-              '<span class="glance-when">If the compact<br>takes effect</span>' +
-              '<span class="glance-num">' + fmt(pactPer) + '</span>' +
-              '<span class="glance-who">residents of the United States \u2014<br>the same figure in every state</span>' +
-            '</div>' +
-            '<p class="glance-shift ' + (rises ? 'up' : 'down') + '">' + shiftLine + '</p>' +
-            '<p class="glance-fine">Today, ' + st.n + '\u2019s electors reflect ' + st.n + '\u2019s own result. ' +
-              'Under the compact every elector in every member state reflects the same national count, so the figure ' +
-              'is identical everywhere. The electoral votes are still apportioned exactly as they are now \u2014 what ' +
-              'changes is that the apportionment stops deciding the outcome.</p>' +
-          '</div>' +
-
-          '<div class="wt-compare">' +
-            '<div class="wt-line"><span class="wt-line-label">Electoral votes it has</span>' +
-              '<span class="wt-line-val">' + w.ev + '</span></div>' +
-            '<div class="wt-track"><div class="wt-track-fill actual" style="width:' + actualPct.toFixed(1) + '%"></div></div>' +
-            '<div class="wt-line"><span class="wt-line-label">Its share by population alone</span>' +
-              '<span class="wt-line-val">' + w.proportional.toFixed(1) + '</span></div>' +
-            '<div class="wt-track"><div class="wt-track-fill prop" style="width:' + propPct.toFixed(1) + '%"></div></div>' +
-          '</div>' +
-
-          '<p class="wt-diff"><span class="wt-diff-num">' + diffStr + '</span>' +
-            '<span class="wt-diff-txt">' + plainDiff + '</span></p>' +
-
-          '<p class="wt-why">Every state receives two electoral votes before population is counted at all \u2014 ' +
-            'the same two for Wyoming as for California. That floor lifts small states above their population share ' +
-            'and pushes large ones below it.</p>' +
-
-          '<p class="wt-plain">Put another way: one vote here carries the electoral weight of ' + multi + '.</p>' +
-
-          '<p class="wt-sub">The arithmetic: ' + fmt(w.pop) + ' residents (2020 Census) share ' +
-            w.ev + ' electoral vote' + (w.ev>1?'s':'') + '. If all 538 were handed out by population alone, ' +
-            st.n + ' would hold ' + w.proportional.toFixed(1) + '.</p>' +
-        '</div></div>';
+        '<div class="cert-row"><h3>Residents per electoral vote</h3>' +
+        '<p class="wt-line-plain"><strong>' + fmt(Math.round(w.perEv)) + '</strong> residents of ' + st.n +
+        ' per electoral vote (2020 Census). U.S. average: ' + fmt(Math.round(NATL_PER_EV)) + '.</p></div>';
     }
-  }
-
-  /* Action block. The first item is useful to anyone, whatever they think of the compact. */
-  let actionHtml = "";
-  if (currentYear === 2024){
-    const joined = inNpvic(fips);
-    const members = npvicMemberNames();
-    const total = npvicTotal();
-
-    const look = legLookup(st.a, st.n);
-    const compactBlock = joined
-      ? '<p class="act-compact yes"><strong>' + st.n + ' has already joined.</strong> ' +
-          'Its ' + EV_ERA.e2020[st.a] + ' electoral votes are committed \u2014 but conditionally. ' +
-          'The agreement does nothing at all until member states together hold 270. ' +
-          'They currently hold ' + total + '. Until then ' + st.n + '\u2019s votes are awarded exactly as before.</p>'
-      : '<p class="act-compact no"><strong>' + st.n + ' has not joined.</strong> ' +
-          'Its ' + EV_ERA.e2020[st.a] + ' electoral votes are awarded the current way. ' +
-          members.length + ' jurisdictions have joined so far, holding ' + total + ' of the 270 the agreement needs.</p>';
-
-    actionHtml =
-      '<div class="cert-row act-row"><h3>What you can do about it</h3>' +
-
-      '<p class="act-lead"><strong>One question is worth asking whatever you think of any of this:</strong> ' +
-      'does your state actually bind its electors? The Supreme Court ruled in 2020 that states <em>may</em> ' +
-      'enforce an elector\u2019s pledge, not that they must. Some states cancel a broken pledge and seat a ' +
-      'replacement, some fine the elector and let the vote stand, some do nothing. Most voters have never ' +
-      'had reason to find out which kind they live in.</p>' +
-
-      '<blockquote class="the-question">Does ' + st.n + ' legally bind its presidential electors to the statewide ' +
-      'vote result, and what happens if an elector breaks that pledge?</blockquote>' +
-
-      '<div class="act-btns">' +
-        '<button class="act-btn primary" data-copyq="' + fips + '">Copy this question</button>' +
-        '<a class="act-btn" href="' + look.url + '" target="_blank" rel="noopener">Find your ' + st.n + ' legislator</a>' +
-      '</div>' +
-      '<p class="act-note" id="actStatus-' + fips + '" role="status"></p>' +
-      '<p class="wt-sub">' + (look.direct
-        ? 'Opens ' + st.n + '\u2019s own legislator lookup. Enter your address and it returns your state representative and state senator with their contact details.'
-        : 'Opens a search for ' + st.n + '\u2019s legislator lookup \u2014 the state\u2019s own tool is the top result. A direct link for ' + st.n + ' has not been confirmed yet, and this site does not publish links it has not checked.') + '</p>' +
-
-      '<div class="act-compact-wrap">' +
-        '<h4 class="act-sub">The compact</h4>' +
-        compactBlock +
-        '<details class="member-list"><summary>' + members.length + ' jurisdictions have joined' +
-          (joined ? ', including ' + st.n : '') + '</summary>' +
-          '<p class="member-names">' + members.map(n =>
-            '<span class="' + (n === st.n ? 'member-you' : '') + '">' + n + '</span>').join(", ") + '</p>' +
-          '<p class="wt-sub">Together they hold ' + total + ' electoral votes. The agreement takes effect only if that reaches 270.</p>' +
-        '</details>' +
-      '</div>' +
-      '</div>';
   }
 
   panel.innerHTML =
@@ -2317,21 +2701,8 @@ function renderPanel(){
         ? 'Source: ' + roster.source.replace(/\.$/, '') + '. <a href="' + roster.sourceUrl + '" target="_blank" rel="noopener">Read the certificate listing these names</a>' +
           (roster.voteUrl ? ' \u00B7 <a href="' + roster.voteUrl + '" target="_blank" rel="noopener">See their signed Certificate of Vote</a>' : '') + '.'
         : 'Source for this state\u2019s certificates: <a href="' + NARA_YEAR_URL[currentYear] + '" target="_blank" rel="noopener">National Archives, ' + currentYear + ' Electoral College</a>.') +
-    '</div>' + actionHtml;
+    '</div>';
 
-  /* wire the copy-questions button for this state */
-  const cq = panel.querySelector('[data-copyq]');
-  if (cq){
-    cq.addEventListener("click", async () => {
-      const msg = "Does " + st.n + " legally bind its presidential electors to the statewide vote result, " +
-                  "and what happens if an elector breaks that pledge?";
-      const s = document.getElementById("actStatus-" + fips);
-      try { await navigator.clipboard.writeText(msg); s.textContent = "Copied \u2014 paste it into an email or contact form."; }
-      catch(e){ s.textContent = "Copy blocked here; it works on the live site."; }
-      track("action/copy-questions/" + st.a, "Questions copied " + st.n);
-      setTimeout(()=>{ s.textContent = ""; }, 6000);
-    });
-  }
 }
 
 /* ======================= TABLE ======================= */
@@ -2479,7 +2850,8 @@ document.getElementById("skipToTable").addEventListener("click", () => showTable
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({top:0, behavior: reduce ? "auto" : "smooth"});
     // Move keyboard focus to the top so the page doesn't just visually jump.
-    var top = document.getElementById("pageTop");
+    var top = document.getElementById(document.body.classList.contains("view-argument") ? "argTitle"
+              : (document.body.classList.contains("view-j6") ? "j6Title" : "pageTop"));
     if (top) top.focus({preventScroll:true});
   });
 })();
@@ -2520,8 +2892,8 @@ function renderWeightTable(){
 
   const top = ranked[0], bottom = ranked[ranked.length-1];
   document.getElementById("weightCallout").innerHTML =
-    "A vote in <strong>" + top.name + "</strong> carries about <strong>" +
-    (bottom.perEv / top.perEv).toFixed(1) + " times</strong> the electoral weight of a vote in <strong>" +
+    "A resident of <strong>" + top.name + "</strong> carries about <strong>" +
+    (bottom.perEv / top.perEv).toFixed(1) + " times</strong> the electoral weight of a resident of <strong>" +
     bottom.name + "</strong>. Same election, same ballot, same country.";
 
   document.getElementById("toggleWeightAll").textContent =
@@ -2547,17 +2919,35 @@ function renderNpvicState(){
   const box = document.getElementById("npvicYourState");
   if (!box) return;
   if (!selectedFips){
-    box.innerHTML = '<p class="npvic-prompt">Select a state on the map to see whether it has joined.</p>';
+    box.innerHTML = '<p class="npvic-prompt">Select a state on <a href="#record" class="arg-inline-link">the record&rsquo;s map</a> to see whether it has joined.</p>';
     return;
   }
   const st = STATES[selectedFips];
   const joined = inNpvic(selectedFips);
   const ev = EV_ERA.e2020[st.a];
-  box.innerHTML = joined
+  let html = joined
     ? '<p class="npvic-yes"><strong>' + st.n + ' has joined.</strong> Its ' + ev +
       ' electoral vote' + (ev>1?'s are':' is') + ' already committed, and will be awarded to the national vote winner if the compact ever reaches 270.</p>'
     : '<p class="npvic-no"><strong>' + st.n + ' has not joined.</strong> Its ' + ev +
       ' electoral vote' + (ev>1?'s remain':' remains') + ' awarded the current way, whatever the national count is.</p>';
+
+  /* What-if, moved here from the state panel so the record stays free of it. */
+  const w = weightFor(selectedFips);
+  if (w){
+    html += '<p class="npvic-hypo"><span class="hypo-tag">Hypothetical</span>' +
+      'Today each ' + st.n + ' electoral vote stands for ' + fmt(Math.round(w.perEv)) + ' residents (2020 Census). ' +
+      'If the compact took effect, every member state&rsquo;s electors would follow one national count, so the figure that matters ' +
+      'would be the national one: ' + fmt(Math.round(NATL_PER_EV)) + ' residents per electoral vote, the same in every state.</p>';
+  }
+
+  /* Legislator lookup, moved here from the state panel. */
+  const look = legLookup(st.a, st.n);
+  html += '<p class="npvic-lookup"><a href="' + look.url + '" target="_blank" rel="noopener">Find your ' + st.n + ' state legislator</a> ' +
+    '<span class="arg-small">' + (look.direct
+      ? '&mdash; ' + st.n + '&rsquo;s own lookup.'
+      : '&mdash; a search for ' + st.n + '&rsquo;s lookup; a direct link has not been confirmed yet.') + '</span></p>';
+
+  box.innerHTML = html;
 }
 
 /* Copy-link share */
@@ -2720,9 +3110,61 @@ document.getElementById("copyOneQ").addEventListener("click", async () => {
 });
 refreshQuestion();
 
+/* ======================= VIEWS =======================
+   Two views in one file. The record is the default. The author's argument opens
+   only when the address ends in #argument, so the record never shares a screen
+   with it, and a link to the site is a link to the record. */
+const RECORD_TITLE = document.title;
+function applyView(){
+  const arg = location.hash === "#argument";
+  const j6 = location.hash === "#january-6";
+  const wasArg = document.body.classList.contains("view-argument");
+  const wasJ6 = document.body.classList.contains("view-j6");
+  document.body.classList.toggle("view-argument", arg);
+  document.body.classList.toggle("view-j6", j6);
+  document.title = arg ? "The author’s argument — The Electoral Record"
+                 : (j6 ? "January 6, 2021 — The Electoral Record" : RECORD_TITLE);
+  const sb = document.getElementById("sbYear");
+  if (sb) sb.textContent = arg ? "The author’s argument" : (j6 ? "January 6, 2021" : currentYear);
+  if (j6){
+    window.scrollTo({ top:0, left:0, behavior:"instant" });
+    const h = document.getElementById("j6Title");
+    if (h) h.focus({preventScroll:true});
+    if (!wasJ6) track("jan6/view", "January 6 page opened");
+    return;
+  }
+  /* A link to the 2020 confirmation block opens the 2020 record first. */
+  if (location.hash === "#confirmed-2020"){
+    if (currentYear !== 2020) setYear(2020);
+    const box = document.getElementById("confirmBox");
+    if (box){ box.setAttribute("tabindex", "-1"); box.scrollIntoView(); box.focus({preventScroll:true}); }
+    return;
+  }
+  if (arg){
+    renderNpvicState();
+    refreshQuestion();
+    window.scrollTo({ top:0, left:0, behavior:"instant" });
+    const h = document.getElementById("argTitle");
+    if (h) h.focus({preventScroll:true});
+    if (!wasArg) track("argument/view", "Argument page opened");
+    return;
+  }
+  const id = location.hash.slice(1);
+  const el = (id && id !== "record") ? document.getElementById(id) : null;
+  if (el){
+    el.scrollIntoView();
+  } else if (wasArg || wasJ6 || id === "record"){
+    window.scrollTo({ top:0, left:0, behavior:"instant" });
+    const t = document.getElementById("pageTop");
+    if (t) t.focus({preventScroll:true});
+  }
+}
+window.addEventListener("hashchange", applyView);
+
 /* ======================= INIT ======================= */
 setYear(currentYear);
 syncSliderAria();
+applyView();
 
 </script>
 </body>
