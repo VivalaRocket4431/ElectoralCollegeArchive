@@ -1184,9 +1184,9 @@ window.topojson = (function(){
       <div class="method-block flag">
         <h3>Known limits</h3>
         <ul class="method-rules">
-          <li><strong>Two rosters were transcribed by eye.</strong> Massachusetts and New Hampshire file their certificates in engraved script that machine text extraction cannot read. Those 15 names were read from the scanned image by a human and checked against the vote counts. They carry a different kind of risk than the rest &mdash; transcription error rather than extraction error.</li>
+          <li><strong>Some rosters were transcribed by eye.</strong> Massachusetts and New Hampshire file their certificates in engraved script that machine text extraction cannot read. Their 15 names in each of 2020 and 2024 were read from the scanned image and checked against the vote counts. They carry a different kind of risk than the rest &mdash; transcription error rather than extraction error.</li>
           <li><strong>Unusual surnames carry some extraction risk.</strong> Names were pulled from each PDF&rsquo;s text layer. Characters such as rn/m and I/l can be misread. Every panel links to the certificate so any name can be checked at the source.</li>
-          <li><strong>Elector names are complete for 2024 and partial for 2020.</strong> 2020 has 48 of 51 jurisdictions loaded (512 of 538 electors), each checked against its electoral vote count. The 2000&ndash;2016 elections show state outcomes, electoral vote counts, popular vote and faithless electors, but not full rosters. Those certificates are public and linked; they have not been read in yet.</li>
+          <li><strong>Elector names are complete for 2020 and 2024.</strong> All 51 jurisdictions are loaded for both years, 538 electors each, every roster checked against its electoral vote count. The 2000&ndash;2016 elections show state outcomes, electoral vote counts, popular vote and faithless electors, but not full rosters. Those certificates are public and linked; they have not been read in yet.</li>
           <li><strong>Some 2020 certificates have damaged text layers.</strong> Where the machine-readable text garbles a name, the panel says so and names the document used to confirm it, usually the signed Certificate of Vote.</li>
           <li><strong>State-by-state popular vote counts are not included.</strong></li>
           <li><strong>Elections before 2000 are not included.</strong> Before 1824 most states had no popular vote at all, so the popular-versus-electoral comparison this site is built around does not exist for the early republic.</li>
@@ -1237,7 +1237,7 @@ window.topojson = (function(){
         <h3>Corrections</h3>
         <p>If a name here does not match the certificate it is drawn from, that is an error and it will be fixed. Point to the state, the name, and the certificate.</p>
         <p class="contact-slot"><strong>Contact:</strong> <span id="contactSlot">hello@theelectoralrecord.org</span></p>
-        <p class="method-small">Last reviewed: November 5, 2026. Record covers the 2000 through 2024 presidential elections; elector names complete for 2024, and for 48 of 51 jurisdictions in 2020.</p>
+        <p class="method-small">Last reviewed: November 5, 2026. Record covers the 2000 through 2024 presidential elections; elector names complete for 2020 and 2024.</p>
       </div>
 
     </div>
@@ -1247,7 +1247,7 @@ window.topojson = (function(){
 <footer class="site-footer record-only">
   <h2>What this archive contains &mdash; and what it doesn't</h2>
   <p><strong>Fully sourced right now:</strong> for all seven elections from 2000 through 2024, the winning ticket and electoral vote count in every state and D.C.; the national popular vote; and the difference between electors <em>pledged</em> and electors' votes <em>actually cast</em>, including every faithless elector and abstention.</p>
-  <p><strong>Elector names:</strong> 2020 is in progress: 48 of 51 jurisdictions, 512 of 538 electors, each read off its Certificate of Ascertainment and checked against its electoral vote count. 2024 is complete. All 51 jurisdictions are loaded, naming every one of the 538 people who cast an electoral vote. Each roster was read off that jurisdiction's Certificate of Ascertainment and checked against its electoral vote count. Where a state filed an amended certificate, or replaced an elector before appointment, the final appointed list is used. Maine and Nebraska award electors by congressional district, so their electors came from two different party slates; each is shown with their own party and district. Certificates list the losing parties' slates too; those people were never appointed and are not shown. Several certificates print electors' home addresses, cities or towns; those are deliberately not reproduced here. Massachusetts and New Hampshire are engraved in decorative script that machine reading cannot decipher, so their names were transcribed by eye from the scanned certificates. Nothing here is estimated — a name appears only after being read off the certificate, and every certificate is linked from its panel.</p>
+  <p><strong>Elector names:</strong> 2020 and 2024 are complete: all 51 jurisdictions in each, every roster read off its Certificate of Ascertainment and checked against its electoral vote count. In 2020, Massachusetts and New Hampshire were read by eye from the scanned script certificates, and Indiana uses its amended certificate, matched to the electors who signed the Certificate of Vote. All 51 jurisdictions are loaded, naming every one of the 538 people who cast an electoral vote. Each roster was read off that jurisdiction's Certificate of Ascertainment and checked against its electoral vote count. Where a state filed an amended certificate, or replaced an elector before appointment, the final appointed list is used. Maine and Nebraska award electors by congressional district, so their electors came from two different party slates; each is shown with their own party and district. Certificates list the losing parties' slates too; those people were never appointed and are not shown. Several certificates print electors' home addresses, cities or towns; those are deliberately not reproduced here. Massachusetts and New Hampshire are engraved in decorative script that machine reading cannot decipher, so their names were transcribed by eye from the scanned certificates. Nothing here is estimated — a name appears only after being read off the certificate, and every certificate is linked from its panel.</p>
   <p><strong>Not here yet:</strong> elections before 2000; state-by-state popular vote counts; voter registration by party. Nothing on this site is estimated or filled in by guesswork &mdash; if a number isn't sourced, it isn't shown.</p>
   <ul>
     <li>Electoral votes and state outcomes: certified state results, cross-checked against the National Archives' Electoral College records for each year.</li>
@@ -1598,6 +1598,27 @@ let yearMap = buildYear(currentYear);
    Keyed by year, then FIPS. Only entries present here are shown as verified. */
 const ELECTORS = {
   2020:{
+    "18":{
+      ticket:"Trump / Pence (R)",
+      names:["George Brown","Beth Boyce","James R. Buck","Dana Dumezich","Jeffery M. Heinzmann","Kyle Hupfer","Debra K. Johnson","Brian L. Mowery","Douglas Oler","William Springer","Matthew D. Whetstone"],
+      source:"Amended Certificate of Ascertainment, State of Indiana, 2020. The National Archives file holds two certificates. The original, dated Nov. 24, 2020, names Don E. Bates, Jr., Courtney Papa and Edwin J. Simcox; the amended certificate names Kyle Hupfer, Debra K. Johnson and Douglas Oler in their places. The signed Certificate of Vote of Dec. 14, 2020, carries the signatures of the amended list, so that list is used here.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-indiana.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-indiana.pdf"
+    },
+    "25":{
+      ticket:"Biden / Harris (D)",
+      names:["Kathleen Donaghue","Joseph F. Kelly","Nicole M. LaChapelle","Thomas J. Larkin","Robert T. Markel","Linda Monteiro","Jay Manuel Rivera","Norma Shulman","Ronald R. Valerio","Teresa Walsh","Wayne D. Yeh"],
+      source:"Certificate of Ascertainment, Commonwealth of Massachusetts, signed by Gov. Charles D. Baker and attested by Secretary of the Commonwealth William Francis Galvin, Nov. 30, 2020. This certificate is engraved in decorative script, which machine text extraction cannot read; these names were read by eye from the scanned certificate and checked against the Commonwealth\u2019s 11 electoral votes.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-massachusetts.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-massachusetts.pdf"
+    },
+    "33":{
+      ticket:"Biden / Harris (D)",
+      names:["Mary Carey Foley","Dana Hilliard","Steve Shurtleff","Donna M. Soucy"],
+      source:"Certificate of Ascertainment, State of New Hampshire, signed by Gov. Christopher T. Sununu and Secretary of State William M. Gardner, Dec. 2, 2020. This certificate is set in decorative script, which machine text extraction cannot read; these names were read by eye from the scanned certificate and checked against the state\u2019s four electoral votes. The certificate also lists the losing parties\u2019 slates, who were never appointed and are not shown here.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2020/ascertainment-new-hampshire.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2020/vote-new-hampshire.pdf"
+    },
     "23":{
       ticket:"Split \u2014 3 pledged to Biden / Harris, 1 to Trump / Pence",
       mixed:true,
