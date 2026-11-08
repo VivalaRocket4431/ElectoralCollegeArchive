@@ -3,24 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Electoral Record — every 2024 elector, named</title>
-<meta name="description" content="All 538 people who cast an electoral vote in 2024, named — read off the signed certificates filed with the National Archives. See who cast your state's votes and how the electoral count compared with the public vote.">
+<title>The Electoral Record — every 2020 and 2024 elector, named</title>
+<meta name="description" content="Every person who cast an electoral vote in 2020 and 2024, named from the signed certificates filed with the National Archives. Plus each state's popular vote since 2000, its elector law today, and where the popular vote compact stands after the 2026 midterms.">
 <link rel="canonical" href="https://theelectoralrecord.org/">
 <meta name="theme-color" content="#12263F">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312263F'/%3E%3Crect x='8' y='52' width='48' height='4' fill='%23E8C77A'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23FFFFFF'%3EE%3C/text%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Electoral Record">
 <meta property="og:url" content="https://theelectoralrecord.org/">
-<meta property="og:title" content="Every 2024 elector, named">
-<meta property="og:description" content="538 people cast the votes that pick the president. Almost nobody can name one. This is all of them — read off the signed certificates at the National Archives, state by state.">
+<meta property="og:title" content="The popular vote compact is 48 electoral votes short">
+<meta property="og:description" content="18 states and D.C. have joined, holding 222 of the 270 electoral votes it needs. After the 2026 midterms, Democrats fully control 5 states that haven't joined, with 61 electoral votes. See every state's elector law and compact status, plus every 2020 and 2024 elector, named.">
 <meta property="og:image" content="https://theelectoralrecord.org/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Electoral Record. 538 of 538 electors named, from official National Archives certificates.">
+<meta property="og:image:alt" content="The Electoral Record. The popular vote compact is 48 electoral votes short. After the 2026 midterms, Democrats fully control 5 states that haven't joined, with 61 electoral votes. Plus every 2020 and 2024 elector, named. theelectoralrecord.org">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Every 2024 elector, named">
-<meta name="twitter:description" content="538 people cast the votes that pick the president. Almost nobody can name one. This is all of them — from the signed certificates at the National Archives.">
+<meta name="twitter:title" content="The popular vote compact is 48 electoral votes short">
+<meta name="twitter:description" content="222 of the 270 electoral votes it needs. After the 2026 midterms, Democrats fully control 5 states that haven't joined, with 61 electoral votes. Every state's elector law, plus every 2020 and 2024 elector, named.">
 <meta name="twitter:image" content="https://theelectoralrecord.org/social-card.png">
 <script>
 // https://d3js.org v7.9.0 Copyright 2010-2023 Mike Bostock
@@ -878,6 +879,52 @@ window.topojson = (function(){
     .rules-law{ font-size:11.5px; }
     .rules-table .law-pill{ font-size:11.5px; padding:2px 6px; }
   }
+
+  /* ---------- Argument page: new text, voter/law/compact table, midterms ---------- */
+  .argument .arg-lead{ font-family:var(--serif); font-size:19px; color:#fff; margin:6px 0 6px; }
+  .arg-years{ margin:0 0 12px; padding-left:20px; }
+  .arg-years li{ font-size:15px; line-height:1.55; margin-bottom:6px; color:#D4DAE3; }
+  .vt-block{ margin:18px 0 8px; }
+  .argument .vt-title{ font-size:16px; color:#fff; margin:0 0 8px; line-height:1.3; }
+  .vt-key{ background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); border-radius:7px; padding:10px 12px; }
+  .argument .vt-key-h{ font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:#AEB8C7; margin:4px 0 6px; }
+  .vt-key-list{ list-style:none; margin:0 0 6px; padding:0; }
+  .vt-key-list li{ display:flex; gap:9px; align-items:baseline; font-size:13.5px; line-height:1.45; color:#D4DAE3; margin-bottom:6px; }
+  .vt-key-list li > .ak-pill, .vt-key-list li > .ak-tag{ flex:0 0 auto; min-width:118px; text-align:center; }
+  .vt-n{ color:#fff; font-weight:700; white-space:nowrap; }
+  .ak-pill, .ak-tag{ display:inline-block; font-size:12px; font-weight:700; line-height:1.3; padding:2px 8px; border-radius:4px; white-space:nowrap; border:1px solid transparent; }
+  .ak-pill.ak-void{ background:#8FD19E; color:#12263F; }
+  .ak-pill.ak-penalty{ background:#F2D27A; color:#12263F; }
+  .ak-pill.ak-pledge{ background:#F4A86A; color:#12263F; }
+  .ak-pill.ak-none{ background:transparent; color:#fff; border:1px dashed #D4DAE3; }
+  .ak-tag.ak-joined{ background:#E8C77A; color:#12263F; }
+  .ak-tag.ak-flip{ background:#9CC3EC; color:#12263F; }
+  .ak-tag.ak-must{ background:transparent; color:#fff; border:2px solid #E8C77A; }
+  .ak-tag.ak-two{ background:transparent; color:#E8C77A; border:1px solid #E8C77A; }
+  .vt-not{ font-size:12.5px; color:#AEB8C7; }
+  .vt-table td, .vt-table th{ vertical-align:middle; }
+  .vt-table tbody th{ font-weight:600; color:#fff; font-size:13.5px; }
+  .vt-num{ font-variant-numeric:tabular-nums; white-space:nowrap; color:#fff; }
+  .vt-num-lab{ display:none; }
+  .vt-tags .ak-tag{ margin:2px 4px 2px 0; }
+  .vt-table tr.vt-keystate th{ box-shadow:inset 4px 0 0 #E8C77A; }
+  .mid-box{ background:rgba(156,195,236,.10); border-left:4px solid #9CC3EC; border-radius:0 6px 6px 0; padding:12px 14px; margin:16px 0 10px; }
+  .argument .mid-box h3{ font-size:16px; color:#fff; margin:0 0 7px; }
+  .mid-box a, .arg-sources a{ color:#E8C77A; }
+  .argument .arg-sources{ margin-top:10px; }
+  .npvic-mid{ margin-top:10px !important; font-size:13px !important; color:#D4DAE3 !important; }
+  @media (max-width:640px){
+    .vt-table thead{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+    .vt-table, .vt-table tbody{ display:block; }
+    .vt-table caption{ display:block; }
+    .vt-table tr{ display:grid; grid-template-columns:1fr; gap:4px; padding:9px 10px; border-bottom:1px solid rgba(255,255,255,.12); }
+    .vt-table tr.wt-gap{ display:block; }
+    .vt-table th, .vt-table td{ display:block; border:0; padding:0; }
+    .vt-table tr.vt-keystate{ box-shadow:inset 4px 0 0 #E8C77A; padding-left:14px; }
+    .vt-table tr.vt-keystate th{ box-shadow:none; }
+    .vt-num-lab{ display:inline; color:#AEB8C7; }
+    .vt-key-list li{ flex-wrap:wrap; }
+  }
 </style>
 </head>
 <body>
@@ -1168,46 +1215,48 @@ window.topojson = (function(){
 
     <p class="arg-back"><a href="#record" class="arg-back-link">&larr; Back to the record</a></p>
     <p class="arg-label">This page is the author&rsquo;s argument. It is not part of the record.</p>
-    <h1 id="argTitle" tabindex="-1">One person, one vote &mdash; except for president</h1>
-    <p class="arg-lede">The record &mdash; the main page of this site &mdash; is official certificates, verifiable, taking no side. This page is the author&rsquo;s position. It is kept on its own page so you can use the record without adopting the argument.</p>
+    <h1 id="argTitle" tabindex="-1">The most votes should win the presidency. Every time.</h1>
 
-    <h2 class="arg-h">Three things the record shows</h2>
+    <p class="arg-lead">Twice since 2000, they didn&rsquo;t.</p>
+    <ul class="arg-years">
+      <li><strong>2000:</strong> 544,000 more Americans voted for Al Gore than for George W. Bush. Bush became president.</li>
+      <li><strong>2016:</strong> 2.87 million more Americans voted for Hillary Clinton than for Donald Trump. Trump became president.</li>
+    </ul>
+    <p>Both results were legal. That is the problem. Today&rsquo;s rules let the candidate with fewer votes win the presidency in any election. No American voter should have to accept that.</p>
 
-    <div class="arg-point">
-      <span class="arg-num">1</span>
-      <div>
-        <h3>Your vote weighs more or less depending on where you live</h3>
-        <p>Electoral votes are not handed out in proportion to people. Every state gets two regardless of size &mdash; the same bonus for Wyoming as for California. Divide each state&rsquo;s population by its electoral votes and the gap is plain:</p>
-        <table class="arg-table" id="weightTable">
-          <caption>Residents per electoral vote, 2020 Census. Fewer residents per electoral vote means each resident carries more weight.</caption>
-          <thead><tr><th scope="col">State</th><th scope="col">Residents per electoral vote</th><th scope="col">Compared with the national average</th></tr></thead>
-          <tbody id="weightTableBody"></tbody>
-        </table>
-        <p class="arg-callout" id="weightCallout"></p>
-        <p class="arg-small">National average: 616,077 residents per electoral vote. Every state and D.C. is in the full table &mdash; <button class="arg-link" id="toggleWeightAll">show all 51</button>.</p>
+    <h2 class="arg-h">You vote. 538 electors decide.</h2>
+    <p>In 2024, 155 million Americans voted for president. Their ballots picked 538 electors. The electors picked the president. On average, 1 elector decides for 289,000 voters.</p>
+    <p>Where you live changes how much your vote counts. In Wyoming, 1 elector decides for 90,000 voters. In Michigan, 1 elector decides for 378,000. 1 Wyoming voter outweighs 4 Michigan voters.</p>
+
+    <h2 class="arg-h">51 sets of rules for one election</h2>
+    <p>Each state and D.C. writes its own rules for its electors, so whether your elector must honor your vote depends on your state. In <span id="argLooseStates">23</span> states, electors can vote against their state&rsquo;s voters and the votes still count. That covers <span id="argLooseElectors">193</span> of the 538 electors.</p>
+    <p>An election this important deserves transparency: one rule every voter can understand.</p>
+
+    <div class="vt-block" id="voterTable">
+      <h3 class="vt-title">Every state: voters per elector, elector law, and the compact</h3>
+      <div class="vt-key">
+        <p class="vt-key-h">Key: what happens if an elector votes against the state&rsquo;s voters</p>
+        <ul class="vt-key-list" id="vtKeyLaw"></ul>
+        <p class="vt-key-h">Key: the compact and the 2026 midterms</p>
+        <ul class="vt-key-list">
+          <li><span class="ak-tag ak-joined">Joined 2019</span> <span>Has joined the compact, and the year it did.</span></li>
+          <li><span class="ak-tag ak-flip">Flipped blue</span> <span>Democrats won the governor&rsquo;s office and both legislative chambers in November 2026.</span></li>
+          <li><span class="ak-tag ak-must">Must join</span> <span>Pennsylvania and Michigan. Without both, the states that flipped blue can&rsquo;t take the compact to 270.</span></li>
+          <li><span class="ak-tag ak-two">2 of 3</span> <span>Arizona, Wisconsin and Nevada. With Pennsylvania and Michigan, any 2 of these 3 reach 270.</span></li>
+        </ul>
       </div>
+      <table class="arg-table vt-table">
+        <caption id="vtCaption">1 elector decides for this many voters (2024 votes cast for president, divided by the state&rsquo;s electors).</caption>
+        <thead><tr><th scope="col">State</th><th scope="col">1 elector decides for</th><th scope="col">Elector law today</th><th scope="col">Compact and 2026 midterms</th></tr></thead>
+        <tbody id="voterTableBody"></tbody>
+      </table>
+      <p class="arg-small">U.S.: 1 elector decides for <span id="vtUs">288,547</span> voters. Maine and Nebraska split their electors by district, so theirs are statewide averages. <button class="arg-link" id="toggleVoterAll">show all 51</button></p>
     </div>
 
-    <div class="arg-point">
-      <span class="arg-num">2</span>
-      <div>
-        <h3>Twice this century, the candidate with fewer votes won</h3>
-        <p>In 2000, Al Gore received 50,999,897 votes to George W. Bush&rsquo;s 50,456,002 &mdash; and Bush became president. In 2016, Hillary Clinton received 65,853,514 to Donald Trump&rsquo;s 62,984,828 &mdash; and Trump became president. Both results followed the rules exactly. That is the point: the rules permit it. Open either year on <a href="#record" class="arg-inline-link">the record&rsquo;s timeline</a> and it shows the same thing.</p>
-      </div>
-    </div>
-
-    <div class="arg-point">
-      <span class="arg-num">3</span>
-      <div>
-        <h3>538 people cast the actual votes, and the rules binding them are not the same everywhere</h3>
-        <p>The president is not chosen by the national count. It is chosen by 538 individuals, named above, selected by state parties rather than elected by name. In <em>Chiafalo v. Washington</em> (2020) the Supreme Court held unanimously that a state <strong>may</strong> enforce an elector&rsquo;s pledge. It did not hold that a state <strong>must</strong>.</p>
-        <p>So the protection varies. Some states cancel a faithless vote and seat a replacement &mdash; Colorado did exactly that to Micheal Baca in 2016, and his vote never counted. Some impose a fine and let the vote stand, which is what Washington did to four of its electors the same year. Some have no penalty at all. Which of those applies to you depends on your state, and most voters have never had reason to find out.</p>
-        <p>No faithless elector has ever changed a presidential outcome. The seven in 2016 changed nothing. But seven is not far from the margin of a close election, and the rules governing them were written state by state, for a system nobody expected to be tested.</p>
-      </div>
-    </div>
-
-    <h2 class="arg-h">A fix that needs no amendment</h2>
-    <p>Amending the Constitution requires two-thirds of Congress and three-quarters of the states. The <strong>National Popular Vote Interstate Compact</strong> takes a different route. Article II leaves it to each state to decide how it appoints its electors. Member states agree to award theirs to whoever wins the most votes nationwide &mdash; and the agreement only takes effect once members hold at least 270 electoral votes, enough to decide the outcome. Until then, nothing changes.</p>
+    <h2 class="arg-h">The fix: the National Popular Vote Interstate Compact</h2>
+    <p>Member states agree to give their electors to the candidate with the most votes in all 50 states and D.C. Once members appoint 270 electors, enough to decide the election, the most votes wins. Every voter counts the same, wherever they live. No constitutional amendment is needed.</p>
+    <p>The rule favors no party. In 2024, 2.28 million more Americans voted for Donald Trump than for Kamala Harris, and Trump became president. The most votes won. Every election should end that way.</p>
+    <p><span id="argJoined">18</span> states and D.C. have joined. Together they appoint <span id="argTotal">222</span> electors. <span id="argShort">48</span> to go. Joining takes a state law. Tell your state legislators to pass it.</p>
 
     <div class="npvic-meter">
       <div class="npvic-head">
@@ -1221,6 +1270,26 @@ window.topojson = (function(){
       <p class="npvic-sub"><b id="npvicShort">48</b> short. Enacted by 18 states and the District of Columbia. <span id="npvicNote"></span></p>
       <div id="npvicYourState" class="npvic-state"></div>
     </div>
+
+    <div class="mid-box" id="midterms2026">
+      <h3>After the November 2026 midterms</h3>
+      <p>Democrats won full control, the governor&rsquo;s office and both legislative chambers, in 5 states that have not joined: Arizona, Michigan, Nevada, Pennsylvania and Wisconsin. Together they appoint 61 electors, 13 more than the 48 the compact needs.</p>
+      <p><strong>Pennsylvania and Michigan must both join.</strong> Without either one, the other states fall short of 270. With both, any 2 of Arizona, Wisconsin and Nevada finish the job.</p>
+      <p>Minnesota, a member since 2023, also returned to full Democratic control.</p>
+      <p class="arg-small">These are race calls reported Nov. 4&ndash;6, 2026; each state certifies its own results in the weeks after. Sources:
+        <a href="https://www.pbs.org/newshour/amp/politics/democrats-win-the-arizona-house-senate-and-governors-office-for-the-first-time-since-1966" target="_blank" rel="noopener">Arizona (AP, via PBS NewsHour)</a>,
+        <a href="https://www.michiganpublic.org/politics-government/2026-11-04/michigan-democrats-prepare-for-a-second-trifecta-in-state-government" target="_blank" rel="noopener">Michigan (Michigan Public)</a>,
+        <a href="https://www.bhfs.com/insight/nevada-2026-midterm-results/" target="_blank" rel="noopener">Nevada (Brownstein)</a>,
+        <a href="https://whyy.org/articles/pennsylvania-democrats-trifecta/" target="_blank" rel="noopener">Pennsylvania (WHYY)</a>,
+        <a href="https://wisconsinwatch.org/2026/11/wisconsin-democrats-government-control-backlog-of-policy-priorities/" target="_blank" rel="noopener">Wisconsin (Wisconsin Watch)</a>,
+        <a href="https://fox9.com/news/minnesota-gets-dfl-trifecta-winning-governor-senate-house" target="_blank" rel="noopener">Minnesota (AP, via FOX 9)</a>.</p>
+    </div>
+
+    <p class="arg-small arg-sources">Sources: Federal Election Commission official results for
+      <a href="https://www.fec.gov/introduction-campaign-finance/election-results-and-voting-information/federal-elections-2000/president2000/" target="_blank" rel="noopener">2000</a>,
+      <a href="https://www.fec.gov/resources/cms-content/documents/federalelections2016.pdf" target="_blank" rel="noopener">2016</a> and
+      <a href="#" id="argFec2024" target="_blank" rel="noopener">2024</a>.
+      State elector laws and compact membership: NCSL and state statutes, as listed in <a href="#state-rules" class="arg-inline-link">the record&rsquo;s State rules table</a>, checked November 2026.</p>
 
     <h2 class="arg-h">The case against &mdash; stated fairly</h2>
     <p>If you are going to repeat the argument above, you should know what people say back. These are real objections, not strawmen:</p>
@@ -1269,9 +1338,9 @@ window.topojson = (function(){
         <h3>Where the data comes from</h3>
         <dl class="src-list">
           <dt>Elector names</dt>
-          <dd>Each jurisdiction&rsquo;s <strong>Certificate of Ascertainment</strong> &mdash; the document a governor signs naming the electors their state appoints &mdash; filed with the National Archives. Every state panel links to the certificate it was read from. <a href="https://www.archives.gov/electoral-college/2024" target="_blank" rel="noopener">National Archives, 2024 Electoral College</a></dd>
+          <dd>Each jurisdiction&rsquo;s <strong>Certificate of Ascertainment</strong> &mdash; the document a governor signs naming the electors their state appoints &mdash; filed with the National Archives. Every state panel links to the certificate it was read from. National Archives: <a href="https://www.archives.gov/electoral-college/2020" target="_blank" rel="noopener">2020 Electoral College</a> &middot; <a href="https://www.archives.gov/electoral-college/2024" target="_blank" rel="noopener">2024 Electoral College</a></dd>
           <dt>How electors voted</dt>
-          <dd><strong>Certificates of Vote</strong>, signed by the electors after they met on December 17, 2024. Linked from each state panel alongside the ascertainment.</dd>
+          <dd><strong>Certificates of Vote</strong>, signed by the electors when they met: December 14, 2020, and December 17, 2024. Linked from each state panel alongside the ascertainment.</dd>
           <dt>State outcomes and electoral vote counts</dt>
           <dd>Certified state results, cross-checked against the National Archives&rsquo; published totals for each election year.</dd>
           <dt>National popular vote</dt>
@@ -1296,7 +1365,7 @@ window.topojson = (function(){
       <div class="method-block">
         <h3>How each roster was verified</h3>
         <p>Every elector list was read directly off the certificate, then checked against an independent number: the state&rsquo;s electoral vote count. Pennsylvania&rsquo;s certificate must yield exactly 19 names, California&rsquo;s exactly 54. A roster that does not match its state&rsquo;s count is not published.</p>
-        <p>All 51 jurisdictions match. The 538 names on this site correspond one-to-one with the 538 electoral votes cast in 2024.</p>
+        <p>All 51 jurisdictions match, in both 2020 and 2024: 538 names each year, one for each electoral vote cast.</p>
         <p>Where a certificate names its electors more than once &mdash; many do, once in a canvass table and again in the governor&rsquo;s declaration &mdash; both lists were compared.</p>
       </div>
 
@@ -1338,13 +1407,13 @@ window.topojson = (function(){
 
       <div class="method-block">
         <h3>Take the data</h3>
-        <p>The full 2024 record is downloadable. No attribution required, though a link back helps people check your work.</p>
+        <p>The 2020 and 2024 records are downloadable. No attribution required, though a link back helps people check your work.</p>
         <div class="dl-row">
           <button class="method-btn" id="dlJson">Download JSON</button>
           <button class="method-btn" id="dlCsv">Download CSV</button>
           <span class="share-status" id="dlStatus" role="status"></span>
         </div>
-        <p class="method-small">CSV is one row per elector &mdash; 538 rows, with state, electoral votes, winning ticket, elector name and certificate URL. JSON keeps the same data grouped by jurisdiction.</p>
+        <p class="method-small">CSV is one row per elector per election &mdash; 1,076 rows, 538 for each year &mdash; with year, state, electoral votes, winning ticket, elector name and certificate links. JSON groups the same data by jurisdiction and adds each state&rsquo;s popular vote, voters per elector and today&rsquo;s elector law.</p>
         <p class="method-note"><strong>Check the work.</strong> This whole site is a single public file. Every name, every source note and every link is readable in the source, and the full revision history shows what changed and when. <a href="https://github.com/VivalaRocket4431/ElectoralCollegeArchive" target="_blank" rel="noopener">View the repository on GitHub</a>. Found an error? It is reproducible, so it is fixable.</p>
       </div>
 
@@ -1364,9 +1433,10 @@ window.topojson = (function(){
       </div>
 
       <div class="method-block">
-        <h3>Corrections</h3>
+        <h3>Who runs this, and corrections</h3>
+        <p><strong>Who runs this:</strong> Built and maintained independently by Michael Potiska in Oregon. No party, campaign or outside funding.</p>
         <p>If a name here does not match the certificate it is drawn from, that is an error and it will be fixed. Point to the state, the name, and the certificate.</p>
-        <p class="contact-slot"><strong>Contact:</strong> <span id="contactSlot">hello@theelectoralrecord.org</span></p>
+        <p class="contact-slot"><strong>Contact:</strong> <a id="contactSlot" href="mailto:hello@theelectoralrecord.org">hello@theelectoralrecord.org</a></p>
         <p class="method-small">Last reviewed: November 6, 2026. Record covers the 2000 through 2024 presidential elections; elector names complete for 2020 and 2024.</p>
       </div>
 
@@ -3317,40 +3387,99 @@ setYear(currentYear);
 
 
 /* ======================= ARGUMENT SECTION ======================= */
-let weightShowAll = false;
+/* 2026 midterms (argument page only). Race calls reported Nov. 4-6, 2026; not yet certified.
+   flipped = Democrats won the governor's office and both legislative chambers.
+   must    = among the non-member states that flipped, the compact can't reach 270 without it.
+   twoOf3  = with PA and MI, any two of these reach 270. */
+const MIDTERMS_2026 = {
+  flipped: ["AZ","MI","MN","NV","PA","WI"],
+  must:    ["PA","MI"],
+  twoOf3:  ["AZ","WI","NV"]
+};
+const ARG_YEAR = 2024;
+let voterShowAll = false;
 
-function renderWeightTable(){
-  const ranked = weightRanked();
-  const rows = weightShowAll ? ranked : ranked.slice(0,5).concat(ranked.slice(-5));
-  const body = document.getElementById("weightTableBody");
-  let html = "";
-  rows.forEach((r, i) => {
-    const gap = (!weightShowAll && i === 5);
-    if (gap) html += '<tr class="wt-gap"><td colspan="3">\u00B7 \u00B7 \u00B7 41 more states and D.C. \u00B7 \u00B7 \u00B7</td></tr>';
-    const over = r.index >= 1;
-    const pct = Math.round(Math.abs(r.index - 1) * 100);
-    const cmp = pct < 3 ? "about average"
-              : (over ? "+" + pct + "% weight" : "\u2212" + pct + "% weight");
-    html += '<tr class="' + (over ? "wt-over" : "wt-under") + (inNpvic(r.fips) ? " wt-npvic" : "") + '">' +
-            '<td>' + r.name + ' <span class="wt-ev">(' + r.ev + ' EV)</span></td>' +
-            '<td class="wt-num">' + fmt(Math.round(r.perEv)) + '</td>' +
-            '<td class="wt-cmp">' + cmp + '</td></tr>';
-  });
-  body.innerHTML = html;
-
-  const top = ranked[0], bottom = ranked[ranked.length-1];
-  document.getElementById("weightCallout").innerHTML =
-    "A resident of <strong>" + top.name + "</strong> carries about <strong>" +
-    (bottom.perEv / top.perEv).toFixed(1) + " times</strong> the electoral weight of a resident of <strong>" +
-    bottom.name + "</strong>. Same election, same ballot, same country.";
-
-  document.getElementById("toggleWeightAll").textContent =
-    weightShowAll ? "show just the extremes" : "show all 51";
+function votersPerElector(fips){
+  const st = STATES[fips];
+  const v = (STATE_VOTES[ARG_YEAR] || {})[st.a];
+  const ev = EV_ERA.e2020[st.a];
+  if (!v || !ev) return null;
+  return { fips, name:st.n, abbr:st.a, ev, per: v[2] / ev };
 }
-document.getElementById("toggleWeightAll").addEventListener("click", () => {
-  weightShowAll = !weightShowAll;
-  renderWeightTable();
-  track("argument/weight-table-toggle", "Weight table toggled");
+function votersRanked(){
+  return Object.keys(STATES).map(votersPerElector).filter(Boolean).sort((a,b) => b.per - a.per);
+}
+function lawPill(abbr){
+  const r = STATE_RULES[abbr];
+  return '<span class="ak-pill ak-' + r.c + '">' + RULE_GROUPS[r.c].label + '</span>';
+}
+function compactTags(abbr){
+  const tags = [];
+  const yr = NPVIC_YEAR[abbr];
+  if (yr) tags.push('<span class="ak-tag ak-joined">Joined ' + yr + '</span>');
+  if (MIDTERMS_2026.flipped.indexOf(abbr) !== -1) tags.push('<span class="ak-tag ak-flip">Flipped blue</span>');
+  if (MIDTERMS_2026.must.indexOf(abbr) !== -1) tags.push('<span class="ak-tag ak-must">Must join</span>');
+  if (MIDTERMS_2026.twoOf3.indexOf(abbr) !== -1) tags.push('<span class="ak-tag ak-two">2 of 3</span>');
+  if (!yr) tags.unshift('<span class="vt-not">Not joined</span>');
+  return tags.join(' ');
+}
+function renderLawKey(){
+  const counts = { void:{s:0,dc:false}, penalty:{s:0,dc:false}, pledge:{s:0,dc:false}, none:{s:0,dc:false} };
+  Object.keys(STATES).forEach(f => {
+    const a = STATES[f].a, c = STATE_RULES[a].c;
+    if (a === "DC") counts[c].dc = true; else counts[c].s++;
+  });
+  const what = {
+    void:    "The vote is thrown out and the elector is replaced.",
+    penalty: "Breaking the pledge is a crime, but the vote still counts.",
+    pledge:  "Electors must vote as pledged, but there is no penalty and the vote still counts.",
+    none:    "No law requires electors to vote as pledged. The vote counts."
+  };
+  document.getElementById("vtKeyLaw").innerHTML = RULES_ORDER.map(k =>
+    '<li><span class="ak-pill ak-' + k + '">' + RULE_GROUPS[k].label + '</span> <span>' + what[k] +
+    ' <span class="vt-n">' + counts[k].s + ' state' + (counts[k].s === 1 ? '' : 's') + (counts[k].dc ? ' and D.C.' : '') + '</span></span></li>'
+  ).join('');
+
+  /* The counts in the "51 sets of rules" paragraph. */
+  let looseStates = 0, looseElectors = 0;
+  Object.keys(STATES).forEach(f => {
+    const a = STATES[f].a;
+    if (STATE_RULES[a].c !== "void"){ looseStates++; looseElectors += EV_ERA.e2020[a]; }
+  });
+  document.getElementById("argLooseStates").textContent = looseStates;
+  document.getElementById("argLooseElectors").textContent = looseElectors;
+}
+function renderVoterTable(){
+  const ranked = votersRanked();
+  const show = {};
+  MIDTERMS_2026.flipped.forEach(a => { show[a] = true; });
+  const lowest = ranked[ranked.length - 1];
+  let rows = voterShowAll ? ranked : ranked.filter(r => show[r.abbr]);
+  let html = "";
+  const rowHtml = r => {
+    const key = MIDTERMS_2026.must.indexOf(r.abbr) !== -1 || MIDTERMS_2026.twoOf3.indexOf(r.abbr) !== -1;
+    return '<tr' + (key ? ' class="vt-keystate"' : '') + '>' +
+      '<th scope="row" class="vt-state">' + r.name + ' <span class="wt-ev">(' + r.ev + ' elector' + (r.ev === 1 ? '' : 's') + ')</span></th>' +
+      '<td class="vt-num"><span class="vt-num-lab">1 elector decides for </span>' + fmt(Math.round(r.per)) + ' voters</td>' +
+      '<td class="vt-law">' + lawPill(r.abbr) + '</td>' +
+      '<td class="vt-tags">' + compactTags(r.abbr) + '</td></tr>';
+  };
+  rows.forEach(r => { html += rowHtml(r); });
+  if (!voterShowAll && !show[lowest.abbr]){
+    html += '<tr class="wt-gap"><td colspan="4">· · · the fewest voters per elector · · ·</td></tr>' + rowHtml(lowest);
+  }
+  document.getElementById("voterTableBody").innerHTML = html;
+  document.getElementById("vtCaption").innerHTML = voterShowAll
+    ? "All 50 states and D.C., most voters per elector first. 1 elector decides for this many voters (2024 votes cast for president, divided by the state&rsquo;s electors)."
+    : "Shown: the 6 states that flipped blue in 2026, and " + lowest.name + ", where 1 elector decides for the fewest voters. 1 elector decides for this many voters (2024 votes cast for president, divided by the state&rsquo;s electors).";
+  const us = (STATE_VOTES[ARG_YEAR] ? Object.keys(STATE_VOTES[ARG_YEAR]).reduce((t,a) => t + STATE_VOTES[ARG_YEAR][a][2], 0) : 0) / 538;
+  if (us) document.getElementById("vtUs").textContent = fmt(Math.round(us));
+  document.getElementById("toggleVoterAll").textContent = voterShowAll ? "show the key states only" : "show all 51";
+}
+document.getElementById("toggleVoterAll").addEventListener("click", () => {
+  voterShowAll = !voterShowAll;
+  renderVoterTable();
+  track("argument/voter-table-toggle", "Voter table toggled");
 });
 
 function renderNpvic(){
@@ -3360,6 +3489,11 @@ function renderNpvic(){
   document.getElementById("npvicShort").textContent = 270 - total;
   document.getElementById("npvicFill").style.width = pct + "%";
   document.getElementById("npvicNote").textContent = NPVIC_NOTE;
+  document.getElementById("argJoined").textContent = NPVIC_MEMBERS.filter(f => STATES[f].a !== "DC").length;
+  document.getElementById("argTotal").textContent = total;
+  document.getElementById("argShort").textContent = Math.max(0, 270 - total);
+  const fec = document.getElementById("argFec2024");
+  if (fec && FEC_YEAR[2024]) fec.href = FEC_YEAR[2024].url;
 }
 
 /* Shows whether the state the reader has selected has joined. */
@@ -3375,20 +3509,17 @@ function renderNpvicState(){
   const ev = EV_ERA.e2020[st.a];
   let html = joined
     ? '<p class="npvic-yes"><strong>' + st.n + ' has joined.</strong> Its ' + ev +
-      ' electoral vote' + (ev>1?'s are':' is') + ' already committed, and will be awarded to the national vote winner if the compact ever reaches 270.</p>'
+      ' elector' + (ev>1?'s are':' is') + ' already committed to the national vote winner, starting once the compact reaches 270.</p>'
     : '<p class="npvic-no"><strong>' + st.n + ' has not joined.</strong> Its ' + ev +
-      ' electoral vote' + (ev>1?'s remain':' remains') + ' awarded the current way, whatever the national count is.</p>';
+      ' elector' + (ev>1?'s still go':' still goes') + ' to the statewide winner, whatever the national count is.</p>';
 
-  /* What-if, moved here from the state panel so the record stays free of it. */
-  const w = weightFor(selectedFips);
-  if (w){
-    html += '<p class="npvic-hypo"><span class="hypo-tag">Hypothetical</span>' +
-      'Today each ' + st.n + ' electoral vote stands for ' + fmt(Math.round(w.perEv)) + ' residents (2020 Census). ' +
-      'If the compact took effect, every member state&rsquo;s electors would follow one national count, so the figure that matters ' +
-      'would be the national one: ' + fmt(Math.round(NATL_PER_EV)) + ' residents per electoral vote, the same in every state.</p>';
+  if (MIDTERMS_2026.flipped.indexOf(st.a) !== -1){
+    html += '<p class="npvic-mid">' + st.n + ' flipped blue in November 2026: Democrats won the governor&rsquo;s office and both legislative chambers.' +
+      (MIDTERMS_2026.must.indexOf(st.a) !== -1 ? ' Without ' + st.n + ', the states that flipped can&rsquo;t take the compact to 270.' : '') +
+      (MIDTERMS_2026.twoOf3.indexOf(st.a) !== -1 ? ' With Pennsylvania and Michigan, it is 1 of 3 states that can finish the job.' : '') + '</p>';
   }
 
-  /* Legislator lookup, moved here from the state panel. */
+  /* Legislator lookup. */
   const look = legLookup(st.a, st.n);
   html += '<p class="npvic-lookup"><a href="' + look.url + '" target="_blank" rel="noopener">Find your ' + st.n + ' state legislator</a> ' +
     '<span class="arg-small">' + (look.direct
@@ -3412,7 +3543,8 @@ document.getElementById("copyLinkBtn").addEventListener("click", async () => {
   setTimeout(() => { status.textContent = ""; }, 4000);
 });
 
-renderWeightTable();
+renderLawKey();
+renderVoterTable();
 renderNpvic();
 renderNpvicState();
 
@@ -3421,7 +3553,7 @@ renderNpvicState();
    Edit these three lines to change how the site identifies itself. */
 const SITE_AUTHOR   = "Potiska, Michael";          /* surname first, for citations */
 const SITE_URL      = "https://theelectoralrecord.org";
-const SITE_CONTACT  = "";   /* e.g. "electoralrecord@example.com" — leave empty to show the placeholder */
+const SITE_CONTACT  = "hello@theelectoralrecord.org";   /* forwards to Michael's inbox */
 
 const SITE_TITLE = "The Electoral Record";
 const SITE_YEAR  = 2026;
@@ -3447,7 +3579,7 @@ function renderCitations(){
     SITE_AUTHOR + ". \u201C" + SITE_TITLE + ".\u201D Last modified " + d + ". " + SITE_URL + ".";
 
   const slot = document.getElementById("contactSlot");
-  if (slot && SITE_CONTACT) slot.textContent = SITE_CONTACT;
+  if (slot && SITE_CONTACT){ slot.textContent = SITE_CONTACT; slot.setAttribute("href", "mailto:" + SITE_CONTACT); }
   const rev = document.getElementById("lastReviewed");
   if (rev) rev.textContent = d;
 }
@@ -3464,24 +3596,35 @@ document.getElementById("copyCiteBtn").addEventListener("click", async () => {
 });
 
 /* ---------- Data export ---------- */
-function buildExport(){
-  const ym = buildYear(2024);
-  const e = ELECTIONS[2024];
-  return Object.keys(STATES).sort((a,b)=> STATES[a].n < STATES[b].n ? -1 : 1).map(f => {
-    const st = STATES[f], d = ym[f], r = ELECTORS[2024][f];
+/* Download: elector rosters for the complete years, each state's popular vote and
+   voters per elector, and today's elector law. */
+const EXPORT_YEARS = [2020, 2024];
+function byStateName(a, b){ return STATES[a].n < STATES[b].n ? -1 : 1; }
+function buildExport(year){
+  const ym = buildYear(year);
+  const e = ELECTIONS[year];
+  const sv = STATE_VOTES[year] || {};
+  return Object.keys(STATES).sort(byStateName).map(f => {
+    const st = STATES[f], d = ym[f], r = (ELECTORS[year] || {})[f], v = sv[st.a];
     const names = r ? r.names.map(x => typeof x === "string" ? {name:x, pledgedTo:r.ticket}
                                                              : {name:x.n, pledgedTo:(x.t==="R"?e.R.ticket:e.D.ticket), seat:x.seat}) : [];
     return {
       state: st.n, abbreviation: st.a, fips: f,
       electoralVotes: d.ev,
       wonBy: d.w === "split" ? "Split" : (d.w === "R" ? e.R.ticket : e.D.ticket),
-      residents2020: POP2020[f],
-      residentsPerElectoralVote: Math.round(POP2020[f] / d.ev),
-      npvicMember: inNpvic(f),
+      popularVote: v ? { republicanTicket: v[0], democraticTicket: v[1], allCandidates: v[2] } : null,
+      votersPerElector: v ? Math.round(v[2] / d.ev) : null,
       electors: names,
       certificateOfAscertainment: r ? r.sourceUrl : null,
-      certificateOfVote: r ? r.voteUrl : null
+      certificateOfVote: r ? (r.voteUrl || null) : null
     };
+  });
+}
+function rulesExport(){
+  return Object.keys(STATES).sort(byStateName).map(f => {
+    const st = STATES[f], r = STATE_RULES[st.a];
+    return { state: st.n, abbreviation: st.a, rule: RULE_GROUPS[r.c].label, law: r.law || null, note: r.note || null,
+             compactMember: inNpvic(f), compactYearJoined: NPVIC_YEAR[st.a] || null };
   });
 }
 function download(filename, text, mime){
@@ -3501,30 +3644,37 @@ function exportStatus(ok){
   setTimeout(()=>{ s.textContent = ""; }, 5000);
 }
 document.getElementById("dlJson").addEventListener("click", () => {
+  const elections = {};
+  EXPORT_YEARS.forEach(y => {
+    elections[y] = { republicanTicket: ELECTIONS[y].R.ticket, democraticTicket: ELECTIONS[y].D.ticket,
+                     totalElectoralVotes: 538, jurisdictions: buildExport(y) };
+  });
   const payload = {
-    title: SITE_TITLE, source: SITE_URL, election: 2024,
+    title: SITE_TITLE, source: SITE_URL,
     generated: new Date().toISOString().slice(0,10),
-    primarySource: "Certificates of Ascertainment filed with the U.S. National Archives",
-    note: "Elector home addresses printed on some certificates are deliberately omitted. Where a state amended its certificate or replaced an elector before appointment, the final appointed list is used.",
-    totalElectoralVotes: 538,
-    jurisdictions: buildExport()
+    primarySources: {
+      electors: "Certificates of Ascertainment and Certificates of Vote filed with the U.S. National Archives",
+      popularVote: "Federal Election Commission, official presidential general election results",
+      stateRulesToday: "NCSL Electoral College statute table, checked against each state's statute text and 2026 session laws"
+    },
+    note: "Elector home addresses printed on some certificates are deliberately omitted. Where a state amended its certificate or replaced an elector before appointment, the final appointed list is used. State rules are current law as of " + RULES_CHECKED + ", not the law in each election year.",
+    elections: elections,
+    stateRulesToday: { checked: RULES_CHECKED, jurisdictions: rulesExport() }
   };
-  exportStatus(download("electoral-record-2024.json", JSON.stringify(payload, null, 2), "application/json"));
+  exportStatus(download("electoral-record-2020-2024.json", JSON.stringify(payload, null, 2), "application/json"));
   track("methodology/download-json", "JSON downloaded");
 });
 document.getElementById("dlCsv").addEventListener("click", () => {
   const q = v => '"' + String(v === null || v === undefined ? "" : v).replace(/"/g,'""') + '"';
-  const rows = [["state","abbreviation","electoral_votes","won_by","elector_name","pledged_to","residents_per_electoral_vote","npvic_member","certificate_url"].join(",")];
-  buildExport().forEach(j => {
-    if (!j.electors.length){
-      rows.push([j.state,j.abbreviation,j.electoralVotes,j.wonBy,"","",j.residentsPerElectoralVote,j.npvicMember,j.certificateOfAscertainment].map(q).join(","));
-    } else {
+  const rows = [["year","state","abbreviation","electoral_votes","won_by","elector_name","pledged_to","district_or_seat","certificate_of_ascertainment","certificate_of_vote"].join(",")];
+  EXPORT_YEARS.forEach(y => {
+    buildExport(y).forEach(j => {
       j.electors.forEach(el => {
-        rows.push([j.state,j.abbreviation,j.electoralVotes,j.wonBy,el.name,el.pledgedTo,j.residentsPerElectoralVote,j.npvicMember,j.certificateOfAscertainment].map(q).join(","));
+        rows.push([y,j.state,j.abbreviation,j.electoralVotes,j.wonBy,el.name,el.pledgedTo,el.seat || "",j.certificateOfAscertainment,j.certificateOfVote].map(q).join(","));
       });
-    }
+    });
   });
-  exportStatus(download("electoral-record-2024.csv", rows.join("\n"), "text/csv"));
+  exportStatus(download("electoral-record-electors-2020-2024.csv", rows.join("\n"), "text/csv"));
   track("methodology/download-csv", "CSV downloaded");
 });
 
