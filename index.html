@@ -1365,7 +1365,7 @@ window.topojson = (function(){
       <div class="method-block">
         <h3>How each roster was verified</h3>
         <p>Every elector list was read directly off the certificate, then checked against an independent number: the state&rsquo;s electoral vote count. Pennsylvania&rsquo;s certificate must yield exactly 19 names, California&rsquo;s exactly 54. A roster that does not match its state&rsquo;s count is not published.</p>
-        <p>All 51 jurisdictions match, in both 2020 and 2024: 538 names each year, one for each electoral vote cast.</p>
+        <p>All 51 jurisdictions match in 2016, 2020 and 2024: 538 names each year, one for each electoral vote cast.</p>
         <p>Where a certificate names its electors more than once &mdash; many do, once in a canvass table and again in the governor&rsquo;s declaration &mdash; both lists were compared.</p>
       </div>
 
@@ -1384,9 +1384,9 @@ window.topojson = (function(){
       <div class="method-block flag">
         <h3>Known limits</h3>
         <ul class="method-rules">
-          <li><strong>Some rosters were transcribed by eye.</strong> Massachusetts and New Hampshire file their certificates in engraved script that machine text extraction cannot read. Their 15 names in each of 2020 and 2024 were read from the scanned image and checked against the vote counts. They carry a different kind of risk than the rest &mdash; transcription error rather than extraction error.</li>
+          <li><strong>Some rosters were transcribed by eye.</strong> Massachusetts and New Hampshire file their certificates in engraved script that machine text extraction cannot read. Their 15 names in each of 2016, 2020 and 2024 were read from the scanned image and checked against the vote counts. For 2016, Georgia and Texas were also read by eye. They carry a different kind of risk than the rest &mdash; transcription error rather than extraction error.</li>
           <li><strong>Unusual surnames carry some extraction risk.</strong> Names were pulled from each PDF&rsquo;s text layer. Characters such as rn/m and I/l can be misread. Every panel links to the certificate so any name can be checked at the source.</li>
-          <li><strong>Elector names are complete for 2020 and 2024, and nearly complete for 2016.</strong> All 51 jurisdictions are loaded for 2020 and 2024, 538 electors each, every roster checked against its electoral vote count. For 2016, 45 of 51 jurisdictions are loaded; the other six certificates could not be read reliably by machine and are being read by eye. The 2000&ndash;2012 elections show state outcomes, electoral vote counts, popular vote and faithless electors, but not full rosters.</li>
+          <li><strong>Elector names are complete for 2016, 2020 and 2024.</strong> All 51 jurisdictions are loaded for each year, 538 electors each, every roster checked against its electoral vote count. The 2000&ndash;2012 elections show state outcomes, electoral vote counts, popular vote and faithless electors, but not full rosters.</li>
           <li><strong>Some 2020 certificates have damaged text layers.</strong> Where the machine-readable text garbles a name, the panel says so and names the document used to confirm it, usually the signed Certificate of Vote.</li>
           <li><strong>Elections before 2000 are not included.</strong> Before 1824 most states had no popular vote at all, so the popular-versus-electoral comparison this site is built around does not exist for the early republic.</li>
         </ul>
@@ -1407,7 +1407,7 @@ window.topojson = (function(){
 
       <div class="method-block">
         <h3>Take the data</h3>
-        <p>The 2020 and 2024 records are downloadable. No attribution required, though a link back helps people check your work.</p>
+        <p>The 2016, 2020 and 2024 records are downloadable. No attribution required, though a link back helps people check your work.</p>
         <div class="dl-row">
           <button class="method-btn" id="dlJson">Download JSON</button>
           <button class="method-btn" id="dlCsv">Download CSV</button>
@@ -1437,7 +1437,7 @@ window.topojson = (function(){
         <p><strong>Who runs this:</strong> Built and maintained independently by Michael Potiska in Oregon. No party, campaign or outside funding.</p>
         <p>If a name here does not match the certificate it is drawn from, that is an error and it will be fixed. Point to the state, the name, and the certificate.</p>
         <p class="contact-slot"><strong>Contact:</strong> <a id="contactSlot" href="mailto:hello@theelectoralrecord.org">hello@theelectoralrecord.org</a></p>
-        <p class="method-small">Last reviewed: November 14, 2026. Record covers the 2000 through 2024 presidential elections; elector names complete for 2020 and 2024, and loaded for 45 of 51 jurisdictions in 2016.</p>
+        <p class="method-small">Last reviewed: November 15, 2026. Record covers the 2000 through 2024 presidential elections; elector names complete for 2016, 2020 and 2024.</p>
       </div>
 
     </div>
@@ -1447,7 +1447,7 @@ window.topojson = (function(){
 <footer class="site-footer record-only">
   <h2>What this archive contains &mdash; and what it doesn't</h2>
   <p><strong>Fully sourced right now:</strong> for all seven elections from 2000 through 2024, the winning ticket and electoral vote count in every state and D.C.; the popular vote in every state and nationally; and the difference between electors <em>pledged</em> and electors' votes <em>actually cast</em>, including every faithless elector and abstention. Separately, each state&rsquo;s law today on whether its electors must vote as pledged.</p>
-  <p><strong>Elector names:</strong> For 2016, 45 of 51 jurisdictions are loaded; the other six await a reading by eye. 2020 and 2024 are complete: all 51 jurisdictions in each, every roster read off its Certificate of Ascertainment and checked against its electoral vote count. In 2020, Massachusetts and New Hampshire were read by eye from the scanned script certificates, and Indiana uses its amended certificate, matched to the electors who signed the Certificate of Vote. All 51 jurisdictions are loaded, naming every one of the 538 people who cast an electoral vote. Each roster was read off that jurisdiction's Certificate of Ascertainment and checked against its electoral vote count. Where a state filed an amended certificate, or replaced an elector before appointment, the final appointed list is used. Maine and Nebraska award electors by congressional district, so their electors came from two different party slates; each is shown with their own party and district. Certificates list the losing parties' slates too; those people were never appointed and are not shown. Several certificates print electors' home addresses, cities or towns; those are deliberately not reproduced here. Massachusetts and New Hampshire are engraved in decorative script that machine reading cannot decipher, so their names were transcribed by eye from the scanned certificates. Nothing here is estimated — a name appears only after being read off the certificate, and every certificate is linked from its panel.</p>
+  <p><strong>Elector names:</strong> 2016, 2020 and 2024 are complete: all 51 jurisdictions in each, every roster read off its Certificate of Ascertainment and checked against its electoral vote count. In 2020, Massachusetts and New Hampshire were read by eye from the scanned script certificates, and Indiana uses its amended certificate, matched to the electors who signed the Certificate of Vote. All 51 jurisdictions are loaded, naming every one of the 538 people who cast an electoral vote. Each roster was read off that jurisdiction's Certificate of Ascertainment and checked against its electoral vote count. Where a state filed an amended certificate, or replaced an elector before appointment, the final appointed list is used. Maine and Nebraska award electors by congressional district, so their electors came from two different party slates; each is shown with their own party and district. Certificates list the losing parties' slates too; those people were never appointed and are not shown. Several certificates print electors' home addresses, cities or towns; those are deliberately not reproduced here. Massachusetts and New Hampshire are engraved in decorative script that machine reading cannot decipher, so their names were transcribed by eye from the scanned certificates. Nothing here is estimated — a name appears only after being read off the certificate, and every certificate is linked from its panel.</p>
   <p><strong>Not here yet:</strong> elections before 2000; voter registration by party. Nothing on this site is estimated or filled in by guesswork &mdash; if a number isn't sourced, it isn't shown.</p>
   <ul>
     <li>Electoral votes and state outcomes: certified state results, cross-checked against the National Archives' Electoral College records for each year.</li>
@@ -1573,7 +1573,7 @@ const ELECTIONS = {
     pledged:{R:306,D:232},
     cast:{R:304,D:227},
     castOther:[{name:"Colin Powell",n:3},{name:"Bernie Sanders",n:1},{name:"John Kasich",n:1},{name:"Ron Paul",n:1},{name:"Faith Spotted Eagle",n:1}],
-    castNote:"Seven electors broke their pledge \u2014 the most in over a century. Trump was pledged 306 but received 304. Clinton was pledged 232 but received 227.",
+    castNote:"Seven electors broke their pledge \u2014 the most in over a century. Trump was pledged 306 but received 304. Clinton was pledged 232 but received 227. This record documents four states where the people who cast the votes were not all the people named on the certificate: Colorado, Georgia, Minnesota and Texas. Texas replaced 4 electors; the other three states replaced 1 each.",
     popular:{R:{v:62984828,p:46.1},D:{v:65853514,p:48.2}},
     popularWinner:"D", evWinner:"R",
     r:sp("AL AK AZ AR FL GA ID IN IA KS KY LA MI MS MO MT NE NC ND OH OK PA SC SD TN TX UT WV WI WY"),
@@ -2215,6 +2215,48 @@ const ELECTORS = {
       source:"Certificate of Ascertainment, State of Wyoming, 2016.",
       sourceUrl:"https://www.archives.gov/files/electoral-college/2016/ascertainment-wyoming.pdf",
       voteUrl:"https://www.archives.gov/files/electoral-college/2016/vote-wyoming.pdf"
+    },
+    "41":{
+      ticket:"Clinton / Kaine (D)",
+      names:["Leon H Coleman","Frank James Dixon","Austin Folnagy","Laura Gillpatrick","Karen A Packer","Timothy Norman Powers Rowan","Harry W (Sam) Sappington III"],
+      source:"Certificate of Ascertainment, State of Oregon, 2016. Names are given as the certificate prints them, without periods after initials. Machine reading returned two spellings for two of the names (Timothy or Thomas Norman Powers Rowan; Harry W or Harry S (Sam) Sappington III); the spellings shown were confirmed by eye from the scanned certificate.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2016/ascertainment-oregon.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2016/vote-oregon.pdf"
+    },
+    "35":{
+      ticket:"Clinton / Kaine (D)",
+      names:["Roxanne Allen","John Padilla","Edward Paul Torres","Lorraine Spradling","Noyola Archibeque"],
+      source:"Certificate of Ascertainment, State of New Mexico, 2016. The certificate's machine-readable text does not show which party column each name sits under; the five names were confirmed by eye from the scanned certificate as the Democratic slate.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2016/ascertainment-new-mexico.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2016/vote-new-mexico.pdf"
+    },
+    "13":{
+      ticket:"Trump / Pence (R)",
+      names:["Bruce Azevedo","Brian Burdette","Lot Dill","John Elliott","James Evans","Bobbie Frantz","Linda Herren","Rachel Little","Deborah McCord","Michael McNeely","Mary Padgett","Neil Pruitt","Kirk Shook","Frank Strickland","John Padgett","John White"],
+      source:"Certificate of Ascertainment, State of Georgia, 2016. The scan could not be read reliably by machine; the names were read by eye from the scanned certificate. The certificate names Baoky Vu as the fifteenth elector. Vu did not appear when the electors met on Dec. 19, 2016; the other fifteen elected John Padgett to fill the vacancy, as the Certificate of Vote records, and Padgett cast the vote. He is listed here in Vu's place.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2016/ascertainment-georgia.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2016/vote-georgia.pdf"
+    },
+    "33":{
+      ticket:"Clinton / Kaine (D)",
+      names:["Dudley Dudley","Beverly Hollingworth","Terie Norelli","Carol Shea-Porter"],
+      source:"Certificate of Ascertainment, State of New Hampshire, 2016. This certificate is engraved in decorative script, which machine text extraction cannot read; these names were transcribed by eye from the scanned certificate and checked against the state\u2019s four electoral votes.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2016/ascertainment-new-hampshire.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2016/vote-new-hampshire.pdf"
+    },
+    "25":{
+      ticket:"Clinton / Kaine (D)",
+      names:["Nazda Alam","MaryGail Cokkinias","Cheryl Cumings","Curtis LeMay","Marc R. Pacheco","Parwez Wahid","Jason Palitsch","Donna S. Smith","Marie A. Turley","Paul G. Yorkis","Dori Dean"],
+      source:"Certificate of Ascertainment, Commonwealth of Massachusetts, 2016. This certificate is engraved in decorative script, which machine text extraction cannot read; these names were transcribed by eye from the scanned certificate and checked against the state\u2019s eleven electoral votes. Spellings were then checked against a typed copy of the Governor\u2019s Council canvass of Nov. 30, 2016, held by the American Presidency Project, which lists the same eleven electors in the same order.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2016/ascertainment-massachusetts.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2016/vote-massachusetts.pdf"
+    },
+    "48":{
+      ticket:"Trump / Pence (R)",
+      names:["Martha Rhymes","Thomas Moon","Carol Sewell","John Harper","Sherrill Lenz","Nicholas Ciggelakis","William Hickman","Landon Estay","Rex Lamb","Rosemary Edwards","Matt Stringer","Debra Coffey","Benona Love","Sherry Clark","Sandra A. Cararas","David Thackston","Robert Bruce","Marjorie Martha Forster","Scott Mann","Marian Stanko","Curtis Nelson","Tina Gibson","Kendell Muenzler","Alexander H. Kim","Virginia Abel","John Dillard","Thomas Knight","Marian Knowlton","Rex Teter","Stephen Suprun Jr","Jon Jewett","Susan Fischer","Loren Byers","William Lawrence Greene","Mary Lou Erben","Janis Holt","Fred Farias","Candace Noble"],
+      source:"Certificate of Ascertainment, State of Texas, 2016. The certificate prints the party slates side by side, which machine reading interleaves; the 38 Republican names were read by eye from the scanned certificate, in its printed order. Four people named on the certificate did not vote. Shellie D. Surles, Melissa Juett Kalka, Kenneth Clark and Art Sisneros were absent when the electors met on Dec. 19, 2016; Sisneros had resigned rather than vote for Trump. The electors present filled the four vacancies, as the Certificate of Vote records: Debra Coffey for Surles, Benona Love for Kalka, Sherry Clark for Kenneth Clark and Janis Holt for Sisneros. Each is listed here in the place of the elector replaced. The replacement names on the Certificate of Vote are handwritten; their spellings follow the Texas Tribune\u2019s report of Dec. 19, 2016. The certificate prints \u201cStephen Suprun Jr\u201d; press reports call him Christopher or Chris Suprun.",
+      sourceUrl:"https://www.archives.gov/files/electoral-college/2016/ascertainment-texas.pdf",
+      voteUrl:"https://www.archives.gov/files/electoral-college/2016/vote-texas.pdf"
     },
     "23":{
       ticket:"Split \u2014 3 pledged to Clinton / Kaine, 1 to Trump / Pence",
@@ -3921,7 +3963,7 @@ document.getElementById("copyCiteBtn").addEventListener("click", async () => {
 /* ---------- Data export ---------- */
 /* Download: elector rosters for the complete years, each state's popular vote and
    voters per elector, and today's elector law. */
-const EXPORT_YEARS = [2020, 2024];
+const EXPORT_YEARS = [2016, 2020, 2024];
 function byStateName(a, b){ return STATES[a].n < STATES[b].n ? -1 : 1; }
 function buildExport(year){
   const ym = buildYear(year);
